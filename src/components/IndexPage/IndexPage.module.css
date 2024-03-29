@@ -1,9 +1,33 @@
 .root {
+  --bg-blue: #0000b0;
+  --bg-light-blue: #0000ff;
+  --bg-red: #b00000;
+  --bg-light-red: #ff0000;
+  --bg-orange: #ff9800;
+
   background-image: linear-gradient(
-    to right,
-    blue,
-    blue 50%,
-    red 50%,
-    red 100%
-  );
+      to bottom,
+      var(--bg-blue),
+      var(--bg-blue) 30%,
+      var(--bg-light-blue) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      var(--bg-red),
+      var(--bg-red) 30%,
+      var(--bg-light-red) 100%
+    );
+
+  background-size: 50% auto, 50% auto;
+  background-repeat: repeat-y, repeat-y;
+  background-position: left, right;
+}
+
+.pageContainer {
+  background-color: #ffffe9;
+  border: 8px solid var(--bg-red);
+}
+
+.pageContainer a {
+  @apply text-blue-800 underline;
 }
