@@ -1,3 +1,4 @@
+import Image from "next/image";
 import charSelectPng from "./charSelect.png";
 import orderSelectPng from "./orderSelect.png";
 
@@ -8,31 +9,34 @@ function IndexPage() {
         <div className="col-start-1 col-end-9 sm:col-start-1 sm:col-end-5 grid place-items-center">
           <div className="flex flex-col h-full mt-16 gap-y-4">
             <h1 className="font-bold text-2xl text-center">
-              King of Fighters 94: Team Edit Edition
+              King of Fighters &apos;94: Team Edit Edition
             </h1>
             <div className="flex flex-col space-y-8 my-8 pt-8">
               <p>
-                KOF94TE is a ROM hack for the Neo Geo game King of Fighters '94
+                KOF94TE is a ROM hack for the Neo Geo game King of Fighters
+                &apos;94
               </p>
               <p>
                 All King of Fighters games allow you to pick a custom team of
-                three characters ... except King of Fighters 94. This hack adds
-                in the team edit feature.
+                three characters ... except King of Fighters &apos;94. This hack
+                adds in the team edit feature.
               </p>
             </div>
             <div className="flex-1"></div>
           </div>
         </div>
         <div className="col-start-1 col-end-9 sm:h-auto sm:col-start-5 sm:col-end-9 self-stretch flex flex-col gap-y-4 py-4">
-          <img
+          <Image
             src={charSelectPng.src}
             width={charSelectPng.width}
             height={charSelectPng.height}
+            alt="Character select screen"
           />
-          <img
+          <Image
             src={orderSelectPng.src}
             width={orderSelectPng.width}
             height={orderSelectPng.height}
+            alt="Member order select screen"
           />
         </div>
       </div>
@@ -43,20 +47,20 @@ function IndexPage() {
         <h3 className="heading text-lg font-bold py-4">Version 0.0.1</h3>
         <p>
           The hack still has a very long way to go. But, in its current state
-          you can use custom teams if you don't mind the (many) issues this
+          you can use custom teams if you don&apos;t mind the (many) issues this
           version has.
         </p>
         <h4 className="heading font-bold py-4">Known Issues</h4>
         <ul className="list-disc ml-4">
           <li>
-            In single player mode the game doesn't keep track of which teams you
-            have beat. This means single player mode is endless.
+            In single player mode the game doesn&apos;t keep track of which
+            teams you have beat. This means single player mode is endless.
           </li>
           <li>Win screens show one of the preformed teams</li>
           <li>The continue screen shows one of the preformed teams</li>
           <li>
-            The CPU doesn't always pick alternate colors, so often in mirror
-            matches both characters are the same color
+            The CPU doesn&apos;t always pick alternate colors, so often in
+            mirror matches both characters are the same color
           </li>
           <li>Versus mode often uses the same colors for mirror matches too</li>
           <li>
