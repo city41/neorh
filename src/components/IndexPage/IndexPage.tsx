@@ -77,21 +77,27 @@ function IndexPage() {
               In single player mode the game doesn&apos;t keep track of which
               teams you have beat. This means single player mode is endless.
             </li>
-            <li>Win screens show one of the preformed teams</li>
-            <li>The continue screen shows one of the preformed teams</li>
+            <li>
+              Win screens show one of the preformed teams, not the team you
+              chose.
+            </li>
+            <li>
+              The continue screen shows one of the preformed teams, not the team
+              you chose.
+            </li>
             <li>
               The CPU doesn&apos;t always pick alternate colors, so often in
-              mirror matches both characters are the same color
+              mirror matches both characters are the same color.
             </li>
             <li>
-              Versus mode often uses the same colors for mirror matches too
+              Versus mode often uses the same colors for mirror matches too.
             </li>
             <li>
-              You can not purposely choose the alternate color for characters
+              You can not purposely choose the alternate color for characters.
             </li>
             <li>
               Some team choices can cause graphical corruption during character
-              select (try six Changs to see what I mean)
+              select (try six Changs to see what I mean).
             </li>
             <li>
               Choosing Chang can cause (a lot of) slowdown during character

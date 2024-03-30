@@ -26,6 +26,7 @@ function DropZone({ className, style, onData, children }: DropZoneProps) {
       <input
         style={{ width: 0.01, height: 0.01 }}
         type="file"
+        accept=".zip"
         onChange={(e) => {
           const file = e.target.files?.[0];
           if (file) {
