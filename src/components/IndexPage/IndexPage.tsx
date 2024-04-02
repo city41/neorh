@@ -99,7 +99,18 @@ function IndexPage() {
               In single player mode, the char select screen does not yet gray
               out teams you have defeated.
             </li>
+            <li>
+              During the demo, the two CPU players randomly pick a team in
+              character select but their randomization is not shown.
+            </li>
           </ul>
+          <p className="mt-8">
+            More details at the{" "}
+            <a href="https://github.com/city41/kof94te/milestones">
+              milestones page
+            </a>
+            .
+          </p>
         </div>
         <div className="heading-container sticky top-0" id="build-the-rom">
           <h2 className="heading text-3xl font-bold py-4">Build the ROM</h2>
