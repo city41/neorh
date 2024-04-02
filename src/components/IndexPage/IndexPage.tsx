@@ -65,7 +65,7 @@ function IndexPage() {
           <h2 className="heading text-3xl font-bold py-4">Release Notes</h2>
         </div>
         <div className="mb-16">
-          <h3 className="heading text-lg font-bold py-4">Version 0.0.1</h3>
+          <h3 className="heading text-lg font-bold py-4">Version 0.1.0</h3>
           <p>
             The hack still has a very long way to go. But, in its current state
             you can use custom teams if you don&apos;t mind the (many) issues
@@ -96,22 +96,8 @@ function IndexPage() {
               You can not purposely choose the alternate color for characters.
             </li>
             <li>
-              Some team choices can cause graphical corruption during character
-              select (try six Changs to see what I mean).
-            </li>
-            <li>
-              Choosing Chang can cause (a lot of) slowdown during character
-              select. He&apos;s a big boy!
-            </li>
-            <li>
-              Character select screen is operational between matches in single
-              player mode. Normally this is where the game shows you the next
-              team you&apos;re going to fight. But you can change your own team
-              too if you&apos;re quick enough.
-            </li>
-            <li>
-              Character select screen doesn&apos;t show the next cpu team choice
-              after a match is done.
+              In single player mode, the char select screen does not yet gray
+              out teams you have defeated.
             </li>
           </ul>
         </div>
