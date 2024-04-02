@@ -65,7 +65,7 @@ function IndexPage() {
           <h2 className="heading text-3xl font-bold py-4">Release Notes</h2>
         </div>
         <div className="mb-16">
-          <h3 className="heading text-lg font-bold py-4">Version 0.1.0</h3>
+          <h3 className="heading text-lg font-bold py-4">Version 0.1.1</h3>
           <p>
             The hack still has a very long way to go. But, in its current state
             you can use custom teams if you don&apos;t mind the (many) issues
