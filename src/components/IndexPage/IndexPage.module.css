@@ -4,6 +4,7 @@
   --bg-red: #b00000;
   --bg-light-red: #ff0000;
   --bg-orange: #ff9800;
+  --pale-yellow: #ffffe9;
 
   background-image: linear-gradient(
       to bottom,
@@ -24,10 +25,15 @@
 }
 
 .pageContainer {
-  background-color: #ffffe9;
+  background-color: var(--pale-yellow);
   border: 8px solid var(--bg-red);
 }
 
 .pageContainer a {
   @apply text-blue-800 underline;
+}
+
+.pageHeader {
+  background-color: var(--pale-yellow);
+  @apply text-3xl font-bold py-4 -mx-8 pl-8;
 }

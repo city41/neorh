@@ -7,6 +7,10 @@ import changsPng from "./changs.png";
 import styles from "./IndexPage.module.css";
 import { PatchApplier } from "./PatchApplier";
 
+function Hr() {
+  return <div className="border-b-2 border-gray-600 my-8 -mx-8"></div>;
+}
+
 function IndexPage() {
   return (
     <div className={clsx(styles.root, "w-full sm:py-16")}>
@@ -19,7 +23,7 @@ function IndexPage() {
         <div className="grid grid-cols-8 gap-8 auto-rows-min px-8 sm:px-0 mb-8">
           <div className="col-start-1 col-end-9 sm:col-start-1 sm:col-end-5 grid place-items-center">
             <div className="flex flex-col h-full mt-16 gap-y-4">
-              <h1 className="font-bold text-2xl text-center">
+              <h1 className="font-bold text-3xl sm:text-4xl text-center">
                 King of Fighters &apos;94: Team Edit Edition
               </h1>
               <div className="flex flex-col space-y-8 my-8 pt-8">
@@ -62,10 +66,28 @@ function IndexPage() {
           </div>
         </div>
         <div className="heading-container sticky top-0" id="status">
-          <h2 className="heading text-3xl font-bold py-4">Release Notes</h2>
+          <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
-          <h3 className="heading text-lg font-bold py-4">Version 0.1.1</h3>
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.1.2</h3>
+          <p>
+            The hack still has a very long way to go. But, in its current state
+            you can use custom teams if you don&apos;t mind the (many) issues
+            this version has.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Fixed a bug that prevent versus mode jump ins from working
+              correctly
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>Same as in version 0.1.1 below</p>
+
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.1.1</h3>
           <p>
             The hack still has a very long way to go. But, in its current state
             you can use custom teams if you don&apos;t mind the (many) issues
@@ -104,6 +126,7 @@ function IndexPage() {
               character select but their randomization is not shown.
             </li>
           </ul>
+          <Hr />
           <p className="mt-8">
             More details at the{" "}
             <a href="https://github.com/city41/kof94te/milestones">
@@ -113,7 +136,7 @@ function IndexPage() {
           </p>
         </div>
         <div className="heading-container sticky top-0" id="build-the-rom">
-          <h2 className="heading text-3xl font-bold py-4">Build the ROM</h2>
+          <h2 className={styles.pageHeader}>Build the ROM</h2>
         </div>
         <p className="text-sm mb-8">
           prefer to do it yourself? Get the files from{" "}
