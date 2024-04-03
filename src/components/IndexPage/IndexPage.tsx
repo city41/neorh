@@ -96,6 +96,10 @@ function IndexPage() {
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <ul className="list-disc ml-4">
             <li>
+              Graphical noise at top of screen during character select on real
+              hardware.
+            </li>
+            <li>
               In single player mode the game doesn&apos;t keep track of which
               teams you have beat. This means single player mode is endless.
             </li>

@@ -1,6 +1,6 @@
 import clsx from "clsx";
+import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 import { DropZone } from "./DropZone";
-import { useCallback, useEffect, useState } from "react";
 import { unzip } from "./unzip";
 import { zip } from "./zip";
 import { validateFiles } from "./validateFiles";
@@ -8,6 +8,12 @@ import { RomFileEntry } from "./types";
 import { applyPatches } from "./applyPatches";
 import { getPatch } from "./getPatch";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
+import {
+  buildNeoFile,
+  ConvertOptions,
+  FilesInMemory,
+} from "neosdconv/lib/buildNeoFile";
+import { Genre } from "neosdconv/lib/genres";
 
 type PatchApplierProps = {
   className?: string;
@@ -15,13 +21,35 @@ type PatchApplierProps = {
 
 function DownloadButton({
   className,
+  onClick,
+  children,
   ...rest
 }: JSX.IntrinsicElements["button"]) {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+    setClicked(true);
+    setTimeout(() => {
+      if (onClick) {
+        const promise = onClick(e) as unknown as Promise<void>;
+        promise.then(() => {
+          setClicked(false);
+        });
+      }
+    }, 10);
+  };
+
   return (
     <button
-      className={clsx(className, "px-8 py-4 border-2 border-blue-800")}
+      className={clsx(
+        className,
+        "px-8 py-4 border-2 border-blue-800 bg-blue-200 hover:bg-blue-800 hover:text-white"
+      )}
+      onClick={handleClick}
       {...rest}
-    />
+    >
+      {clicked ? "just a moment ..." : children}
+    </button>
   );
 }
 
@@ -58,13 +86,44 @@ function PatchApplier({ className }: PatchApplierProps) {
       );
     }
 
-    zip(patchedRomFiles).then((zippedRom) => {
+    return zip(patchedRomFiles).then((zippedRom) => {
       const fileBlob = new Blob([zippedRom.buffer], {
         type: "application/octet-stream",
       });
 
       sendBlobToAnchorTag(fileBlob, "kof94te.zip");
     });
+  }, [patchedRomFiles]);
+
+  const handleNeoSD = useCallback(() => {
+    if (!patchedRomFiles) {
+      throw new Error("handleNeoSD: patchedRomFiles is unexpectedly null");
+    }
+
+    const convertOptions: ConvertOptions = {
+      genre: Genre.Fighting,
+      manufacturer: "SNK",
+      name: "King of Fighters 1994: Team Edit",
+      year: 1994,
+      ngh: "55",
+    };
+
+    const filesInMemory: FilesInMemory = patchedRomFiles.reduce<FilesInMemory>(
+      (accum, f) => {
+        accum[f.fileName] = f.data;
+        return accum;
+      },
+      {}
+    );
+
+    const neoFile = buildNeoFile(convertOptions, filesInMemory);
+    const neoFileBlob = new Blob([neoFile.buffer], {
+      type: "application/octet-stream",
+    });
+
+    sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
+
+    return Promise.resolve();
   }, [patchedRomFiles]);
 
   return (
@@ -82,12 +141,12 @@ function PatchApplier({ className }: PatchApplierProps) {
         }}
       </DropZone>
       {patchedRomFiles && (
-        <div className="flex flex-row justify-around py-8">
-          <DownloadButton>
+        <div className="flex flex-row flex-wrap justify-around py-8 gap-8 px-8">
+          <DownloadButton onClick={handleNeoSD} className="flex-1">
             <div>download as .neo file</div>
             <div>For use on NeoSD or MiSTer</div>
           </DownloadButton>
-          <DownloadButton onClick={handleDownloadZip}>
+          <DownloadButton onClick={handleDownloadZip} className="flex-1">
             <div>download as MAME .zip file</div>
             <div>For use on emulators</div>
           </DownloadButton>
