@@ -102,9 +102,9 @@ function PatchApplier({ className }: PatchApplierProps) {
 
     const convertOptions: ConvertOptions = {
       genre: Genre.Fighting,
-      manufacturer: "SNK",
-      name: "King of Fighters 1994: Team Edit",
-      year: 1994,
+      manufacturer: "SNK_city41",
+      name: "The King of Fighters '94: Team Edit",
+      year: 2024,
       ngh: "55",
     };
 
