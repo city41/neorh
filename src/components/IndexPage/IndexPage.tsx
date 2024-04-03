@@ -113,6 +113,10 @@ function IndexPage() {
               and often not there at all. Depends on what team you chose.
               Choosing Chang or multiple Changs makes this happen more often.
             </li>
+            <li>
+              You can choose clones without issue. Ultimately clones will be
+              hidden behind a code.
+            </li>
           </ul>
           <Hr />
           <p className="mt-8">
