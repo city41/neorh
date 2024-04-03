@@ -70,24 +70,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 0.1.2</h3>
-          <p>
-            The hack still has a very long way to go. But, in its current state
-            you can use custom teams if you don&apos;t mind the (many) issues
-            this version has.
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              Fixed a bug that prevent versus mode jump ins from working
-              correctly
-            </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <p>Same as in version 0.1.1 below</p>
-
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 0.1.1</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 0.1.3</h3>
           <p>
             The hack still has a very long way to go. But, in its current state
             you can use custom teams if you don&apos;t mind the (many) issues
@@ -95,10 +78,6 @@ function IndexPage() {
           </p>
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <ul className="list-disc ml-4">
-            <li>
-              Graphical noise at top of screen during character select on real
-              hardware.
-            </li>
             <li>
               In single player mode the game doesn&apos;t keep track of which
               teams you have beat. This means single player mode is endless.
@@ -128,6 +107,11 @@ function IndexPage() {
             <li>
               During the demo, the two CPU players randomly pick a team in
               character select but their randomization is not shown.
+            </li>
+            <li>
+              Minor sprite glitches during order select and gameplay. Very minor
+              and often not there at all. Depends on what team you chose.
+              Choosing Chang or multiple Changs makes this happen more often.
             </li>
           </ul>
           <Hr />
