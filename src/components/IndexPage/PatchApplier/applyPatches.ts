@@ -79,13 +79,15 @@ function applyPatches(
 ): RomFileEntry[] {
   const patchedFiles: RomFileEntry[] = [];
 
-  for (const inputFile of inputFiles) {
-    const patch = patches.find(
-      (p) => p.fileName === `kof94.${inputFile.fileName}.ips`
-    );
+  for (const patch of patches) {
+    const inputFileName = patch.fileName
+      .replace("kof94.", "")
+      .replace(".ips", "");
 
-    if (!patch) {
-      throw new Error(`No patch found for: ${inputFile.fileName}`);
+    const inputFile = inputFiles.find((i) => i.fileName === inputFileName);
+
+    if (!inputFile) {
+      throw new Error(`No patch found for: ${inputFileName}`);
     }
 
     const patchedFile = applyPatch(inputFile, patch);
