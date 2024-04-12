@@ -2,7 +2,8 @@ import clsx from "clsx";
 import Image from "next/image";
 import charSelectPng from "./charSelect.png";
 import orderSelectPng from "./orderSelect.png";
-import changsPng from "./changs.png";
+import winScreenPng from "./winScreen.png";
+import continueScreenPng from "./continueScreen.png";
 
 import styles from "./IndexPage.module.css";
 import { PatchApplier } from "./PatchApplier";
@@ -55,6 +56,20 @@ function IndexPage() {
               width={orderSelectPng.width}
               height={orderSelectPng.height}
               alt="Member order select screen"
+            />
+            <Image
+              className="shadow-xl"
+              src={winScreenPng.src}
+              width={winScreenPng.width}
+              height={winScreenPng.height}
+              alt="Win screen"
+            />
+            <Image
+              className="shadow-xl"
+              src={continueScreenPng.src}
+              width={continueScreenPng.width}
+              height={continueScreenPng.height}
+              alt="Continue screen"
             />
           </div>
         </div>
