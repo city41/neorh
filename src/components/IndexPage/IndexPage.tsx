@@ -56,19 +56,66 @@ function IndexPage() {
               height={orderSelectPng.height}
               alt="Member order select screen"
             />
-            <Image
-              className="shadow-xl"
-              src={changsPng.src}
-              width={changsPng.width}
-              height={changsPng.height}
-              alt="Six Changs"
-            />
           </div>
         </div>
         <div className="heading-container sticky top-0" id="status">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.2.1</h3>
+          <p>
+            Other than some minor polish and possibly some bugs I missed, versus
+            mode is now fully functional. Single player mode still has several
+            issues, see below.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Alternate colors fully working. In mirror matches proper colors
+              will be chosen in all cases. To purposely pick the alternate color
+              for a character, press C or D when choosing them.
+            </li>
+            <li>Win screens fully working.</li>
+            <li>Continue screens fully working.</li>
+            <li>
+              Clones (ie, more than one of the same character on a team) no
+              longer allowed. I thought I was going to put this behind a code,
+              but now I am pretty sure I won&apos;t. The game engine just
+              wasn&apos;t designed to handle this and I think making it happen
+              will be a lot of work.
+            </li>
+            <li>
+              Random stages in versus mode, a small touch to make the game a bit
+              more modern.
+            </li>
+            <li>
+              Both players can always choose a new team in versus mode. This is
+              different from real KOF94, but modern games tend to allow this so
+              I added it.
+            </li>
+            <li>
+              Fixed lots of little bugs and added lots of little polish here and
+              there.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>Single player mode is still endless.</li>
+            <li>In attract mode, the cpu randomization is not shown.</li>
+            <li>
+              In attract mode, the order select screen shows six Heiderns.
+            </li>
+            <li>
+              When continuing, the character select screen does not show who the
+              cpu team is.
+            </li>
+            <li>
+              When continuing, sometimes the cpu team hangs for 5-10 seconds on
+              the character select screen. If you wait, it should progress to
+              order select.
+            </li>
+          </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.1.3</h3>
           <p>
