@@ -3,6 +3,7 @@ import Image from "next/image";
 import charSelectPng from "./charSelect.png";
 import orderSelectPng from "./orderSelect.png";
 import gameplayPng from "./gameplay.png";
+import fightAgainstRugalPng from "./fightAgainstRugal.png";
 import winScreenPng from "./winScreen.png";
 import continueScreenPng from "./continueScreen.png";
 
@@ -64,6 +65,13 @@ function IndexPage() {
               width={gameplayPng.width}
               height={gameplayPng.height}
               alt="Game play"
+            />
+            <Image
+              className="shadow-xl"
+              src={fightAgainstRugalPng.src}
+              width={fightAgainstRugalPng.width}
+              height={fightAgainstRugalPng.height}
+              alt="Fight against Rugal"
             />
             <Image
               className="shadow-xl"
