@@ -94,6 +94,59 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.3.0</h3>
+          <p>
+            The main feature of this version is single player mode is no longer
+            endless. Thus it is now an almost fully functioning hack. But
+            beware, it still has bugs and there is still more work to do.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Single player version now properly progresses.</li>
+            <li>
+              Defeated teams grey out in the character select screen (see
+              screenshot above).
+            </li>
+            <li>Character select screen now handles Rugal correctly.</li>
+            <li>Demo mode is now completely correct.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>The palettes are really messed up in demo mode.</li>
+            <li>
+              The palettes are really messed up in character/order select for
+              matches past the first.
+            </li>
+            <li>
+              When continuing, the character select screen does not show who the
+              cpu team is.
+            </li>
+            <li>
+              When continuing, sometimes the cpu team hangs for 5-10 seconds on
+              the character select screen. If you wait, it should progress to
+              order select.
+            </li>
+            <li>
+              When continuing, you won&apos;t re-fight the team you just lost
+              to.
+            </li>
+            <li>
+              Sometimes palettes are incorrect. Most notably greyed out teams in
+              the character select screen and endings.
+            </li>
+            <li>
+              The cutscenes and endings have seen no work so far, they use one
+              of the pre-established teams and have bugs in them.
+            </li>
+            <li>
+              Choosing alternate colors for a character is not reflected in the
+              chosen team avatars at the bottom of the character select screen.
+              For example choose Terry with D. He actually has his purple vest
+              and hat, but in the chosen team avatar, he has his red hat and
+              vest.
+            </li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.2.1</h3>
           <p>
             Other than some minor polish and possibly some bugs I missed, versus
