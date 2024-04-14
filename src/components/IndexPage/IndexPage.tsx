@@ -94,7 +94,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 0.3.0</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 0.3.1</h3>
           <p>
             The main feature of this version is single player mode is no longer
             endless. Thus it is now an almost fully functioning hack. But
@@ -112,11 +112,6 @@ function IndexPage() {
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <ul className="list-disc ml-4">
-            <li>The palettes are really messed up in demo mode.</li>
-            <li>
-              The palettes are really messed up in character/order select for
-              matches past the first.
-            </li>
             <li>
               When continuing, the character select screen does not show who the
               cpu team is.
