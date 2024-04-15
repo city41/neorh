@@ -44,7 +44,7 @@ function IndexPage() {
               <div className="flex-1"></div>
             </div>
           </div>
-          <div className="col-start-1 col-end-9 sm:h-auto sm:col-start-5 sm:col-end-9 self-stretch flex flex-col gap-y-4 py-4">
+          <div className="col-start-1 col-end-9 sm:h-auto sm:col-start-5 sm:col-end-9 self-stretch flex flex-col gap-y-4 py-4 items-center">
             <Image
               className="shadow-xl"
               src={charSelectPng.src}
@@ -52,6 +52,7 @@ function IndexPage() {
               height={charSelectPng.height}
               alt="Character select screen"
             />
+            <p>A full on character select screen modeled after KOF95</p>
             <Image
               className="shadow-xl"
               src={orderSelectPng.src}
@@ -59,6 +60,7 @@ function IndexPage() {
               height={orderSelectPng.height}
               alt="Member order select screen"
             />
+            <p>Order select screen same as before</p>
             <Image
               className="shadow-xl"
               src={gameplayPng.src}
@@ -66,6 +68,7 @@ function IndexPage() {
               height={gameplayPng.height}
               alt="Game play"
             />
+            <p>Custom teams in gameplay</p>
             <Image
               className="shadow-xl"
               src={fightAgainstRugalPng.src}
@@ -73,6 +76,7 @@ function IndexPage() {
               height={fightAgainstRugalPng.height}
               alt="Fight against Rugal"
             />
+            <p>Custom teams fighting Rugal</p>
             <Image
               className="shadow-xl"
               src={winScreenPng.src}
@@ -80,6 +84,7 @@ function IndexPage() {
               height={winScreenPng.height}
               alt="Win screen"
             />
+            <p>Win screens show the custom team that won</p>
             <Image
               className="shadow-xl"
               src={continueScreenPng.src}
@@ -87,12 +92,51 @@ function IndexPage() {
               height={continueScreenPng.height}
               alt="Continue screen"
             />
+            <p>Continue screens show the custom team that lost</p>
           </div>
         </div>
         <div className="heading-container sticky top-0" id="status">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.3.2</h3>
+          <p>
+            A small release that fixes some bugs around continuing. A single
+            player playthrough should now fully work, including if you continue.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Continuing no longer causes the long delay</li>
+            <li>Continuing now re-fights the defeated team as it should.</li>
+            <li>
+              When a second player challenges in the middle of a single play
+              run, the greyed out teams are un-greyed during the versus char
+              select. Once it goes back to a single player game, the defeated
+              teams grey out again.
+            </li>
+            <li>
+              Continuining shows who the cpu team is in the char select screen
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Sometimes palettes are incorrect. Most notably greyed out teams in
+              the character select screen and endings.
+            </li>
+            <li>
+              The cutscenes and endings have seen no work so far, they use one
+              of the pre-established teams and have bugs in them.
+            </li>
+            <li>
+              Choosing alternate colors for a character is not reflected in the
+              chosen team avatars at the bottom of the character select screen.
+              For example choose Terry with D. He actually has his purple vest
+              and hat, but in the chosen team avatar, he has his red hat and
+              vest.
+            </li>
+          </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.3.1</h3>
           <p>
