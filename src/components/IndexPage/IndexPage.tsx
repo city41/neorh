@@ -100,10 +100,11 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 0.3.2</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 0.3.3</h3>
           <p>
-            A small release that fixes some bugs around continuing. A single
-            player playthrough should now fully work, including if you continue.
+            A small release that fixes some bugs around continuing and the
+            palettes. A single player playthrough should now fully work,
+            including if you continue.
           </p>
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
@@ -116,15 +117,14 @@ function IndexPage() {
               teams grey out again.
             </li>
             <li>
-              Continuining shows who the cpu team is in the char select screen
+              Continuing shows who the cpu team is in the char select screen
+            </li>
+            <li>
+              Greyed out teams in char select no longer have palette problems.
             </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <ul className="list-disc ml-4">
-            <li>
-              Sometimes palettes are incorrect. Most notably greyed out teams in
-              the character select screen and endings.
-            </li>
             <li>
               The cutscenes and endings have seen no work so far, they use one
               of the pre-established teams and have bugs in them.
