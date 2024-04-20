@@ -103,7 +103,14 @@ function IndexPage() {
           <h3 className="heading text-lg font-bold pb-4">Version 0.4.0</h3>
           <p>
             A small release that is more about pushing the latest out to
-            correspond with the YouTube update video I&apos;m about to publish.
+            correspond with{" "}
+            <a
+              href="https://www.youtube.com/watch?v=IzfknjtSBrU"
+              rel="noreferrer"
+            >
+              the YouTube update video
+            </a>{" "}
+            I just to published.
           </p>
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
