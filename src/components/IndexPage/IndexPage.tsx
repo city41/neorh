@@ -100,6 +100,23 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.4.0</h3>
+          <p>
+            A small release that is more about pushing the latest out to
+            correspond with the YouTube update video I&apos;m about to publish.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Some work on the cutscene before Rugal. Your custom team shows up
+              ... sometimes :) And the cutscene dialog is all wrong. Lots more
+              work to do here.
+            </li>
+            <li>Changed Rugal to his KOF95 avatar instead of KOF98</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>Same as last release.</p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.3.3</h3>
           <p>
             A small release that fixes some bugs around continuing and the
