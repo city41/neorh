@@ -100,6 +100,21 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.4.1</h3>
+          <p>
+            This is a tiny release. It fixes the regressions that got introduced
+            into the player cursors. Regressions bug me. Bonus, the cursor also
+            wraps the avater better, so it looks nicer.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Fix the palette cursors</li>
+            <li>Haved player cursors wrap around the avatar better</li>
+            <li>Bump down the character grid a couple pixels</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>Same as last release.</p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.4.0</h3>
           <p>
             A small release that is more about pushing the latest out to
