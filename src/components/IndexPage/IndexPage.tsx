@@ -103,7 +103,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 0.5.0</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 0.5.1</h3>
           <p>
             Several improvements, most notably random select. It works just like
             KOF98&apos;s random select.
