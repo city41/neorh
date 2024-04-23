@@ -52,7 +52,10 @@ function IndexPage() {
               height={charSelectPng.height}
               alt="Character select screen"
             />
-            <p>A full on character select screen modeled after KOF95</p>
+            <p>
+              A full on character select screen modeled after KOF95, and with
+              KOF98 style random select
+            </p>
             <Image
               className="shadow-xl"
               src={orderSelectPng.src}
@@ -99,6 +102,32 @@ function IndexPage() {
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.5.0</h3>
+          <p>
+            Several improvements, most notably random select. It works just like
+            KOF98&apos;s random select.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Random Select</li>
+            <li>
+              Win quotes for both single and versus play are now all correct
+            </li>
+            <li>First cut scene is now correct</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>The second and third cutscenes are still not correct.</li>
+            <li>Endings are not correct.</li>
+            <li>
+              Choosing alternate colors for a character is not reflected in the
+              chosen team avatars at the bottom of the character select screen.
+              For example choose Terry with D. He actually has his purple vest
+              and hat, but in the chosen team avatar, he has his red hat and
+              vest.
+            </li>
+          </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.4.1</h3>
           <p>
