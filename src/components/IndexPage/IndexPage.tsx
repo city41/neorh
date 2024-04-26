@@ -166,13 +166,13 @@ function IndexPage() {
             will be invincible in the fight.
           </p>
           <h3 className="font-bold text-xl my-4">
-            Why isn't Rugal a normal character?
+            Why isn&apos;t Rugal a normal character?
           </h3>
           <p>
             In the original game, Rugal is only accessible via the same debug
             dip. I decided to take that route with the hack as well. It boils
-            down to he's just the boss and missing things needed to be a full
-            fledged character:
+            down to he&apos;s just the boss and missing things needed to be a
+            full fledged character:
           </p>
           <ul className="list-disc ml-4 mt-4">
             <li>His normal form has no specials, DMs, or even a throw.</li>
@@ -181,7 +181,7 @@ function IndexPage() {
               makes him disappear.
             </li>
             <li>He lacks a win portrait.</li>
-            <li>He can't be setup on the continue screen.</li>
+            <li>He can&apos;t be setup on the continue screen.</li>
             <li>He corrupts palettes in his full form.</li>
             <li>
               His transformation cutscene runs after defeating his first form.
@@ -200,7 +200,7 @@ function IndexPage() {
           <h3 className="heading text-lg font-bold pb-4">Version 0.6.0</h3>
           <p>
             Mostly bug fixes. Rugal is now usable by turning on debug dip 1-4.
-            See the "Using Rugal" section above for more info.
+            See the &quot;Using Rugal&quot; section above for more info.
           </p>
           <p className="mt-4 text-red-600 font-bold">
             This release involved a big clean up of the code, so there may be
@@ -210,8 +210,8 @@ function IndexPage() {
           <ul className="list-disc ml-4">
             <li>Rugal selectable via debug dip 1-4.</li>
             <li>
-              The CPU's chosen team is shown once it is picked in the lower part
-              of the character select screen. This matches what KOF95 does.
+              The CPU&apos;s chosen team is shown once it is picked in the lower
+              part of the character select screen. This matches what KOF95 does.
             </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
