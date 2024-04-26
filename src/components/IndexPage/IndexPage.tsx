@@ -7,6 +7,10 @@ import fightAgainstRugalPng from "./fightAgainstRugal.png";
 import winScreenPng from "./winScreen.png";
 import continueScreenPng from "./continueScreen.png";
 
+import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
+import rugalFocusedPng from "./rugalFocused.png";
+import rugalPickFullFormPng from "./rugalPickFullForm.png";
+
 import styles from "./IndexPage.module.css";
 import { PatchApplier } from "./PatchApplier";
 
@@ -20,9 +24,31 @@ function IndexPage() {
       <div
         className={clsx(
           styles.pageContainer,
-          "mx-auto w-full lg:max-w-4xl bg-white px-8 pb-4 pt-8 lg:shadow-2xl lg:rounded-2xl"
+          "mx-auto w-full lg:max-w-4xl bg-white px-8 pb-4 lg:shadow-2xl lg:rounded-2xl"
         )}
       >
+        <ul className="-mx-4 sm:pb-2 h-28 sm:h-auto pt-4 flex flex-col flex-wrap sm:flex-row items-start sm:items-center justify-start space-y-2 sm:space-y-0 sm:space-x-5 sm:place-content-between sm:px-16 border-b border-pbblue-dark">
+          <li>
+            <a className="menu-item" href="#using-rugal">
+              Using Rugal
+            </a>
+          </li>
+          <li>
+            <a className="menu-item" href="#release-notes">
+              Release Notes
+            </a>
+          </li>
+          <li>
+            <a className="menu-item" href="#build-the-rom">
+              Build the ROM
+            </a>
+          </li>
+          <li>
+            <a className="menu-item" href="https://github.com/city41/kof94te">
+              GitHub
+            </a>
+          </li>
+        </ul>
         <div className="grid grid-cols-8 gap-8 auto-rows-min px-8 sm:px-0 mb-8">
           <div className="col-start-1 col-end-9 sm:col-start-1 sm:col-end-5 grid place-items-center">
             <div className="flex flex-col h-full mt-16 gap-y-4">
@@ -98,10 +124,108 @@ function IndexPage() {
             <p>Continue screens show the custom team that lost</p>
           </div>
         </div>
-        <div className="heading-container sticky top-0" id="status">
+        <div className="heading-container" id="using-rugal">
+          <h2 className={styles.pageHeader}>Using Rugal</h2>
+          <p className="my-4">
+            Rugal is accessible via debug dip 1-4. This is almost identical to
+            how the original game works.
+          </p>
+          <Image
+            className="shadow-xl"
+            src={rugalTurnongOnDebugDipPng.src}
+            width={rugalTurnongOnDebugDipPng.width}
+            height={rugalTurnongOnDebugDipPng.height}
+            alt="Turning on debug dip 1-4"
+          />
+          <p className="my-4">First, turn on debug dip 1-4.</p>
+          <Image
+            className="shadow-xl"
+            src={rugalFocusedPng.src}
+            width={rugalFocusedPng.width}
+            height={rugalFocusedPng.height}
+            alt="Rugal focused in the character select screen"
+          />
+          <p className="my-4">
+            Then choose him as your character. You can get his alternate palette
+            by choosing him with C or D.
+          </p>
+          <Image
+            className="shadow-xl"
+            src={rugalPickFullFormPng.src}
+            width={rugalPickFullFormPng.width}
+            height={rugalPickFullFormPng.height}
+            alt="Picking full form Rugal in the order select screen"
+          />
+          <p className="my-4">
+            To get regular Rugal, choose him with A in the order select screen.
+            To get second form Rugal, move the arrow so it is above slot 2 or 3
+            then press A. They will stay empty, that is expected.
+          </p>
+          <p className="my-4">
+            Once he is chosen, turn off debug dip 1-4, otherwise both characters
+            will be invincible in the fight.
+          </p>
+          <h3 className="font-bold text-xl my-4">
+            Why isn't Rugal a normal character?
+          </h3>
+          <p>
+            In the original game, Rugal is only accessible via the same debug
+            dip. I decided to take that route with the hack as well. It boils
+            down to he's just the boss and missing things needed to be a full
+            fledged character:
+          </p>
+          <ul className="list-disc ml-4 mt-4">
+            <li>His normal form has no specials, DMs, or even a throw.</li>
+            <li>
+              He has no charging animation in his normal form. Pressing ABC just
+              makes him disappear.
+            </li>
+            <li>He lacks a win portrait.</li>
+            <li>He can't be setup on the continue screen.</li>
+            <li>He corrupts palettes in his full form.</li>
+            <li>
+              His transformation cutscene runs after defeating his first form.
+            </li>
+            <li>
+              He does a ton of damage and takes little damage. Using him in
+              versus mode matches is pretty lame.
+            </li>
+          </ul>
+        </div>
+        <div className="heading-container mt-16" id="release-notes">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.6.0</h3>
+          <p>
+            Mostly bug fixes. Rugal is now usable by turning on debug dip 1-4.
+            See the "Using Rugal" section above for more info.
+          </p>
+          <p className="mt-4 text-red-600 font-bold">
+            This release involved a big clean up of the code, so there may be
+            bugs I missed.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Rugal selectable via debug dip 1-4.</li>
+            <li>
+              The CPU's chosen team is shown once it is picked in the lower part
+              of the character select screen. This matches what KOF95 does.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>The second and third cutscenes are still not correct.</li>
+            <li>Endings are not correct.</li>
+            <li>
+              Choosing alternate colors for a character is not reflected in the
+              chosen team avatars at the bottom of the character select screen.
+              For example choose Terry with D. He actually has his purple vest
+              and hat, but in the chosen team avatar, he has his red hat and
+              vest.
+            </li>
+          </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.5.2</h3>
           <p>
@@ -352,8 +476,8 @@ function IndexPage() {
               Choosing Chang or multiple Changs makes this happen more often.
             </li>
             <li>
-              You can choose clones without issue. Ultimately clones will be
-              hidden behind a code.
+              You can choose clones without issue. Ultimately clones will not be
+              allowed.
             </li>
           </ul>
           <Hr />
@@ -365,7 +489,7 @@ function IndexPage() {
             .
           </p>
         </div>
-        <div className="heading-container sticky top-0" id="build-the-rom">
+        <div className="heading-container" id="build-the-rom">
           <h2 className={styles.pageHeader}>Build the ROM</h2>
         </div>
         <p className="text-sm mb-8">
