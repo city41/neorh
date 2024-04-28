@@ -33,6 +33,10 @@
   @apply text-blue-800 underline;
 }
 
+.topMenu {
+  background-color: var(--pale-yellow);
+}
+
 .pageHeader {
   background-color: var(--pale-yellow);
   @apply text-3xl font-bold py-4 -mx-8 pl-8;

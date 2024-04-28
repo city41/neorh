@@ -27,7 +27,12 @@ function IndexPage() {
           "mx-auto w-full lg:max-w-4xl bg-white px-8 pb-4 lg:shadow-2xl lg:rounded-2xl"
         )}
       >
-        <ul className="-mx-4 sm:pb-2 h-28 sm:h-auto pt-4 flex flex-col flex-wrap sm:flex-row items-start sm:items-center justify-start space-y-2 sm:space-y-0 sm:space-x-5 sm:place-content-between sm:px-16 border-b border-pbblue-dark">
+        <ul
+          className={clsx(
+            styles.topMenu,
+            "-mx-4 sm:pb-2 h-28 sm:h-auto pt-4 flex flex-col flex-wrap sm:flex-row items-start sm:items-center justify-start space-y-2 sm:space-y-0 sm:space-x-5 sm:place-content-between sm:px-16 border-b sticky top-0"
+          )}
+        >
           <li>
             <a className="menu-item" href="#using-rugal">
               Using Rugal
