@@ -197,6 +197,32 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.7.0</h3>
+          <p>Fixes to the continue screen</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The character who lost the match is now in the center of the
+              continue screen.
+            </li>
+            <li>
+              When continuing, the character who lost the match is the one who
+              yells out.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>The second and third cutscenes are still not correct.</li>
+            <li>Endings are not correct.</li>
+            <li>
+              Choosing alternate colors for a character is not reflected in the
+              chosen team avatars at the bottom of the character select screen.
+              For example choose Terry with D. He actually has his purple vest
+              and hat, but in the chosen team avatar, he has his red hat and
+              vest.
+            </li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.6.0</h3>
           <p>
             Mostly bug fixes. Rugal is now usable by turning on debug dip 1-4.
