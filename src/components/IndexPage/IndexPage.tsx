@@ -204,7 +204,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 0.8.1</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 0.8.2</h3>
           <p>Alternate colors now shown in chosen team avatars</p>
           <p className="mt-4 text-red-600 font-bold">
             This was a big change. So there might be bugs I missed.
