@@ -87,7 +87,7 @@ function IndexPage() {
             />
             <p>
               A full on character select screen modeled after KOF95, and with
-              KOF98 style random select
+              two types of random select.
             </p>
             <Image
               className="shadow-xl"
@@ -203,6 +203,22 @@ function IndexPage() {
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.9.0</h3>
+          <p>
+            Team random select: the left random box is character random select,
+            just like in most KOFs. The right box is team random select, it will
+            randomly choose one of the 8 established teams.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Team random select</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>The second and third cutscenes are still not correct.</li>
+            <li>Endings are not correct.</li>
+          </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.8.2</h3>
           <p>Alternate colors now shown in chosen team avatars</p>
