@@ -11,6 +11,8 @@ import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
 import rugalFocusedPng from "./rugalFocused.png";
 import rugalPickFullFormPng from "./rugalPickFullForm.png";
 
+import altColorsInChosenAvatarsPng from "./altColorsInChosenAvatars.png";
+
 import styles from "./IndexPage.module.css";
 import { PatchApplier } from "./PatchApplier";
 
@@ -201,6 +203,31 @@ function IndexPage() {
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.8.0</h3>
+          <p>Alternate colors now shown in chosen team avatars</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              When your chosen character shows up down below the character
+              select screen, their color choice is now shown. So say you choose
+              Terry with C or D, he will be shown down below in his purple hat
+              and vest.
+              <Image
+                className="shadow-xl my-4"
+                src={altColorsInChosenAvatarsPng.src}
+                width={altColorsInChosenAvatarsPng.width}
+                height={altColorsInChosenAvatarsPng.height}
+                alt="Alternate colors shown for your chosen characters"
+              />
+              So here player one has chosen alternate Terry and Kim.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>The second and third cutscenes are still not correct.</li>
+            <li>Endings are not correct.</li>
+          </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.7.0</h3>
           <p>Fixes to the continue screen</p>
