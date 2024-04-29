@@ -206,6 +206,9 @@ function IndexPage() {
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.8.0</h3>
           <p>Alternate colors now shown in chosen team avatars</p>
+          <p className="mt-4 text-red-600 font-bold">
+            This was a big change. So there might be bugs I missed.
+          </p>
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
             <li>
