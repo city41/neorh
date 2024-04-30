@@ -204,7 +204,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 0.9.1</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 0.9.2</h3>
           <p>
             Team random select: the left random box is character random select,
             just like in most KOFs. The right box is team random select, it will
