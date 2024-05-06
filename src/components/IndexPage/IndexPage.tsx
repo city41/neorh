@@ -6,6 +6,7 @@ import gameplayPng from "./gameplay.png";
 import fightAgainstRugalPng from "./fightAgainstRugal.png";
 import winScreenPng from "./winScreen.png";
 import continueScreenPng from "./continueScreen.png";
+import cutscene2Png from './cutscene2.png';
 
 import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
 import rugalFocusedPng from "./rugalFocused.png";
@@ -107,6 +108,14 @@ function IndexPage() {
             <p>Custom teams in gameplay</p>
             <Image
               className="shadow-xl"
+              src={cutscene2Png.src}
+              width={cutscene2Png.width}
+              height={cutscene2Png.height}
+              alt="Cutscene"
+            />
+            <p>Custom teams in cutscenes</p>
+            <Image
+              className="shadow-xl"
               src={fightAgainstRugalPng.src}
               width={fightAgainstRugalPng.width}
               height={fightAgainstRugalPng.height}
@@ -203,6 +212,21 @@ function IndexPage() {
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.10.0</h3>
+          <p>
+            Lots of work on the cutscene before Rugal and the ending.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Cutscene before Rugal now fully works when playing in English.</li>
+            <li>The hack&apos;s ending is now in place. Although it might get better.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>The cutscene before Rugal does not load correctly in Spanish.</li>
+            <li>The cutscene before Rugal does not load correctly in Japanese.</li>
+          </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.9.2</h3>
           <p>
