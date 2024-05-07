@@ -226,6 +226,7 @@ function IndexPage() {
           <ul className="list-disc ml-4">
             <li>The cutscene before Rugal does not load correctly in Spanish.</li>
             <li>The cutscene before Rugal does not load correctly in Japanese.</li>
+            <li>The group portrait after the credits is all messed up.</li>
           </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.9.2</h3>
