@@ -6,7 +6,7 @@ import gameplayPng from "./gameplay.png";
 import fightAgainstRugalPng from "./fightAgainstRugal.png";
 import winScreenPng from "./winScreen.png";
 import continueScreenPng from "./continueScreen.png";
-import cutscene2Png from './cutscene2.png';
+import cutscene2Png from "./cutscene2.png";
 
 import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
 import rugalFocusedPng from "./rugalFocused.png";
@@ -39,6 +39,11 @@ function IndexPage() {
           <li>
             <a className="menu-item" href="#using-rugal">
               Using Rugal
+            </a>
+          </li>
+          <li>
+            <a className="menu-item" href="#japanese-spanish">
+              Japanese/Spanish
             </a>
           </li>
           <li>
@@ -140,6 +145,16 @@ function IndexPage() {
             <p>Continue screens show the custom team that lost</p>
           </div>
         </div>
+        <div className="heading-container" id="japanese-spanish">
+          <h2 className={styles.pageHeader}>Japanese and Spanish</h2>
+          <p className="my-4">
+            The hack fully works in English, Spanish and Japanese. I do not
+            understand Japanese or Spanish, so I possibly made mistakes for
+            those languages. If you find one, please{" "}
+            <a href="mailto:matt.e.greer@gmail.com">let me know</a> and I will
+            fix it.
+          </p>
+        </div>
         <div className="heading-container" id="using-rugal">
           <h2 className={styles.pageHeader}>Using Rugal</h2>
           <p className="my-4">
@@ -213,19 +228,22 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 0.10.0</h3>
-          <p>
-            Lots of work on the cutscene before Rugal and the ending.
-          </p>
+          <h3 className="heading text-lg font-bold pb-4">Version 0.10.1</h3>
+          <p>Lots of work on the cutscene before Rugal and the ending.</p>
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
-            <li>Cutscene before Rugal now fully works when playing in English.</li>
-            <li>The hack&apos;s ending is now in place. Although it might get better.</li>
+            <li>Cutscene before Rugal now fully works.</li>
+            <li>
+              The hack&apos;s ending is now in place. Although it might get
+              better.
+            </li>
+            <li>
+              The &quot;hack not done yet&quot; message was removed. Hold start
+              during character select to see the hack&apos;s version.
+            </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <ul className="list-disc ml-4">
-            <li>The cutscene before Rugal does not load correctly in Spanish.</li>
-            <li>The cutscene before Rugal does not load correctly in Japanese.</li>
             <li>The group portrait after the credits is all messed up.</li>
           </ul>
           <Hr />
