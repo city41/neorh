@@ -228,7 +228,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 0.11.0</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 0.11.1</h3>
           <p>
             New approach to endings. They still need a lot more work, but I
             think they will be really cool when finished. A little strange, but
