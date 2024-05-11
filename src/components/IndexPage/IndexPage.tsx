@@ -61,6 +61,11 @@ function IndexPage() {
               GitHub
             </a>
           </li>
+          <li>
+            <a className="menu-item" href="https://discord.gg/Uuaka5mq">
+              Discord
+            </a>
+          </li>
         </ul>
         <div className="grid grid-cols-8 gap-8 auto-rows-min px-8 sm:px-0 mb-8">
           <div className="col-start-1 col-end-9 sm:col-start-1 sm:col-end-5 grid place-items-center">
@@ -644,6 +649,7 @@ function IndexPage() {
           </div>
           <div>Original game by SNK</div>
           <a href="https://github.com/city41/kof94te">GitHub repo</a>
+          <a href="https://discord.gg/Uuaka5mq">Discord</a>
         </div>
       </div>
     </div>
