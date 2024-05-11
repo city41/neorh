@@ -228,6 +228,25 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 0.11.0</h3>
+          <p>
+            New approach to endings. They still need a lot more work, but I
+            think they will be really cool when finished. A little strange, but
+            cool. You will see :)
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Got rid of the thank you ending.</li>
+            <li>New endings in place, but not being used correctly yet.</li>
+            <li>Added a QR code. Hold start at the character select screen.</li>
+            <li>The group portrait after the credits has been fixed.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>Endings need more work.</li>
+            <li>Cutscene 3 has not been started on yet.</li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 0.10.1</h3>
           <p>Lots of work on the cutscene before Rugal and the ending.</p>
           <h4 className="heading font-bold py-4">Changes</h4>
