@@ -7,6 +7,7 @@ import fightAgainstRugalPng from "./fightAgainstRugal.png";
 import winScreenPng from "./winScreen.png";
 import continueScreenPng from "./continueScreen.png";
 import cutscene2Png from "./cutscene2.png";
+import usaEndingPng from "./usaEnding.png";
 
 import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
 import rugalFocusedPng from "./rugalFocused.png";
@@ -148,6 +149,14 @@ function IndexPage() {
               alt="Continue screen"
             />
             <p>Continue screens show the custom team that lost</p>
+            <Image
+              className="shadow-xl"
+              src={usaEndingPng.src}
+              width={usaEndingPng.width}
+              height={usaEndingPng.height}
+              alt="Ending"
+            />
+            <p>Surprising new endings</p>
           </div>
         </div>
         <div className="heading-container" id="japanese-spanish">
