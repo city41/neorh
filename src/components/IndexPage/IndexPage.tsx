@@ -257,7 +257,9 @@ function IndexPage() {
           </p>
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
-            <li>The cutscene before Rugal is completely finished.</li>
+            <li>
+              The cutscene after Rugal is defeated is completely finished.
+            </li>
             <li>New endings being correctly used.</li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
