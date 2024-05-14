@@ -246,13 +246,20 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b1</h3>
-          <p>Fixes bugs around team random select killing the sound effects.</p>
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b2</h3>
+          <p>
+            Fixes bugs around team random select killing the sound effects and
+            versus mode.
+          </p>
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
             <li>
               Team random select is no longer silent and no longer kills all
               sound effects.
+            </li>
+            <li>
+              Versus mode again properly randomizes the backgrounds. I
+              accidentally removed that.
             </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
