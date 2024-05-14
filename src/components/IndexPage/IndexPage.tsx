@@ -246,6 +246,26 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b1</h3>
+          <p>Fixes bugs around team random select killing the sound effects.</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Team random select is no longer silent and no longer kills all
+              sound effects.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Endings are in English when playing with language set to Japanese.
+            </li>
+            <li>
+              Spanish endings were created with Google Translate, so they likely
+              have problems.
+            </li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b0</h3>
           <p>
             <b>The first beta release!</b> For English, the hack is completely
