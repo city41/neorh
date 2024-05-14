@@ -99,6 +99,7 @@ function IndexPage() {
               width={charSelectPng.width}
               height={charSelectPng.height}
               alt="Character select screen"
+              priority
             />
             <p>
               A full on character select screen modeled after KOF95, and with
