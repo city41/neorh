@@ -245,6 +245,35 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b4</h3>
+          <p>Cutscene and Spanish improvements</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              If you play through the game using one of the original 8 teams,
+              you will get that team&apos;s cutscenes and ending.
+            </li>
+            <li>
+              Spanish had a small improvement made for the cutscene before
+              fighting Rugal. Rugal&apos;s line is now grammatically correct
+              when he speaks to a female or male character.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Endings are in English when playing with language set to Japanese.
+            </li>
+            <li>
+              Spanish endings were created with Google Translate, so they likely
+              have problems.
+            </li>
+            <li>
+              Playing a single player game with Rugal can sometimes get stuck
+              where you fight the same team repeatedly.
+            </li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b3</h3>
           <p>Fixed auto animation bug.</p>
           <h4 className="heading font-bold py-4">Changes</h4>
