@@ -229,7 +229,6 @@ function IndexPage() {
               He has no charging animation in his normal form. Pressing ABC just
               makes him disappear.
             </li>
-            <li>He lacks a win portrait.</li>
             <li>He can&apos;t be setup on the continue screen.</li>
             <li>He corrupts palettes in his full form.</li>
             <li>
