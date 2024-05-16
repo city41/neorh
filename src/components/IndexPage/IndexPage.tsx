@@ -266,11 +266,12 @@ function IndexPage() {
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <ul className="list-disc ml-4">
             <li>
-              Endings are in English when playing with language set to Japanese.
+              The new endings are in English when playing with language set to
+              Japanese.
             </li>
             <li>
-              Spanish endings were created with Google Translate, so they likely
-              have problems.
+              The Spanish new endings were created with Google Translate, so
+              they likely have problems.
             </li>
           </ul>
           <Hr />
