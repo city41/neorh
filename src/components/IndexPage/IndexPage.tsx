@@ -214,6 +214,10 @@ function IndexPage() {
             Once he is chosen, turn off debug dip 1-4, otherwise both characters
             will be invincible in the fight.
           </p>
+          <p>
+            In a single player game, using Rugal will crash the game if you make
+            it to the Rugal fight. This is true in the original game too.
+          </p>
           <h3 className="font-bold text-xl my-4">
             Why isn&apos;t Rugal a normal character?
           </h3>
