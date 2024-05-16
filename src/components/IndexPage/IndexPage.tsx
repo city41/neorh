@@ -245,6 +245,35 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b5</h3>
+          <p>
+            Rugal and some other fixes. I think it is getting close to the final
+            release. I will keep looking for bugs. But I have a feeling 1.0 is
+            not too far off.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Fixed the bug where using Rugal in single player mode would not
+              let you progress.
+            </li>
+            <li>Fixed bugs related to Rugal&apos;s win screen.</li>
+            <li>
+              Fixed an issue where the England ending would not quite play
+              correctly.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Endings are in English when playing with language set to Japanese.
+            </li>
+            <li>
+              Spanish endings were created with Google Translate, so they likely
+              have problems.
+            </li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b4</h3>
           <p>Cutscene and Spanish improvements</p>
           <h4 className="heading font-bold py-4">Changes</h4>
