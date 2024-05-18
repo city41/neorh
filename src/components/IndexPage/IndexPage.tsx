@@ -248,6 +248,30 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0</h3>
+          <p>
+            The hack is complete. The only exception is the new endings play in
+            English when the game is set to Japanese. If anyone can help
+            translate them, please let me know.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Fix issue where Kawaks would have sprite corruption.</li>
+            <li>Added a missing period to the USA ending.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The new endings are in English when playing with language set to
+              Japanese. Also any of these endings that haved a period in them,
+              the period shows up with a an orange background. That is because
+              the period is actually Chin&apos;s wine bottle :) Since periods
+              are not used in Japanese, the game does not load the palette that
+              is needed. I could fix this, but since the endings need to be
+              translated anyway, I&apos;m not going to bother.
+            </li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.0.0rc0</h3>
           <p>
             The first <b>release candidate</b> release! The hack is now complete
