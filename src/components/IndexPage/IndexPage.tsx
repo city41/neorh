@@ -263,7 +263,7 @@ function IndexPage() {
           <ul className="list-disc ml-4">
             <li>
               The new endings are in English when playing with language set to
-              Japanese. Also any of these endings that haved a period in them,
+              Japanese. Also any of these endings that have a period in them,
               the period shows up with a an orange background. That is because
               the period is actually Chin&apos;s wine bottle :) Since periods
               are not used in Japanese, the game does not load the palette that
