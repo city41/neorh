@@ -264,10 +264,10 @@ function IndexPage() {
             <li>
               The new endings are in English when playing with language set to
               Japanese. Also any of these endings that have a period in them,
-              the period shows up with a an orange background. That is because
-              the period is actually Chin&apos;s wine bottle :) Since periods
-              are not used in Japanese, the game does not load the palette that
-              is needed. I could fix this, but since the endings need to be
+              the period shows up with an orange background. That is because the
+              period is actually Chin&apos;s wine bottle :) Since periods are
+              not used in Japanese, the game does not load the palette that is
+              needed. I could fix this, but since the endings need to be
               translated anyway, I&apos;m not going to bother.
             </li>
           </ul>
