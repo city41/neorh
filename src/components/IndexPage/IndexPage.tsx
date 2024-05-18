@@ -46,8 +46,8 @@ function IndexPage() {
             </a>
           </li>
           <li>
-            <a className="menu-item" href="#japanese-spanish">
-              Japanese/Spanish
+            <a className="menu-item" href="#japanese">
+              Japanese
             </a>
           </li>
           <li>
@@ -163,14 +163,13 @@ function IndexPage() {
             <p>Surprising new endings</p>
           </div>
         </div>
-        <div className="heading-container" id="japanese-spanish">
-          <h2 className={styles.pageHeader}>Japanese and Spanish</h2>
+        <div className="heading-container" id="japanese">
+          <h2 className={styles.pageHeader}>Japanese</h2>
           <p className="my-4">
-            The hack fully works in English, Spanish and Japanese. I do not
-            understand Japanese or Spanish, so I possibly made mistakes for
-            those languages. If you find one, please{" "}
-            <a href="mailto:matt.e.greer@gmail.com">let me know</a> and I will
-            fix it.
+            The hack fully works in English, Spanish and Japanese. The hack
+            contains new endings, and they are not translated into Japanese. For
+            Japanese they will play in English. Can you help translate them?{" "}
+            <a href="mailto:matt.e.greer@gmail.com">Let me know</a>.
           </p>
         </div>
         <div className="heading-container" id="using-rugal">
@@ -248,6 +247,28 @@ function IndexPage() {
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0rc0</h3>
+          <p>
+            The first <b>release candidate</b> release! The hack is now complete
+            for Spanish and English, and all bugs should be fixed now.
+            &quot;release candidate&quot; is just one last chance to look for
+            bugs before going to the final 1.0 release.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Spanish endings and text are now complete.</li>
+            <li>
+              Fixed a bug related to Rugal&apos;s transformation cutscene.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The new endings are in English when playing with language set to
+              Japanese.
+            </li>
+          </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b5</h3>
           <p>
@@ -802,7 +823,7 @@ function IndexPage() {
           <h2 className={styles.pageHeader}>Build the ROM</h2>
         </div>
         <p className="text-sm mb-8">
-          prefer to do it yourself? Get the files from{" "}
+          Prefer to do it yourself? Get the files from{" "}
           <a href="https://github.com/city41/kof94te/releases">
             the GitHub releases page
           </a>
