@@ -205,8 +205,8 @@ function IndexPage() {
           />
           <p className="my-4">
             To get regular Rugal, choose him with A in the order select screen.
-            To get second form Rugal, move the arrow so it is above slot 2 or 3
-            then press A. They will stay empty, that is expected.
+            To get second form Rugal, push right or left until Rugal stops
+            moving.
           </p>
           <p className="my-4">
             Once he is chosen, turn off debug dip 1-4, otherwise both characters
