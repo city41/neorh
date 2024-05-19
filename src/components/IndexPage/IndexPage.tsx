@@ -2,6 +2,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 import charSelectPng from "./charSelect.png";
+import charSelectOldPng from "./charSelectOld.png";
 import orderSelectPng from "./orderSelect.png";
 import gameplayPng from "./gameplay.png";
 import fightAgainstRugalPng from "./fightAgainstRugal.png";
@@ -13,8 +14,6 @@ import usaEndingPng from "./usaEnding.png";
 import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
 import rugalFocusedPng from "./rugalFocused.png";
 import rugalPickFullFormPng from "./rugalPickFullForm.png";
-
-import altColorsInChosenAvatarsPng from "./altColorsInChosenAvatars.png";
 
 import styles from "./IndexPage.module.css";
 import { PatchApplier } from "./PatchApplier";
@@ -246,7 +245,228 @@ function IndexPage() {
         <div className="mt-16" id="release-notes">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
-        <Hr />
+        <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.1.0</h3>
+          <p>
+            A cleaner and better looking character select screen. The globe and
+            logo were removed, it now looks more like KOF95.
+          </p>
+          <div>
+            <div className="flex flex-row justify-around my-8">
+              <Image
+                className="shadow-xl"
+                src={charSelectOldPng.src}
+                width={charSelectOldPng.width}
+                height={charSelectOldPng.height}
+                alt="The old character select screen"
+              />
+              <Image
+                className="shadow-xl"
+                src={charSelectPng.src}
+                width={charSelectPng.width}
+                height={charSelectPng.height}
+                alt="The new character select screen"
+              />
+            </div>
+          </div>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Cleaner character select screen.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The new endings are in English when playing with language set to
+              Japanese. Also any of these endings that have a period in them,
+              the period shows up with an orange background. That is because the
+              period is actually Chin&apos;s wine bottle :) Since periods are
+              not used in Japanese, the game does not load the palette that is
+              needed. I could fix this, but since the endings need to be
+              translated anyway, I&apos;m not going to bother.
+            </li>
+          </ul>
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0</h3>
+          <p>
+            The hack is complete. The only exception is the new endings play in
+            English when the game is set to Japanese. If anyone can help
+            translate them, please let me know.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Fix issue where Kawaks would have sprite corruption.</li>
+            <li>Added a missing period to the USA ending.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The new endings are in English when playing with language set to
+              Japanese. Also any of these endings that have a period in them,
+              the period shows up with an orange background. That is because the
+              period is actually Chin&apos;s wine bottle :) Since periods are
+              not used in Japanese, the game does not load the palette that is
+              needed. I could fix this, but since the endings need to be
+              translated anyway, I&apos;m not going to bother.
+            </li>
+          </ul>
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0rc0</h3>
+          <p>
+            The first <b>release candidate</b> release! The hack is now complete
+            for Spanish and English, and all bugs should be fixed now.
+            &quot;release candidate&quot; is just one last chance to look for
+            bugs before going to the final 1.0 release.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Spanish endings and text are now complete.</li>
+            <li>
+              Fixed a bug related to Rugal&apos;s transformation cutscene.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The new endings are in English when playing with language set to
+              Japanese.
+            </li>
+          </ul>
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b5</h3>
+          <p>
+            Rugal and some other fixes. I think it is getting close to the final
+            release. I will keep looking for bugs. But I have a feeling 1.0 is
+            not too far off.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Fixed the bug where using Rugal in single player mode would not
+              let you progress.
+            </li>
+            <li>Fixed bugs related to Rugal&apos;s win screen.</li>
+            <li>
+              Fixed an issue where the England ending would not quite play
+              correctly.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The new endings are in English when playing with language set to
+              Japanese.
+            </li>
+            <li>
+              The Spanish new endings were created with Google Translate, so
+              they likely have problems.
+            </li>
+          </ul>
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b4</h3>
+          <p>Cutscene and Spanish improvements</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              If you play through the game using one of the original 8 teams,
+              you will get that team&apos;s cutscenes and ending.
+            </li>
+            <li>
+              Spanish had a small improvement made for the cutscene before
+              fighting Rugal. Rugal&apos;s line is now grammatically correct
+              when he speaks to a female or male character.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Endings are in English when playing with language set to Japanese.
+            </li>
+            <li>
+              Spanish endings were created with Google Translate, so they likely
+              have problems.
+            </li>
+            <li>
+              Playing a single player game with Rugal can sometimes get stuck
+              where you fight the same team repeatedly.
+            </li>
+          </ul>
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b3</h3>
+          <p>Fixed auto animation bug.</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Fixed bug where auto animations in the backgrounds were going too
+              fast.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Endings are in English when playing with language set to Japanese.
+            </li>
+            <li>
+              Spanish endings were created with Google Translate, so they likely
+              have problems.
+            </li>
+          </ul>
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b2</h3>
+          <p>
+            Fixes bugs around team random select killing the sound effects and
+            versus mode.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Team random select is no longer silent and no longer kills all
+              sound effects.
+            </li>
+            <li>
+              Versus mode again properly randomizes the backgrounds. I
+              accidentally removed that.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Endings are in English when playing with language set to Japanese.
+            </li>
+            <li>
+              Spanish endings were created with Google Translate, so they likely
+              have problems.
+            </li>
+          </ul>
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b0</h3>
+          <p>
+            <b>The first beta release!</b> For English, the hack is completely
+            done. There may still be some bugs, that is why this is beta.
+          </p>
+          <p>
+            There is still more work to do for Spanish and Japanese. But the
+            hack is still fully playable in these languages.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The cutscene after Rugal is defeated is completely finished.
+            </li>
+            <li>New endings being correctly used.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Endings are in English when playing with language set to Japanese.
+            </li>
+            <li>
+              Spanish endings were created with Google Translate, so they likely
+              have problems.
+            </li>
+          </ul>
+          <Hr />
+        </div>
         <div className="heading-container" id="build-the-rom">
           <h2 className={styles.pageHeader}>Build the ROM</h2>
         </div>
