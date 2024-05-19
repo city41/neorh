@@ -247,7 +247,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.1.0</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 1.1.1</h3>
           <p>
             A cleaner and better looking character select screen. The globe and
             logo were removed, it now looks more like KOF95.
@@ -273,6 +273,10 @@ function IndexPage() {
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
             <li>Cleaner character select screen.</li>
+            <li>
+              Bug fix: when continuing, show who the cpu team is in the
+              character select screen.
+            </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <ul className="list-disc ml-4">
