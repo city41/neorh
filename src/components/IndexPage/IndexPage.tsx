@@ -172,6 +172,32 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.1.5</h3>
+          <p>
+            A minor versus mode bug was fixed. Thanks to Psycho RFG for finding
+            it.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              In versus mode, if one player chooses their whole team, they could
+              still cause cursor movement sound effects to happen. That is now
+              fixed.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The new endings are in English when playing with language set to
+              Japanese. Also any of these endings that have a period in them,
+              the period shows up with an orange background. That is because the
+              period is actually Chin&apos;s wine bottle :) Since periods are
+              not used in Japanese, the game does not load the palette that is
+              needed. I could fix this, but since the endings need to be
+              translated anyway, I&apos;m not going to bother.
+            </li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.1.4</h3>
           <p>
             A cleaner and better looking character select screen. The globe and
