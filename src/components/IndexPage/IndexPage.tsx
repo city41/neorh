@@ -40,16 +40,6 @@ function IndexPage() {
           )}
         >
           <li>
-            <a className="menu-item" href="#using-rugal">
-              Using Rugal
-            </a>
-          </li>
-          <li>
-            <a className="menu-item" href="#japanese">
-              Japanese
-            </a>
-          </li>
-          <li>
             <a className="menu-item" href="#release-notes">
               Release Notes
             </a>
@@ -57,6 +47,11 @@ function IndexPage() {
           <li>
             <a className="menu-item" href="#build-the-rom">
               Build the ROM
+            </a>
+          </li>
+          <li>
+            <a className="menu-item" href="#tips">
+              Tips
             </a>
           </li>
           <li>
@@ -162,7 +157,7 @@ function IndexPage() {
             <p>Surprising new endings</p>
           </div>
         </div>
-        <div className="heading-container" id="japanese">
+        <div className={styles.headerWithPadding} id="japanese">
           <h2 className={styles.pageHeader}>Japanese</h2>
           <p className="my-4">
             The hack fully works in English, Spanish and Japanese. The hack
@@ -171,78 +166,7 @@ function IndexPage() {
             <a href="mailto:matt.e.greer@gmail.com">Let me know</a>.
           </p>
         </div>
-        <div className="heading-container" id="using-rugal">
-          <h2 className={styles.pageHeader}>Using Rugal</h2>
-          <p className="my-4">
-            Rugal is accessible via debug dip 1-4. This is almost identical to
-            how the original game works.
-          </p>
-          <Image
-            className="shadow-xl"
-            src={rugalTurnongOnDebugDipPng.src}
-            width={rugalTurnongOnDebugDipPng.width}
-            height={rugalTurnongOnDebugDipPng.height}
-            alt="Turning on debug dip 1-4"
-          />
-          <p className="my-4">First, turn on debug dip 1-4.</p>
-          <Image
-            className="shadow-xl"
-            src={rugalFocusedPng.src}
-            width={rugalFocusedPng.width}
-            height={rugalFocusedPng.height}
-            alt="Rugal focused in the character select screen"
-          />
-          <p className="my-4">
-            Then choose him as your character. You can get his alternate palette
-            by choosing him with C or D.
-          </p>
-          <Image
-            className="shadow-xl"
-            src={rugalPickFullFormPng.src}
-            width={rugalPickFullFormPng.width}
-            height={rugalPickFullFormPng.height}
-            alt="Picking full form Rugal in the order select screen"
-          />
-          <p className="my-4">
-            To get regular Rugal, choose him with A in the order select screen.
-            To get second form Rugal, push right or left until Rugal stops
-            moving.
-          </p>
-          <p className="my-4">
-            Once he is chosen, turn off debug dip 1-4, otherwise both characters
-            will be invincible in the fight.
-          </p>
-          <p>
-            In a single player game, using Rugal will crash the game if you make
-            it to the Rugal fight. This is true in the original game too.
-          </p>
-          <h3 className="font-bold text-xl my-4">
-            Why isn&apos;t Rugal a normal character?
-          </h3>
-          <p>
-            In the original game, Rugal is only accessible via the same debug
-            dip. I decided to take that route with the hack as well. It boils
-            down to he&apos;s just the boss and missing things needed to be a
-            full fledged character:
-          </p>
-          <ul className="list-disc ml-4 mt-4">
-            <li>His normal form has no specials, DMs, or even a throw.</li>
-            <li>
-              He has no charging animation in his normal form. Pressing ABC just
-              makes him disappear.
-            </li>
-            <li>He can&apos;t be setup on the continue screen.</li>
-            <li>He corrupts palettes in his full form.</li>
-            <li>
-              His transformation cutscene runs after defeating his first form.
-            </li>
-            <li>
-              He does a ton of damage and takes little damage. Using him in
-              versus mode matches is pretty lame.
-            </li>
-          </ul>
-        </div>
-        <div className="mt-16" id="release-notes">
+        <div className={styles.headerWithPadding} id="release-notes">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
@@ -471,7 +395,7 @@ function IndexPage() {
           </ul>
           <Hr />
         </div>
-        <div className="heading-container" id="build-the-rom">
+        <div className={styles.headerWithPadding} id="build-the-rom">
           <h2 className={styles.pageHeader}>Build the ROM</h2>
         </div>
         <p className="text-sm mb-8">
@@ -482,7 +406,103 @@ function IndexPage() {
         </p>
         <PatchApplier />
         <Hr />
-        <div className="heading-container">
+        <div className={styles.headerWithPadding} id="tips">
+          <h2 className={styles.pageHeader}>Tips</h2>
+          <ul className="list-disc ml-4 mb-8 mt-2">
+            <li>
+              Hold p1 start while on the character select screen to see the
+              version. Please include it when reporting a bug. Bugs can be
+              reported at{" "}
+              <a href="https://github.com/city41/kof94te/issues">Github</a> or{" "}
+              <a href="https://discord.gg/Uuaka5mq">Discord</a>.
+            </li>
+            <li>
+              The character select screen has no time limit. The order select
+              screen has the same time limit as the original game.
+            </li>
+            <li>
+              In versus mode the stage you fight on is always randomly selected.
+            </li>
+            <li>
+              In versus mode both players can choose a new team on the next
+              match.
+            </li>
+            <li>
+              Random team select will wipe out any previous characters you have
+              chosen.
+            </li>
+          </ul>
+          <h3 className="text-lg font-bold">Using Rugal</h3>
+          <p className="my-4">
+            Rugal is accessible via debug dip 1-4. This is almost identical to
+            how the original game works.
+          </p>
+          <Image
+            className="shadow-xl"
+            src={rugalTurnongOnDebugDipPng.src}
+            width={rugalTurnongOnDebugDipPng.width}
+            height={rugalTurnongOnDebugDipPng.height}
+            alt="Turning on debug dip 1-4"
+          />
+          <p className="my-4">First, turn on debug dip 1-4.</p>
+          <Image
+            className="shadow-xl"
+            src={rugalFocusedPng.src}
+            width={rugalFocusedPng.width}
+            height={rugalFocusedPng.height}
+            alt="Rugal focused in the character select screen"
+          />
+          <p className="my-4">
+            Then choose him as your character. You can get his alternate palette
+            by choosing him with C or D.
+          </p>
+          <Image
+            className="shadow-xl"
+            src={rugalPickFullFormPng.src}
+            width={rugalPickFullFormPng.width}
+            height={rugalPickFullFormPng.height}
+            alt="Picking full form Rugal in the order select screen"
+          />
+          <p className="my-4">
+            To get regular Rugal, choose him with A in the order select screen.
+            To get second form Rugal, push right or left until Rugal stops
+            moving.
+          </p>
+          <p className="my-4">
+            Once he is chosen, turn off debug dip 1-4, otherwise both characters
+            will be invincible in the fight.
+          </p>
+          <p>
+            In a single player game, using Rugal will crash the game if you make
+            it to the Rugal fight. This is true in the original game too.
+          </p>
+          <h4 className="font-bold my-4">
+            Why isn&apos;t Rugal a normal character?
+          </h4>
+          <p>
+            In the original game, Rugal is only accessible via the same debug
+            dip. I decided to take that route with the hack as well. It boils
+            down to he&apos;s just the boss and missing things needed to be a
+            full fledged character:
+          </p>
+          <ul className="list-disc ml-4 mt-4">
+            <li>His normal form has no specials, DMs, or even a throw.</li>
+            <li>
+              He has no charging animation in his normal form. Pressing ABC just
+              makes him disappear.
+            </li>
+            <li>He can&apos;t be setup on the continue screen.</li>
+            <li>He corrupts palettes in his full form.</li>
+            <li>
+              His transformation cutscene runs after defeating his first form.
+            </li>
+            <li>
+              He does a ton of damage and takes little damage. Using him in
+              versus mode matches is pretty lame.
+            </li>
+          </ul>
+        </div>
+        <div>
           <h2 className={styles.pageHeader}>Thanks</h2>
         </div>
         <p>

@@ -29,6 +29,10 @@
   border: 8px solid var(--bg-red);
 }
 
+.headerWithPadding {
+  scroll-margin-top: 100px;
+}
+
 .pageContainer a {
   @apply text-blue-800 underline;
 }
