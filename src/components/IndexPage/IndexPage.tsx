@@ -10,6 +10,7 @@ import winScreenPng from "./winScreen.png";
 import continueScreenPng from "./continueScreen.png";
 import cutscene2Png from "./cutscene2.png";
 import usaEndingPng from "./usaEnding.png";
+import versionAndQrCodePng from "./versionAndQrCode.png";
 
 import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
 import rugalFocusedPng from "./rugalFocused.png";
@@ -415,6 +416,13 @@ function IndexPage() {
               reported at{" "}
               <a href="https://github.com/city41/kof94te/issues">Github</a> or{" "}
               <a href="https://discord.gg/Uuaka5mq">Discord</a>.
+              <Image
+                className="shadow-xl my-4"
+                src={versionAndQrCodePng.src}
+                width={versionAndQrCodePng.width}
+                height={versionAndQrCodePng.height}
+                alt="Version and QR code when hoding start"
+              />
             </li>
             <li>
               The character select screen has no time limit. The order select
@@ -430,6 +438,10 @@ function IndexPage() {
             <li>
               Random team select will wipe out any previous characters you have
               chosen.
+            </li>
+            <li>
+              In single player mode, if you choose one of the original 8 teams,
+              you will get that team&apos;s cutscenes and ending.
             </li>
           </ul>
           <h3 className="text-lg font-bold">Using Rugal</h3>
