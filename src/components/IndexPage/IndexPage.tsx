@@ -172,7 +172,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.1.7</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 1.1.8</h3>
           <p>Three very minor bugs fixed.</p>
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
