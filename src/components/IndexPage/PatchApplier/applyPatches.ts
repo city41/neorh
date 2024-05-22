@@ -70,6 +70,7 @@ function applyPatch(
   return {
     ...inputFile,
     data: new Uint8Array(patchedFileData),
+    patched: true,
   };
 }
 

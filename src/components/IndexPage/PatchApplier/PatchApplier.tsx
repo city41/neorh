@@ -15,6 +15,7 @@ import {
   FilesInMemory,
 } from "neosdconv/lib/buildNeoFile";
 import { Genre } from "neosdconv/lib/genres";
+import { tagPatchedFiles } from "./tagPatchedFiles";
 
 type PatchApplierProps = {
   className?: string;
@@ -111,7 +112,11 @@ function PatchApplier({ className }: PatchApplierProps) {
       );
     }
 
-    return zip(patchedRomFiles).then((zippedRom) => {
+    const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
+      (f) => f.patched
+    );
+
+    return zip(finalFiles).then((zippedRom) => {
       const fileBlob = new Blob([zippedRom.buffer], {
         type: "application/octet-stream",
       });
