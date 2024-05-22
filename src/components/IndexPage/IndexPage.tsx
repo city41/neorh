@@ -164,13 +164,43 @@ function IndexPage() {
             The hack fully works in English, Spanish and Japanese. The hack
             contains new endings, and they are not translated into Japanese. For
             Japanese they will play in English. Can you help translate them?{" "}
-            <a href="mailto:matt.e.greer@gmail.com">Let me know</a>.
+            <a href="mailto:matt.e.greer@gmail.com">Let me know</a>.<br />
+            <b>UPDATE: Japanese translations are now under way!</b>
           </p>
         </div>
         <div className={styles.headerWithPadding} id="release-notes">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.1.9</h3>
+          <p>
+            Lots of bug fixes. I moved out of beta too quickly, sorry about
+            that. But everything is looking much better.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Bug fix: Random select would stop working after the second fight
+              in single player mode.
+            </li>
+            <li>Bug fix: The CPU cursor sound effect went away.</li>
+            <li>Bug fix: demo mode had numerous issues, all are fixed.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              The new endings are in English when playing with language set to
+              Japanese. Also any of these endings that have a period in them,
+              the period shows up with an orange background. That is because the
+              period is actually Chin&apos;s wine bottle :) Since periods are
+              not used in Japanese, the game does not load the palette that is
+              needed. I could fix this, but since the endings need to be
+              translated anyway, I&apos;m not going to bother.
+              <br />
+              <b>UPDATE: Japanese translations are now under way!</b>
+            </li>
+          </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.1.8</h3>
           <p>Three very minor bugs fixed.</p>
