@@ -108,7 +108,7 @@ function PatchApplier({ className }: PatchApplierProps) {
   const handleDownloadFBNeoZip = useCallback(() => {
     if (!patchedRomFiles) {
       throw new Error(
-        "handleDownloadFBNeoZip: patchedRomFiles is unexpectedly null"
+        "handleDownloadFBNeoZip: patchedRomFiles is unexpectedly null."
       );
     }
 
