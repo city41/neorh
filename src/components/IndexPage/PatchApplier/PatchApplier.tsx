@@ -15,10 +15,7 @@ import {
   FilesInMemory,
 } from "neosdconv/lib/buildNeoFile";
 import { Genre } from "neosdconv/lib/genres";
-
-import fontBeforePng from "./fontBefore.png";
-import fontAfterPng from "./fontAfter.png";
-import { patchInCleanFont } from "./patchInCleanFont";
+import { tagPatchedFiles } from "./tagPatchedFiles";
 
 type PatchApplierProps = {
   className?: string;
@@ -27,9 +24,10 @@ type PatchApplierProps = {
 function DownloadButton({
   className,
   onClick,
-  children,
+  title,
+  description,
   ...rest
-}: JSX.IntrinsicElements["button"]) {
+}: JSX.IntrinsicElements["button"] & { title: string; description: string }) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -44,6 +42,13 @@ function DownloadButton({
     }, 10);
   };
 
+  const body = (
+    <div className="flex-1 flex-col gap-y-2">
+      <div className="font-bold">{title}</div>
+      <div>{description}</div>
+    </div>
+  );
+
   return (
     <button
       className={clsx(
@@ -53,7 +58,7 @@ function DownloadButton({
       onClick={handleClick}
       {...rest}
     >
-      {clicked ? "just a moment ..." : children}
+      {clicked ? "just a moment ..." : body}
     </button>
   );
 }
@@ -64,9 +69,6 @@ function PatchApplier({ className }: PatchApplierProps) {
   const [patchedRomFiles, setPatchedRomFiles] = useState<RomFileEntry[] | null>(
     null
   );
-  const [cleanUpFont, setCleanUpFont] = useState<boolean>(false);
-  const [showCleanUpExplanation, setShowCleanUpExplanation] =
-    useState<boolean>(false);
 
   useEffect(() => {
     if (zipData !== null) {
@@ -94,28 +96,34 @@ function PatchApplier({ className }: PatchApplierProps) {
       );
     }
 
-    if (cleanUpFont) {
-      return patchInCleanFont(patchedRomFiles).then(
-        (romFilesWithCleanedupFont) => {
-          return zip(romFilesWithCleanedupFont).then((zippedRom) => {
-            const fileBlob = new Blob([zippedRom.buffer], {
-              type: "application/octet-stream",
-            });
-
-            sendBlobToAnchorTag(fileBlob, "kof94te.zip");
-          });
-        }
-      );
-    } else {
-      return zip(patchedRomFiles).then((zippedRom) => {
-        const fileBlob = new Blob([zippedRom.buffer], {
-          type: "application/octet-stream",
-        });
-
-        sendBlobToAnchorTag(fileBlob, "kof94te.zip");
+    return zip(patchedRomFiles).then((zippedRom) => {
+      const fileBlob = new Blob([zippedRom.buffer], {
+        type: "application/octet-stream",
       });
+
+      sendBlobToAnchorTag(fileBlob, "kof94te.zip");
+    });
+  }, [patchedRomFiles]);
+
+  const handleDownloadFBNeoZip = useCallback(() => {
+    if (!patchedRomFiles) {
+      throw new Error(
+        "handleDownloadFBNeoZip: patchedRomFiles is unexpectedly null..."
+      );
     }
-  }, [patchedRomFiles, cleanUpFont]);
+
+    const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
+      (f) => f.patched
+    );
+
+    return zip(finalFiles).then((zippedRom) => {
+      const fileBlob = new Blob([zippedRom.buffer], {
+        type: "application/octet-stream",
+      });
+
+      sendBlobToAnchorTag(fileBlob, "kof94te.zip");
+    });
+  }, [patchedRomFiles]);
 
   const handleNeoSD = useCallback(() => {
     if (!patchedRomFiles) {
@@ -130,40 +138,23 @@ function PatchApplier({ className }: PatchApplierProps) {
       ngh: "55",
     };
 
-    if (cleanUpFont) {
-      return patchInCleanFont(patchedRomFiles).then(
-        (romFilesWithCleanedUpFont) => {
-          const filesInMemory: FilesInMemory =
-            romFilesWithCleanedUpFont.reduce<FilesInMemory>((accum, f) => {
-              accum[f.fileName] = f.data;
-              return accum;
-            }, {});
+    const filesInMemory: FilesInMemory = patchedRomFiles.reduce<FilesInMemory>(
+      (accum, f) => {
+        accum[f.fileName] = f.data;
+        return accum;
+      },
+      {}
+    );
 
-          const neoFile = buildNeoFile(convertOptions, filesInMemory);
-          const neoFileBlob = new Blob([neoFile.buffer], {
-            type: "application/octet-stream",
-          });
+    const neoFile = buildNeoFile(convertOptions, filesInMemory);
+    const neoFileBlob = new Blob([neoFile.buffer], {
+      type: "application/octet-stream",
+    });
 
-          sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
-        }
-      );
-    } else {
-      const filesInMemory: FilesInMemory =
-        patchedRomFiles.reduce<FilesInMemory>((accum, f) => {
-          accum[f.fileName] = f.data;
-          return accum;
-        }, {});
+    sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
 
-      const neoFile = buildNeoFile(convertOptions, filesInMemory);
-      const neoFileBlob = new Blob([neoFile.buffer], {
-        type: "application/octet-stream",
-      });
-
-      sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
-
-      return Promise.resolve();
-    }
-  }, [patchedRomFiles, cleanUpFont]);
+    return Promise.resolve();
+  }, [patchedRomFiles]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>
@@ -180,59 +171,23 @@ function PatchApplier({ className }: PatchApplierProps) {
         }}
       </DropZone>
       {patchedRomFiles && (
-        <>
-          <div className="grid place-items-center">
-            <div className="flex flex-row gap-x-2 my-4">
-              <input
-                type="checkbox"
-                checked={cleanUpFont}
-                onChange={() => setCleanUpFont((cuf) => !cuf)}
-              />
-              Clean up the main font too. (
-              <a
-                className="cursor-pointer"
-                onClick={() => setShowCleanUpExplanation((scue) => !scue)}
-              >
-                what is this?
-              </a>
-              )
-            </div>
-          </div>
-          {showCleanUpExplanation && (
-            <div>
-              <div className="flex flex-row justify-around">
-                <Image
-                  className="shadow-xl"
-                  src={fontBeforePng.src}
-                  width={fontBeforePng.width}
-                  height={fontBeforePng.height}
-                  alt="Font without the clean up patch"
-                />
-                <Image
-                  className="shadow-xl"
-                  src={fontAfterPng.src}
-                  width={fontAfterPng.width}
-                  height={fontAfterPng.height}
-                  alt="Font with the clean up patch"
-                />
-              </div>
-              <p className="grid place-items-center my-4">
-                An optional add on that cleans up the main font a bit. It just
-                adds a 1 pixel gap, making it look cleaner.
-              </p>
-            </div>
-          )}
-          <div className="flex flex-row flex-wrap justify-around py-8 gap-8 px-8">
-            <DownloadButton onClick={handleNeoSD} className="flex-1">
-              <div>download as .neo file</div>
-              <div>For use on NeoSD or MiSTer</div>
-            </DownloadButton>
-            <DownloadButton onClick={handleDownloadZip} className="flex-1">
-              <div>download as MAME .zip file</div>
-              <div>For use on emulators</div>
-            </DownloadButton>
-          </div>
-        </>
+        <div className="flex flex-row flex-wrap justify-around py-8 gap-8 px-8">
+          <DownloadButton
+            onClick={handleNeoSD}
+            title="download as .neo"
+            description="for use on NeoSD or MiSTer"
+          />
+          <DownloadButton
+            onClick={handleDownloadFBNeoZip}
+            title="download as FBNeo .zip"
+            description="For use on FinalBurn Neo"
+          />
+          <DownloadButton
+            onClick={handleDownloadZip}
+            title="download as MAME .zip"
+            description="For use on all other emulators"
+          />
+        </div>
       )}
       {errorMsg && (
         <div className="bg-red-300 text-black mt-4 p-2">
