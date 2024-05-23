@@ -605,7 +605,7 @@ function IndexPage() {
         </div>
         <p>
           These people helped make the hack possible: SieKensou, PsychoRFG, Ge
-          Os, Jay Bee, leonardofmatheus, Alice
+          Os, Jay Bee, leonardofmatheus, Alice愛麗絲
         </p>
         <div className="mt-16 mb-4 flex flex-col items-center text-xs">
           <div>
