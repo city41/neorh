@@ -2,6 +2,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 import charSelectPng from "./charSelect.png";
+import cpuCustomTeamsPng from "./cpuCustomTeams.png";
 import charSelectOldPng from "./charSelectOld.png";
 import orderSelectPng from "./orderSelect.png";
 import gameplayPng from "./gameplay.png";
@@ -10,7 +11,7 @@ import winScreenPng from "./winScreen.png";
 import continueScreenPng from "./continueScreen.png";
 import cutscene2Png from "./cutscene2.png";
 import usaEndingPng from "./usaEnding.png";
-import versionAndQrCodePng from "./versionAndQrCode.png";
+import versionStringPng from "./versionString.png";
 
 import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
 import rugalFocusedPng from "./rugalFocused.png";
@@ -102,6 +103,15 @@ function IndexPage() {
             </p>
             <Image
               className="shadow-xl"
+              src={cpuCustomTeamsPng.src}
+              width={cpuCustomTeamsPng.width}
+              height={cpuCustomTeamsPng.height}
+              alt="CPU using custom teams"
+              priority
+            />
+            <p>The CPU can choose custom teams too.</p>
+            <Image
+              className="shadow-xl"
               src={orderSelectPng.src}
               width={orderSelectPng.width}
               height={orderSelectPng.height}
@@ -158,20 +168,75 @@ function IndexPage() {
             <p>Surprising new endings</p>
           </div>
         </div>
-        <div className={styles.headerWithPadding} id="japanese">
-          <h2 className={styles.pageHeader}>Japanese</h2>
-          <p className="my-4">
-            The hack fully works in English, Spanish and Japanese. The hack
-            contains new endings, and they are not translated into Japanese. For
-            Japanese they will play in English. Can you help translate them?{" "}
-            <a href="mailto:matt.e.greer@gmail.com">Let me know</a>.<br />
-            <b>UPDATE: Japanese translations are now under way!</b>
-          </p>
-        </div>
         <div className={styles.headerWithPadding} id="release-notes">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.2.0</h3>
+          <p>
+            A <b className="text-2xl">big</b> release with lots of changes.
+            Thanks to all who helped test this.
+          </p>
+          <p className="mt-4">
+            CPU custom teams really freshen up the single player experience!
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              CPU custom teams, <a href="#cpu-custom-teams">more info here</a>.
+            </li>
+            <li>
+              The new endings have been translated into Japanese. The hack now
+              fully works in all supported languages.
+            </li>
+            <li>
+              The CPU cursors are now using the same colors as KOF95. They were
+              close before, but slightly off.
+            </li>
+            <li>
+              Rugal is no longer shown on the character select screen before you
+              fight him. This is to match what KOF95 does.
+            </li>
+            <li>
+              When continuing, the CPU cursor now matches what KOF95 does.
+            </li>
+            <li>
+              To see the version string, you now need to hold P1 start and P2
+              start together.
+            </li>
+            <li>
+              Win quotes have been redone. They used to be mostly correct, now
+              they are always correct.
+            </li>
+            <li className="mt-4">
+              <b>Bug fix:</b> Cross continuing now works. This actually never
+              worked from day one and was a really bad bug! Cross continuing is
+              when player one loses, then player two continues (or vice versa).
+            </li>
+            <li>
+              <b>Bug fix:</b> Rugal&apos;s avatar no longer shows up at
+              incorrect times.
+            </li>
+            <li>
+              <b>Bug fix:</b> Ryo&apos;s last name was misspelled. That is now
+              fixed.
+            </li>
+            <li>
+              <b>Bug fix:</b> The &quot;HERE COMES CHALLENGER&quot; graphic no
+              longer causes names to get cut off in a strange way.
+            </li>
+            <li>
+              <b>Bug fix:</b> &quot;HERE COMES CHALLENGER&quot; no longer has
+              missing tiles in AES mode.
+            </li>
+            <li>
+              <b>Bug fix:</b> A tiny fix in Team Japan&apos;s ending when
+              Spanish is set as the language.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>No known issues.</p>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.1.9</h3>
           <p>
@@ -325,161 +390,6 @@ function IndexPage() {
             </li>
           </ul>
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0rc0</h3>
-          <p>
-            The first <b>release candidate</b> release! The hack is now complete
-            for Spanish and English, and all bugs should be fixed now.
-            &quot;release candidate&quot; is just one last chance to look for
-            bugs before going to the final 1.0 release.
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>Spanish endings and text are now complete.</li>
-            <li>
-              Fixed a bug related to Rugal&apos;s transformation cutscene.
-            </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              The new endings are in English when playing with language set to
-              Japanese.
-            </li>
-          </ul>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b5</h3>
-          <p>
-            Rugal and some other fixes. I think it is getting close to the final
-            release. I will keep looking for bugs. But I have a feeling 1.0 is
-            not too far off.
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              Fixed the bug where using Rugal in single player mode would not
-              let you progress.
-            </li>
-            <li>Fixed bugs related to Rugal&apos;s win screen.</li>
-            <li>
-              Fixed an issue where the England ending would not quite play
-              correctly.
-            </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              The new endings are in English when playing with language set to
-              Japanese.
-            </li>
-            <li>
-              The Spanish new endings were created with Google Translate, so
-              they likely have problems.
-            </li>
-          </ul>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b4</h3>
-          <p>Cutscene and Spanish improvements</p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              If you play through the game using one of the original 8 teams,
-              you will get that team&apos;s cutscenes and ending.
-            </li>
-            <li>
-              Spanish had a small improvement made for the cutscene before
-              fighting Rugal. Rugal&apos;s line is now grammatically correct
-              when he speaks to a female or male character.
-            </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              Endings are in English when playing with language set to Japanese.
-            </li>
-            <li>
-              Spanish endings were created with Google Translate, so they likely
-              have problems.
-            </li>
-            <li>
-              Playing a single player game with Rugal can sometimes get stuck
-              where you fight the same team repeatedly.
-            </li>
-          </ul>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b3</h3>
-          <p>Fixed auto animation bug.</p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              Fixed bug where auto animations in the backgrounds were going too
-              fast.
-            </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              Endings are in English when playing with language set to Japanese.
-            </li>
-            <li>
-              Spanish endings were created with Google Translate, so they likely
-              have problems.
-            </li>
-          </ul>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b2</h3>
-          <p>
-            Fixes bugs around team random select killing the sound effects and
-            versus mode.
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              Team random select is no longer silent and no longer kills all
-              sound effects.
-            </li>
-            <li>
-              Versus mode again properly randomizes the backgrounds. I
-              accidentally removed that.
-            </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              Endings are in English when playing with language set to Japanese.
-            </li>
-            <li>
-              Spanish endings were created with Google Translate, so they likely
-              have problems.
-            </li>
-          </ul>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.0.0b0</h3>
-          <p>
-            <b>The first beta release!</b> For English, the hack is completely
-            done. There may still be some bugs, that is why this is beta.
-          </p>
-          <p>
-            There is still more work to do for Spanish and Japanese. But the
-            hack is still fully playable in these languages.
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              The cutscene after Rugal is defeated is completely finished.
-            </li>
-            <li>New endings being correctly used.</li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              Endings are in English when playing with language set to Japanese.
-            </li>
-            <li>
-              Spanish endings were created with Google Translate, so they likely
-              have problems.
-            </li>
-          </ul>
-          <Hr />
         </div>
         <div className={styles.headerWithPadding} id="build-the-rom">
           <h2 className={styles.pageHeader}>Build the ROM</h2>
@@ -496,18 +406,17 @@ function IndexPage() {
           <h2 className={styles.pageHeader}>Tips</h2>
           <ul className="list-disc ml-4 mb-8 mt-2">
             <li>
-              Hold p1 start while on the character select screen to see the
-              version. Please include it when reporting a bug. Bugs can be
-              reported at{" "}
+              Hold p1 start and p2 start together while on the character select
+              screen to see the version. Please include it when reporting a bug.
+              Bugs can be reported at{" "}
               <a href="https://github.com/city41/kof94te/issues">Github</a> or{" "}
-              <a href="https://discord.gg/Uuaka5mq">Discord</a>. The QR code
-              takes you to this website.
+              <a href="https://discord.gg/Uuaka5mq">Discord</a>.
               <Image
                 className="shadow-xl my-4"
-                src={versionAndQrCodePng.src}
-                width={versionAndQrCodePng.width}
-                height={versionAndQrCodePng.height}
-                alt="Version and QR code when hoding start"
+                src={versionStringPng.src}
+                width={versionStringPng.width}
+                height={versionStringPng.height}
+                alt="Version when hoding start"
               />
             </li>
             <li>
@@ -516,6 +425,7 @@ function IndexPage() {
             </li>
             <li>
               In versus mode the stage you fight on is always randomly selected.
+              This is also true when the CPU uses custom teams.
             </li>
             <li>
               In versus mode both players can choose a new team on the next
@@ -527,7 +437,14 @@ function IndexPage() {
             </li>
             <li>
               In single player mode, if you choose one of the original 8 teams,
-              you will get that team&apos;s cutscenes and ending.
+              you will get that team&apos;s cutscenes and ending. This will also
+              cause the CPU to stick with original 8 teams too{" "}
+              <a href="#cpu-custom-teams">unless you override that</a>.
+            </li>
+            <li>
+              When choosing an original team (ie, the teams from the original
+              game), it does not matter what order you select. So Terry/Andy/Joe
+              is Team Italy, and so is Andy/Joe/Terry, for example.
             </li>
           </ul>
           <h3 className="text-lg font-bold">Using Rugal</h3>
@@ -597,6 +514,50 @@ function IndexPage() {
             <li>
               He does a ton of damage and takes little damage. Using him in
               versus mode matches is pretty lame.
+            </li>
+          </ul>
+          <h3
+            className={clsx(
+              styles.headerWithPadding,
+              "text-lg font-bold mt-16"
+            )}
+            id="cpu-custom-teams"
+          >
+            CPU Custom Teams
+          </h3>
+          <p className="my-4">
+            Like most KOF games, the CPU can now choose a custom team with this
+            hack. That means the CPU&apos;s team can be formed out of any of the
+            24 characters, just like a player&apos;s team.
+          </p>
+          <Image
+            className="shadow-xl"
+            src={cpuCustomTeamsPng.src}
+            width={cpuCustomTeamsPng.width}
+            height={cpuCustomTeamsPng.height}
+            alt="CPU using custom teams"
+          />
+          <p className="mt-8">Here are the guidelines</p>
+          <ul className="list-disc ml-4 mt-4">
+            <li>
+              If you choose an original 8 team (the teams in the original game),
+              then the CPU will also stick to original teams. You will also get
+              the original team&apos;s cutscenes and ending. So when you choose
+              an original team, the hack reverts entirely back to vanilla KOF94.
+            </li>
+            <li>
+              If you choose a custom team, there is roughly a 62% chance the CPU
+              will stick with original teams.
+            </li>
+            <li>
+              When starting a new game, you can hold C while pressing start to
+              force the CPU to use custom teams. If you do it correctly, you
+              will hear &quot;go red!&quot;. This means the CPU will always use
+              custom teams, even if you choose an original 8 team.
+            </li>
+            <li>
+              When starting a new game, you can hold D while pressing start to
+              force the CPU to use original 8 teams.
             </li>
           </ul>
         </div>
