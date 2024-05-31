@@ -173,7 +173,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.2.0</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 1.2.1</h3>
           <p>
             A <b className="text-2xl">big</b> release with lots of changes.
             Thanks to all who helped test this.
