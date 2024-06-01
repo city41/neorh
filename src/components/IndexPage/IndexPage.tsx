@@ -39,7 +39,7 @@ function IndexPage() {
         <ul
           className={clsx(
             styles.topMenu,
-            "-mx-4 sm:pb-2 h-28 sm:h-auto pt-4 flex flex-col flex-wrap sm:flex-row items-start sm:items-center justify-start space-y-2 sm:space-y-0 sm:space-x-5 sm:place-content-between sm:px-16 border-b sticky top-0"
+            "-mx-8 sm:pb-2 h-28 sm:h-auto px-4 pt-4 flex flex-col flex-wrap sm:flex-row items-start sm:items-center justify-start space-y-2 sm:space-y-0 sm:space-x-5 sm:place-content-between sm:px-16 border-b sticky top-0"
           )}
         >
           <li>
