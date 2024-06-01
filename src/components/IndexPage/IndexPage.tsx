@@ -9,6 +9,7 @@ import gameplayPng from "./gameplay.png";
 import fightAgainstRugalPng from "./fightAgainstRugal.png";
 import winScreenPng from "./winScreen.png";
 import continueScreenPng from "./continueScreen.png";
+import gameOverPng from "./gameOver.png";
 import cutscene2Png from "./cutscene2.png";
 import usaEndingPng from "./usaEnding.png";
 import versionStringPng from "./versionString.png";
@@ -158,6 +159,14 @@ function IndexPage() {
               alt="Continue screen"
             />
             <p>Continue screens show the custom team that lost</p>
+            <Image
+              className="shadow-xl"
+              src={gameOverPng.src}
+              width={gameOverPng.width}
+              height={gameOverPng.height}
+              alt="Game over screen"
+            />
+            <p>Custom team on the game over screen</p>
             <Image
               className="shadow-xl"
               src={usaEndingPng.src}
