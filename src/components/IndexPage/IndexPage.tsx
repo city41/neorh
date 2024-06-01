@@ -182,6 +182,20 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.2.2</h3>
+          <p>One minor bug slipped through :(</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              <b>Bug fix:</b> a CPU character&apos;s colors could be wrong
+              sometimes in the chosen avatar section (down at the bottom of the
+              character select screen). This is a very minor bug, the colors are
+              correct during gameplay.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>No known issues.</p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.2.1</h3>
           <p>
             A <b className="text-2xl">big</b> release with lots of changes.
