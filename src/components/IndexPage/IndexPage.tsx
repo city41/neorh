@@ -190,7 +190,7 @@ function IndexPage() {
               <b>Bug fix:</b> a CPU character&apos;s colors could be wrong
               sometimes in the chosen avatar section (down at the bottom of the
               character select screen). This is a very minor bug, the colors are
-              correct during gameplay.
+              correct during game play.
             </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
