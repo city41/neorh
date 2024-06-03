@@ -189,7 +189,7 @@ function IndexPage() {
             <li>
               <b>Bug fix:</b> If the player chose character random select with
               all three characters random, and the CPU was using custom teams,
-              sometimes during a playthrough the player would end up fighting
+              sometimes during a play through the player would end up fighting
               the same team twice.
             </li>
           </ul>
