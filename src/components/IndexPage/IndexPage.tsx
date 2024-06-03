@@ -182,6 +182,20 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.2.4</h3>
+          <p>Fixes an obscure but pretty annoying bug.</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              <b>Bug fix:</b> If the player chose character random select with
+              all three characters random, and the CPU was using custom teams,
+              sometimes during a playthrough the player would end up fighting
+              the same team twice.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>No known issues.</p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.2.2</h3>
           <p>One minor bug slipped through :(</p>
           <h4 className="heading font-bold py-4">Changes</h4>
