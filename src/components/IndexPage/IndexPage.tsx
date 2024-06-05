@@ -365,7 +365,7 @@ function IndexPage() {
             logo were removed, it now looks more like KOF95.
           </p>
           <div>
-            <div className="flex flex-row justify-around my-8">
+            <div className="flex flex-row flex-wrap justify-around my-8">
               <Image
                 className="shadow-xl"
                 src={charSelectOldPng.src}

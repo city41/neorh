@@ -3,3 +3,5 @@ export type RomFileEntry = {
   data: Uint8Array;
   patched?: boolean;
 };
+
+export type AddOnMap = Record<"font" | "cs", boolean>;

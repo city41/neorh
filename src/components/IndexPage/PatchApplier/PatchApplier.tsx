@@ -1,11 +1,10 @@
-import Image from "next/image";
 import clsx from "clsx";
 import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 import { DropZone } from "./DropZone";
 import { unzip } from "./unzip";
 import { zip } from "./zip";
 import { validateFiles } from "./validateFiles";
-import { RomFileEntry } from "./types";
+import { AddOnMap, RomFileEntry } from "./types";
 import { applyPatches } from "./applyPatches";
 import { getPatch } from "./getPatch";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
@@ -16,6 +15,10 @@ import {
 } from "neosdconv/lib/buildNeoFile";
 import { Genre } from "neosdconv/lib/genres";
 import { tagPatchedFiles } from "./tagPatchedFiles";
+import cleanFontPng from "./cleanFont.png";
+import cheatsheetPng from "./cheatsheet.png";
+import { AddOn } from "./AddOn";
+import { applyAddOns } from "./applyAddOns";
 
 type PatchApplierProps = {
   className?: string;
@@ -70,6 +73,8 @@ function PatchApplier({ className }: PatchApplierProps) {
     null
   );
 
+  const [addOns, setAddOns] = useState<AddOnMap>({ font: false, cs: false });
+
   useEffect(() => {
     if (zipData !== null) {
       unzip(zipData)
@@ -96,14 +101,18 @@ function PatchApplier({ className }: PatchApplierProps) {
       );
     }
 
-    return zip(patchedRomFiles).then((zippedRom) => {
-      const fileBlob = new Blob([zippedRom.buffer], {
-        type: "application/octet-stream",
-      });
+    return applyAddOns(patchedRomFiles, addOns).then(
+      (patchedRomFilesWithAddOns) => {
+        return zip(patchedRomFilesWithAddOns).then((zippedRom) => {
+          const fileBlob = new Blob([zippedRom.buffer], {
+            type: "application/octet-stream",
+          });
 
-      sendBlobToAnchorTag(fileBlob, "kof94te.zip");
-    });
-  }, [patchedRomFiles]);
+          sendBlobToAnchorTag(fileBlob, "kof94te.zip");
+        });
+      }
+    );
+  }, [patchedRomFiles, addOns]);
 
   const handleDownloadFBNeoZip = useCallback(() => {
     if (!patchedRomFiles) {
@@ -112,49 +121,54 @@ function PatchApplier({ className }: PatchApplierProps) {
       );
     }
 
-    const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
-      (f) => f.patched
+    return applyAddOns(patchedRomFiles, addOns).then(
+      (patchedRomFilesWithAddOns) => {
+        const finalFiles = tagPatchedFiles(
+          patchedRomFilesWithAddOns,
+          "te"
+        ).filter((f) => f.patched);
+
+        return zip(finalFiles).then((zippedRom) => {
+          const fileBlob = new Blob([zippedRom.buffer], {
+            type: "application/octet-stream",
+          });
+
+          sendBlobToAnchorTag(fileBlob, "kof94te.zip");
+        });
+      }
     );
-
-    return zip(finalFiles).then((zippedRom) => {
-      const fileBlob = new Blob([zippedRom.buffer], {
-        type: "application/octet-stream",
-      });
-
-      sendBlobToAnchorTag(fileBlob, "kof94te.zip");
-    });
-  }, [patchedRomFiles]);
+  }, [patchedRomFiles, addOns]);
 
   const handleNeoSD = useCallback(() => {
     if (!patchedRomFiles) {
       throw new Error("handleNeoSD: patchedRomFiles is unexpectedly null");
     }
 
-    const convertOptions: ConvertOptions = {
-      genre: Genre.Fighting,
-      manufacturer: "SNK_city41",
-      name: "The King of Fighters '94:TE Hack",
-      year: 2024,
-      ngh: "55",
-    };
+    return applyAddOns(patchedRomFiles, addOns).then(
+      (patchedRomFilesWithAddons) => {
+        const convertOptions: ConvertOptions = {
+          genre: Genre.Fighting,
+          manufacturer: "SNK_city41",
+          name: "The King of Fighters '94:TE Hack",
+          year: 2024,
+          ngh: "55",
+        };
 
-    const filesInMemory: FilesInMemory = patchedRomFiles.reduce<FilesInMemory>(
-      (accum, f) => {
-        accum[f.fileName] = f.data;
-        return accum;
-      },
-      {}
+        const filesInMemory: FilesInMemory =
+          patchedRomFilesWithAddons.reduce<FilesInMemory>((accum, f) => {
+            accum[f.fileName] = f.data;
+            return accum;
+          }, {});
+
+        const neoFile = buildNeoFile(convertOptions, filesInMemory);
+        const neoFileBlob = new Blob([neoFile.buffer], {
+          type: "application/octet-stream",
+        });
+
+        sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
+      }
     );
-
-    const neoFile = buildNeoFile(convertOptions, filesInMemory);
-    const neoFileBlob = new Blob([neoFile.buffer], {
-      type: "application/octet-stream",
-    });
-
-    sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
-
-    return Promise.resolve();
-  }, [patchedRomFiles]);
+  }, [patchedRomFiles, addOns]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>
@@ -171,23 +185,64 @@ function PatchApplier({ className }: PatchApplierProps) {
         }}
       </DropZone>
       {patchedRomFiles && (
-        <div className="flex flex-row flex-wrap justify-around py-8 gap-8 px-8">
-          <DownloadButton
-            onClick={handleNeoSD}
-            title="download as .neo"
-            description="for use on NeoSD or MiSTer"
-          />
-          <DownloadButton
-            onClick={handleDownloadFBNeoZip}
-            title="download as FBNeo .zip"
-            description="For use on FinalBurn Neo"
-          />
-          <DownloadButton
-            onClick={handleDownloadZip}
-            title="download as MAME .zip"
-            description="For use on all other emulators"
-          />
-        </div>
+        <>
+          <div className="my-4">
+            <h3 className="font-bold text-xl">Optional add ons</h3>
+            <div className="flex flex-col gap-y-2 my-2">
+              <AddOn
+                title="Clean Font"
+                description="Cleans up the main font a bit for English and Spanish. It adds a pixel of spacing. The screenshot shows before and after."
+                screenshot={cleanFontPng}
+                onClick={() => {
+                  setAddOns((ao) => {
+                    return {
+                      ...ao,
+                      font: !ao.font,
+                    };
+                  });
+                }}
+              />
+              <AddOn
+                title="Cheat Sheet"
+                description="Shows special move input for your current character when the game is paused. You need to be playing a single player game and in AES mode for this to work."
+                screenshot={cheatsheetPng}
+                onClick={() => {
+                  setAddOns((ao) => {
+                    return {
+                      ...ao,
+                      cs: !ao.cs,
+                    };
+                  });
+                }}
+              />
+            </div>
+            {(addOns.cs || addOns.font) && (
+              <p className="my-2 mt-6 p-2 border border-red-500 bg-red-300">
+                <b>FBNeo users!</b> Be aware these add ons will cause FBNeo to
+                warn the ROM CRCs are not what it was expecting. You can disable
+                this warning or just press OK. The game will still play fine.
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-row flex-wrap justify-around py-8 gap-8 px-8">
+            <DownloadButton
+              onClick={handleNeoSD}
+              title="download as .neo"
+              description="for use on NeoSD or MiSTer"
+            />
+            <DownloadButton
+              onClick={handleDownloadFBNeoZip}
+              title="download as FBNeo .zip"
+              description="For use on FinalBurn Neo"
+            />
+            <DownloadButton
+              onClick={handleDownloadZip}
+              title="download as MAME .zip"
+              description="For use on all other emulators"
+            />
+          </div>
+        </>
       )}
       {errorMsg && (
         <div className="bg-red-300 text-black mt-4 p-2">
