@@ -58,6 +58,7 @@ async function applyAddOns(
 
   for (const addOnEntry of addOnEntries) {
     if (addOnEntry[1]) {
+      console.log("applying addon", addOnEntry[0]);
       patchedRomFiles = await applyAddOn(
         patchedRomFiles,
         addOnEntry[0] as AddOn
