@@ -204,7 +204,7 @@ function PatchApplier({ className }: PatchApplierProps) {
               />
               <AddOn
                 title="Cheat Sheet"
-                description="Shows special move input for your current character when the game is paused. You need to be playing a single player game and in AES mode for this to work."
+                description="Shows special move inputs for your current character when the game is paused. You need to be playing a single player game and in AES mode for this to work."
                 screenshot={cheatsheetPng}
                 onClick={() => {
                   setAddOns((ao) => {
