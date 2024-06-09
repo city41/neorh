@@ -26,8 +26,6 @@ function Hr() {
 }
 
 function IndexPage() {
-  const [showAlphaReleaseNotes, setShowAlphaReleaseNotes] = useState(false);
-
   return (
     <div className={clsx(styles.root, "w-full sm:py-16")}>
       <div
@@ -180,6 +178,18 @@ function IndexPage() {
         <div className={styles.headerWithPadding} id="release-notes">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
+        <p className="my-4 p-2 bg-green-300 border-2 border-green-700">
+          <b>
+            Heads up, there will be on more major release then this hack will be
+            completely done.
+          </b>{" "}
+          Bunny-Head has been working to adapt the KOF94 health bar avatars into
+          character select screen avatars. The existing KOF95/98 avatars will be
+          made available as an optional add on if you prefer them. That will be
+          version <b>1.3.0</b>. And as always there may be some follow up bug
+          fix releases. But I don&apos;t anticipate too many bugs because this
+          is mostly a graphics resource change.
+        </p>
         <div className="mb-16">
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.2.4</h3>
