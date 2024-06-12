@@ -1,4 +1,4 @@
-import { RomFileEntry } from "./types";
+import { RomFileEntry, Variant } from "./types";
 
 function patchHasValidMagicNumber(p: number[]): boolean {
   const magicNumber = "PATCH".split("").map((c) => c.charCodeAt(0));
@@ -76,10 +76,13 @@ function applyPatch(
 
 function applyPatches(
   inputFiles: RomFileEntry[],
-  patches: RomFileEntry[]
+  patches: RomFileEntry[],
+  variant?: Variant
 ): RomFileEntry[] {
   return inputFiles.map((inputFile) => {
-    const patchName = `kof94.${inputFile.fileName}.ips`;
+    const patchName = `kof94${variant ? `_${variant}` : ""}.${
+      inputFile.fileName
+    }.ips`;
 
     const patch = patches.find((p) => p.fileName === patchName);
 

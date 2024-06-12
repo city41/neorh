@@ -4,8 +4,7 @@ import { DropZone } from "./DropZone";
 import { unzip } from "./unzip";
 import { zip } from "./zip";
 import { validateFiles } from "./validateFiles";
-import { AddOnMap, RomFileEntry } from "./types";
-import { applyPatches } from "./applyPatches";
+import { AddOnMap, RomFileEntry, Variant } from "./types";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
 import {
   buildNeoFile,
@@ -18,8 +17,7 @@ import charSelectA94Png from "../charSelect_a94.png";
 import cleanFontPng from "./cleanFont.png";
 import cheatsheetPng from "./cheatsheet.png";
 import { AddOn } from "./AddOn";
-import { applyAddOns } from "./applyAddOns";
-import { getFinalRom } from "./getFileRom";
+import { getFinalRom } from "./getFinalRom";
 
 type PatchApplierProps = {
   className?: string;
@@ -73,11 +71,11 @@ function PatchApplier({ className }: PatchApplierProps) {
     RomFileEntry[] | null
   >(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [variant, setVariant] = useState<Variant>("a95");
 
   const [addOns, setAddOns] = useState<AddOnMap>({
     font: false,
     cs: false,
-    a94: false,
   });
 
   useEffect(() => {
@@ -103,16 +101,18 @@ function PatchApplier({ className }: PatchApplierProps) {
       );
     }
 
-    return getFinalRom(unzippedSourceFiles, addOns).then((patchedRomFiles) => {
-      return zip(patchedRomFiles).then((zippedRom) => {
-        const fileBlob = new Blob([zippedRom.buffer], {
-          type: "application/octet-stream",
-        });
+    return getFinalRom(unzippedSourceFiles, variant, addOns).then(
+      (patchedRomFiles) => {
+        return zip(patchedRomFiles).then((zippedRom) => {
+          const fileBlob = new Blob([zippedRom.buffer], {
+            type: "application/octet-stream",
+          });
 
-        sendBlobToAnchorTag(fileBlob, "kof94te.zip");
-      });
-    });
-  }, [unzippedSourceFiles, addOns]);
+          sendBlobToAnchorTag(fileBlob, "kof94te.zip");
+        });
+      }
+    );
+  }, [unzippedSourceFiles, variant, addOns]);
 
   const handleDownloadFBNeoZip = useCallback(() => {
     if (!unzippedSourceFiles) {
@@ -121,49 +121,53 @@ function PatchApplier({ className }: PatchApplierProps) {
       );
     }
 
-    return getFinalRom(unzippedSourceFiles, addOns).then((patchedRomFiles) => {
-      const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
-        (f) => f.patched
-      );
+    return getFinalRom(unzippedSourceFiles, variant, addOns).then(
+      (patchedRomFiles) => {
+        const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
+          (f) => f.patched
+        );
 
-      return zip(finalFiles).then((zippedRom) => {
-        const fileBlob = new Blob([zippedRom.buffer], {
-          type: "application/octet-stream",
+        return zip(finalFiles).then((zippedRom) => {
+          const fileBlob = new Blob([zippedRom.buffer], {
+            type: "application/octet-stream",
+          });
+
+          sendBlobToAnchorTag(fileBlob, "kof94te.zip");
         });
-
-        sendBlobToAnchorTag(fileBlob, "kof94te.zip");
-      });
-    });
-  }, [unzippedSourceFiles, addOns]);
+      }
+    );
+  }, [unzippedSourceFiles, variant, addOns]);
 
   const handleNeoSD = useCallback(() => {
     if (!unzippedSourceFiles) {
       throw new Error("handleNeoSD: unzippedSourceFiles is unexpectedly null");
     }
 
-    return getFinalRom(unzippedSourceFiles, addOns).then((patchedRomFiles) => {
-      const convertOptions: ConvertOptions = {
-        genre: Genre.Fighting,
-        manufacturer: "SNK_city41",
-        name: "The King of Fighters '94:TE Hack",
-        year: 2024,
-        ngh: "55",
-      };
+    return getFinalRom(unzippedSourceFiles, variant, addOns).then(
+      (patchedRomFiles) => {
+        const convertOptions: ConvertOptions = {
+          genre: Genre.Fighting,
+          manufacturer: "SNK_city41",
+          name: "The King of Fighters '94:TE Hack",
+          year: 2024,
+          ngh: "55",
+        };
 
-      const filesInMemory: FilesInMemory =
-        patchedRomFiles.reduce<FilesInMemory>((accum, f) => {
-          accum[f.fileName] = f.data;
-          return accum;
-        }, {});
+        const filesInMemory: FilesInMemory =
+          patchedRomFiles.reduce<FilesInMemory>((accum, f) => {
+            accum[f.fileName] = f.data;
+            return accum;
+          }, {});
 
-      const neoFile = buildNeoFile(convertOptions, filesInMemory);
-      const neoFileBlob = new Blob([neoFile.buffer], {
-        type: "application/octet-stream",
-      });
+        const neoFile = buildNeoFile(convertOptions, filesInMemory);
+        const neoFileBlob = new Blob([neoFile.buffer], {
+          type: "application/octet-stream",
+        });
 
-      sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
-    });
-  }, [unzippedSourceFiles, addOns]);
+        sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
+      }
+    );
+  }, [unzippedSourceFiles, variant, addOns]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>
@@ -189,11 +193,12 @@ function PatchApplier({ className }: PatchApplierProps) {
                 description="The character select avatars, created by Bunny-Head, are based on the health bar avatars in KOF94, instead of being taken from KOF95 and KOF98."
                 screenshot={charSelectA94Png}
                 onClick={() => {
-                  setAddOns((ao) => {
-                    return {
-                      ...ao,
-                      a94: !ao.a94,
-                    };
+                  setVariant((v) => {
+                    if (v === "a94") {
+                      return "a95";
+                    } else {
+                      return "a94";
+                    }
                   });
                 }}
               />
