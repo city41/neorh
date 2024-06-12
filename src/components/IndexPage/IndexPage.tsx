@@ -205,7 +205,10 @@ function IndexPage() {
             </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
-          <p>No known issues.</p>
+          <p>
+            The new endings are messed up in Japanese. Not to worry, it was a
+            simple oversight and is already fixed for the next release.
+          </p>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.2.4</h3>
           <p>Fixes an obscure but pretty annoying bug.</p>
