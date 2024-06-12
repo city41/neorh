@@ -4,6 +4,7 @@ import Image from "next/image";
 import charSelectPng from "./charSelect.png";
 import cpuCustomTeamsPng from "./cpuCustomTeams.png";
 import charSelectOldPng from "./charSelectOld.png";
+import charSelectA94Png from "./charSelect_a94.png";
 import orderSelectPng from "./orderSelect.png";
 import gameplayPng from "./gameplay.png";
 import fightAgainstRugalPng from "./fightAgainstRugal.png";
@@ -111,6 +112,15 @@ function IndexPage() {
             <p>The CPU can choose custom teams too.</p>
             <Image
               className="shadow-xl"
+              src={charSelectA94Png.src}
+              width={charSelectA94Png.width}
+              height={charSelectA94Png.height}
+              alt="Optional KOF94 style avatars."
+              priority
+            />
+            <p>Optional KOF94 style avatars.</p>
+            <Image
+              className="shadow-xl"
               src={orderSelectPng.src}
               width={orderSelectPng.width}
               height={orderSelectPng.height}
@@ -178,19 +188,24 @@ function IndexPage() {
         <div className={styles.headerWithPadding} id="release-notes">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
-        <p className="my-4 p-2 bg-green-300 border-2 border-green-700">
-          <b>
-            Heads up, there will be on more major release then this hack will be
-            completely done.
-          </b>{" "}
-          Bunny-Head has been working to adapt the KOF94 health bar avatars into
-          character select screen avatars. The existing KOF95/98 avatars will be
-          made available as an optional add on if you prefer them. That will be
-          version <b>1.3.0</b>. And as always there may be some follow up bug
-          fix releases. But I don&apos;t anticipate too many bugs because this
-          is mostly a graphics resource change.
-        </p>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.3.0b0</h3>
+          <p>
+            This version brings in KOF94 style avatars, made by Bunny-Head. To
+            get them, choose them in the optional add-ons section when building
+            the ROM. Thanks to Bunny-Head for the great work!
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>KOF94 style avatars add-on.</li>
+            <li>
+              <b>Bug fix:</b> When choosing a character, the choice confirmation
+              sound effect would not play. That is now fixed.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>No known issues.</p>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.2.4</h3>
           <p>Fixes an obscure but pretty annoying bug.</p>
@@ -613,7 +628,7 @@ function IndexPage() {
         </div>
         <p>
           These people helped make the hack possible: SieKensou, PsychoRFG, Ge
-          Os, Jay Bee, leonardofmatheus, Alice愛麗絲
+          Os, Jay Bee, leonardofmatheus, Alice愛麗絲, Bunny-Head
         </p>
         <div className="mt-16 mb-4 flex flex-col items-center text-xs">
           <div>

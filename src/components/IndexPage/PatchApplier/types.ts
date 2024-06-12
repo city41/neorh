@@ -4,4 +4,4 @@ export type RomFileEntry = {
   patched?: boolean;
 };
 
-export type AddOnMap = Record<"font" | "cs", boolean>;
+export type AddOnMap = Record<"font" | "cs" | "a94", boolean>;

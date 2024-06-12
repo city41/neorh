@@ -15,6 +15,7 @@ import {
 } from "neosdconv/lib/buildNeoFile";
 import { Genre } from "neosdconv/lib/genres";
 import { tagPatchedFiles } from "./tagPatchedFiles";
+import charSelectA94Png from "../charSelect_a94.png";
 import cleanFontPng from "./cleanFont.png";
 import cheatsheetPng from "./cheatsheet.png";
 import { AddOn } from "./AddOn";
@@ -73,7 +74,11 @@ function PatchApplier({ className }: PatchApplierProps) {
     null
   );
 
-  const [addOns, setAddOns] = useState<AddOnMap>({ font: false, cs: false });
+  const [addOns, setAddOns] = useState<AddOnMap>({
+    font: false,
+    cs: false,
+    a94: false,
+  });
 
   useEffect(() => {
     if (zipData !== null) {
@@ -189,6 +194,19 @@ function PatchApplier({ className }: PatchApplierProps) {
           <div className="my-4">
             <h3 className="font-bold text-xl">Optional add ons</h3>
             <div className="flex flex-col gap-y-2 my-2">
+              <AddOn
+                title="KOF94 style avatars"
+                description="The character select avatars, created by Bunny-Head, are based on the health bar avatars in KOF94, instead of being taken from KOF95 and KOF98."
+                screenshot={charSelectA94Png}
+                onClick={() => {
+                  setAddOns((ao) => {
+                    return {
+                      ...ao,
+                      a94: !ao.a94,
+                    };
+                  });
+                }}
+              />
               <AddOn
                 title="Clean Font"
                 description="Cleans up the main font a bit for English and Spanish. It adds a pixel of spacing. The screenshot shows before and after."
