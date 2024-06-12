@@ -1,10 +1,8 @@
 import { RomFileEntry } from "./types";
 import { unzip } from "./unzip";
 
-const PATCH_URL = "/kof94teIpsPatches.zip";
-
-async function getPatch(): Promise<RomFileEntry[]> {
-  const response = await fetch(PATCH_URL);
+async function getPatch(patchUrl: string): Promise<RomFileEntry[]> {
+  const response = await fetch(patchUrl);
   const arrayBuffer = await response.arrayBuffer();
   const data = new Uint8Array(arrayBuffer);
 

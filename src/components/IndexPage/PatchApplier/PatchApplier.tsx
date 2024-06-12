@@ -6,7 +6,6 @@ import { zip } from "./zip";
 import { validateFiles } from "./validateFiles";
 import { AddOnMap, RomFileEntry } from "./types";
 import { applyPatches } from "./applyPatches";
-import { getPatch } from "./getPatch";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
 import {
   buildNeoFile,
