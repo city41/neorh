@@ -20,6 +20,7 @@ import cleanFontPng from "./cleanFont.png";
 import cheatsheetPng from "./cheatsheet.png";
 import { AddOn } from "./AddOn";
 import { applyAddOns } from "./applyAddOns";
+import { getFinalRom } from "./getFileRom";
 
 type PatchApplierProps = {
   className?: string;
@@ -69,10 +70,10 @@ function DownloadButton({
 
 function PatchApplier({ className }: PatchApplierProps) {
   const [zipData, setZipData] = useState<Uint8Array | null>(null);
+  const [unzippedSourceFiles, setUnzippedSourceFiles] = useState<
+    RomFileEntry[] | null
+  >(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [patchedRomFiles, setPatchedRomFiles] = useState<RomFileEntry[] | null>(
-    null
-  );
 
   const [addOns, setAddOns] = useState<AddOnMap>({
     font: false,
@@ -85,95 +86,85 @@ function PatchApplier({ className }: PatchApplierProps) {
       unzip(zipData)
         .then((unzippedFiles) => {
           return validateFiles(unzippedFiles).then(() => {
-            return getPatch().then((patchFiles) => {
-              const patchedRomFiles = applyPatches(unzippedFiles, patchFiles);
-              setPatchedRomFiles(patchedRomFiles);
-              setErrorMsg(null);
-            });
+            setUnzippedSourceFiles(unzippedFiles);
+            setErrorMsg(null);
           });
         })
         .catch((e: Error) => {
           setErrorMsg(e.message);
-          setPatchedRomFiles(null);
+          setUnzippedSourceFiles(null);
         });
     }
-  }, [zipData, setErrorMsg, setPatchedRomFiles]);
+  }, [zipData, setErrorMsg, setUnzippedSourceFiles]);
 
   const handleDownloadZip = useCallback(() => {
-    if (!patchedRomFiles) {
+    if (!unzippedSourceFiles) {
       throw new Error(
-        "handleDownloadZip: patchedRomFiles is unexpectedly null"
+        "handleDownloadZip: unzippedSourceFiles is unexpectedly null"
       );
     }
 
-    return applyAddOns(patchedRomFiles, addOns).then(
-      (patchedRomFilesWithAddOns) => {
-        return zip(patchedRomFilesWithAddOns).then((zippedRom) => {
-          const fileBlob = new Blob([zippedRom.buffer], {
-            type: "application/octet-stream",
-          });
-
-          sendBlobToAnchorTag(fileBlob, "kof94te.zip");
-        });
-      }
-    );
-  }, [patchedRomFiles, addOns]);
-
-  const handleDownloadFBNeoZip = useCallback(() => {
-    if (!patchedRomFiles) {
-      throw new Error(
-        "handleDownloadFBNeoZip: patchedRomFiles is unexpectedly null..."
-      );
-    }
-
-    return applyAddOns(patchedRomFiles, addOns).then(
-      (patchedRomFilesWithAddOns) => {
-        const finalFiles = tagPatchedFiles(
-          patchedRomFilesWithAddOns,
-          "te"
-        ).filter((f) => f.patched);
-
-        return zip(finalFiles).then((zippedRom) => {
-          const fileBlob = new Blob([zippedRom.buffer], {
-            type: "application/octet-stream",
-          });
-
-          sendBlobToAnchorTag(fileBlob, "kof94te.zip");
-        });
-      }
-    );
-  }, [patchedRomFiles, addOns]);
-
-  const handleNeoSD = useCallback(() => {
-    if (!patchedRomFiles) {
-      throw new Error("handleNeoSD: patchedRomFiles is unexpectedly null");
-    }
-
-    return applyAddOns(patchedRomFiles, addOns).then(
-      (patchedRomFilesWithAddons) => {
-        const convertOptions: ConvertOptions = {
-          genre: Genre.Fighting,
-          manufacturer: "SNK_city41",
-          name: "The King of Fighters '94:TE Hack",
-          year: 2024,
-          ngh: "55",
-        };
-
-        const filesInMemory: FilesInMemory =
-          patchedRomFilesWithAddons.reduce<FilesInMemory>((accum, f) => {
-            accum[f.fileName] = f.data;
-            return accum;
-          }, {});
-
-        const neoFile = buildNeoFile(convertOptions, filesInMemory);
-        const neoFileBlob = new Blob([neoFile.buffer], {
+    return getFinalRom(unzippedSourceFiles, addOns).then((patchedRomFiles) => {
+      return zip(patchedRomFiles).then((zippedRom) => {
+        const fileBlob = new Blob([zippedRom.buffer], {
           type: "application/octet-stream",
         });
 
-        sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
-      }
-    );
-  }, [patchedRomFiles, addOns]);
+        sendBlobToAnchorTag(fileBlob, "kof94te.zip");
+      });
+    });
+  }, [unzippedSourceFiles, addOns]);
+
+  const handleDownloadFBNeoZip = useCallback(() => {
+    if (!unzippedSourceFiles) {
+      throw new Error(
+        "handleDownloadFBNeoZip: unzippedSourceFiles is unexpectedly null..."
+      );
+    }
+
+    return getFinalRom(unzippedSourceFiles, addOns).then((patchedRomFiles) => {
+      const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
+        (f) => f.patched
+      );
+
+      return zip(finalFiles).then((zippedRom) => {
+        const fileBlob = new Blob([zippedRom.buffer], {
+          type: "application/octet-stream",
+        });
+
+        sendBlobToAnchorTag(fileBlob, "kof94te.zip");
+      });
+    });
+  }, [unzippedSourceFiles, addOns]);
+
+  const handleNeoSD = useCallback(() => {
+    if (!unzippedSourceFiles) {
+      throw new Error("handleNeoSD: unzippedSourceFiles is unexpectedly null");
+    }
+
+    return getFinalRom(unzippedSourceFiles, addOns).then((patchedRomFiles) => {
+      const convertOptions: ConvertOptions = {
+        genre: Genre.Fighting,
+        manufacturer: "SNK_city41",
+        name: "The King of Fighters '94:TE Hack",
+        year: 2024,
+        ngh: "55",
+      };
+
+      const filesInMemory: FilesInMemory =
+        patchedRomFiles.reduce<FilesInMemory>((accum, f) => {
+          accum[f.fileName] = f.data;
+          return accum;
+        }, {});
+
+      const neoFile = buildNeoFile(convertOptions, filesInMemory);
+      const neoFileBlob = new Blob([neoFile.buffer], {
+        type: "application/octet-stream",
+      });
+
+      sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
+    });
+  }, [unzippedSourceFiles, addOns]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>
@@ -189,7 +180,7 @@ function PatchApplier({ className }: PatchApplierProps) {
           );
         }}
       </DropZone>
-      {patchedRomFiles && (
+      {unzippedSourceFiles && (
         <>
           <div className="my-4">
             <h3 className="font-bold text-xl">Optional add ons</h3>
