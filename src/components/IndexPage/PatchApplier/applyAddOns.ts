@@ -15,6 +15,9 @@ const targetRomMap: Record<AddOn, TargetRom> = {
 };
 async function getIps(ipsUrl: string, addOn: AddOn): Promise<RomFileEntry> {
   const response = await fetch(ipsUrl);
+  if (response.status >= 400) {
+    throw Error(`Failed to download ${ipsUrl}: ${response.status}`);
+  }
   const arrayBuffer = await response.arrayBuffer();
   const data = new Uint8Array(arrayBuffer);
 
