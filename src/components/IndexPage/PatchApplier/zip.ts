@@ -10,7 +10,9 @@ async function zip(files: RomFileEntry[]): Promise<Uint8Array> {
     try {
       await zipWriter.add(file.fileName, new Uint8ArrayReader(file.data));
     } catch (e) {
-      console.error("failed to add a file", e.message, e.stack);
+      const message = e instanceof Error ? e.message : String(e);
+      const stack = e instanceof Error ? e.stack : "";
+      console.error("failed to add a file", message, stack);
     }
   }
 
