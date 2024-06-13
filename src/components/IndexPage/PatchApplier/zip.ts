@@ -2,6 +2,8 @@ import { Uint8ArrayReader, Uint8ArrayWriter, ZipWriter } from "@zip.js/zip.js";
 import { RomFileEntry } from "./types";
 
 async function zip(files: RomFileEntry[]): Promise<Uint8Array> {
+  console.log("zip, provided files", files.map((f) => f.fileName).join(","));
+
   const zipFileWriter = new Uint8ArrayWriter();
   const zipWriter = new ZipWriter(zipFileWriter);
 
