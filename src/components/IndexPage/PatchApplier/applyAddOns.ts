@@ -1,7 +1,7 @@
 import { applyPatches } from "./applyPatches";
 import { AddOnMap, RomFileEntry } from "./types";
 
-type TargetRom = "c1" | "p1";
+type TargetRom = "055-c1.c1" | "055-p1.p1";
 type AddOn = "font" | "cs";
 
 const ipsUrlMap: Record<AddOn, string> = {
@@ -10,8 +10,8 @@ const ipsUrlMap: Record<AddOn, string> = {
 };
 
 const targetRomMap: Record<AddOn, TargetRom> = {
-  font: "c1",
-  cs: "p1",
+  font: "055-c1.c1",
+  cs: "055-p1.p1",
 };
 async function getIps(ipsUrl: string, addOn: AddOn): Promise<RomFileEntry> {
   const response = await fetch(ipsUrl);

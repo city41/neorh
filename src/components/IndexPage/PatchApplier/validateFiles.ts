@@ -76,24 +76,28 @@ const expectedFiles = [
 
 async function validateFiles(files: RomFileEntry[]) {
   for (const expectedFile of expectedFiles) {
-    const matchingEntry = files.find(
-      (f) => f.fileName === expectedFile.fileName
-    );
+    let foundFile = null;
+    for (const candidateFile of files) {
+      const candidateSha = await calculateHash(candidateFile.data);
 
-    if (!matchingEntry) {
+      if (candidateSha === expectedFile.sha) {
+        foundFile = candidateFile;
+        break;
+      }
+    }
+
+    if (!foundFile) {
       throw new Error(`File not found: ${expectedFile.fileName}`);
     }
 
-    if (matchingEntry.data.length !== expectedFile.size) {
-      throw new Error(
-        `File is of unexpected size. Expected ${expectedFile.size}, but got ${matchingEntry.data.length}`
+    if (foundFile.fileName !== expectedFile.fileName) {
+      console.log(
+        "File in the provided zip has matching sha but different name. Name in zip",
+        foundFile.fileName,
+        "expected name",
+        expectedFile.fileName
       );
-    }
-
-    const matchingSha = await calculateHash(matchingEntry.data);
-
-    if (matchingSha !== expectedFile.sha) {
-      throw new Error(`File sha does not match for ${expectedFile.fileName}`);
+      foundFile.fileName = expectedFile.fileName;
     }
   }
 }
