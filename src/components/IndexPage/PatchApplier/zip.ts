@@ -13,6 +13,9 @@ async function zip(files: RomFileEntry[]): Promise<Uint8Array> {
       const message = e instanceof Error ? e.message : String(e);
       const stack = e instanceof Error ? e.stack : "";
       console.error("failed to add a file", message, stack);
+      throw new Error(
+        `Failed to add ${file.fileName} to the zip: ${message} ${stack}`
+      );
     }
   }
 
