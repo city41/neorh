@@ -6,7 +6,12 @@ async function zip(files: RomFileEntry[]): Promise<Uint8Array> {
   const zipWriter = new ZipWriter(zipFileWriter);
 
   for (const file of files) {
-    await zipWriter.add(file.fileName, new Uint8ArrayReader(file.data));
+    console.log("about to add to the zip", file.fileName);
+    try {
+      await zipWriter.add(file.fileName, new Uint8ArrayReader(file.data));
+    } catch (e) {
+      console.error("failed to add a file", e.message, e.stack);
+    }
   }
 
   await zipWriter.close();
