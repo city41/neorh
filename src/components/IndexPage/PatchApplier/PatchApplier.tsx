@@ -100,9 +100,10 @@ function PatchApplier({ className }: PatchApplierProps) {
         "handleDownloadZip: unzippedSourceFiles is unexpectedly null"
       );
     }
+    setErrorMsg(null);
 
-    return getFinalRom(unzippedSourceFiles, variant, addOns).then(
-      (patchedRomFiles) => {
+    return getFinalRom(unzippedSourceFiles, variant, addOns)
+      .then((patchedRomFiles) => {
         return zip(patchedRomFiles).then((zippedRom) => {
           const fileBlob = new Blob([zippedRom.buffer], {
             type: "application/octet-stream",
@@ -110,8 +111,11 @@ function PatchApplier({ className }: PatchApplierProps) {
 
           sendBlobToAnchorTag(fileBlob, "kof94te.zip");
         });
-      }
-    );
+      })
+      .catch((e) => {
+        setErrorMsg(`unexpected error: ${e.message}`);
+        console.error(e);
+      });
   }, [unzippedSourceFiles, variant, addOns]);
 
   const handleDownloadFBNeoZip = useCallback(() => {
@@ -120,9 +124,10 @@ function PatchApplier({ className }: PatchApplierProps) {
         "handleDownloadFBNeoZip: unzippedSourceFiles is unexpectedly null..."
       );
     }
+    setErrorMsg(null);
 
-    return getFinalRom(unzippedSourceFiles, variant, addOns).then(
-      (patchedRomFiles) => {
+    return getFinalRom(unzippedSourceFiles, variant, addOns)
+      .then((patchedRomFiles) => {
         const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
           (f) => f.patched
         );
@@ -134,8 +139,11 @@ function PatchApplier({ className }: PatchApplierProps) {
 
           sendBlobToAnchorTag(fileBlob, "kof94te.zip");
         });
-      }
-    );
+      })
+      .catch((e) => {
+        setErrorMsg(`unexpected error: ${e.message}`);
+        console.error(e);
+      });
   }, [unzippedSourceFiles, variant, addOns]);
 
   const handleNeoSD = useCallback(() => {
@@ -143,8 +151,10 @@ function PatchApplier({ className }: PatchApplierProps) {
       throw new Error("handleNeoSD: unzippedSourceFiles is unexpectedly null");
     }
 
-    return getFinalRom(unzippedSourceFiles, variant, addOns).then(
-      (patchedRomFiles) => {
+    setErrorMsg(null);
+
+    return getFinalRom(unzippedSourceFiles, variant, addOns)
+      .then((patchedRomFiles) => {
         const convertOptions: ConvertOptions = {
           genre: Genre.Fighting,
           manufacturer: "SNK_city41",
@@ -165,8 +175,11 @@ function PatchApplier({ className }: PatchApplierProps) {
         });
 
         sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
-      }
-    );
+      })
+      .catch((e) => {
+        setErrorMsg(`unexpected error: ${e.message}`);
+        console.error(e);
+      });
   }, [unzippedSourceFiles, variant, addOns]);
 
   return (
@@ -229,7 +242,7 @@ function PatchApplier({ className }: PatchApplierProps) {
                 }}
               />
             </div>
-            {(addOns.cs || addOns.font) && (
+            {(addOns.cs || addOns.font || variant === "a94") && (
               <p className="my-2 mt-6 p-2 border border-red-500 bg-red-300">
                 <b>FBNeo users!</b> Be aware these add ons will cause FBNeo to
                 warn the ROM CRCs are not what it was expecting. You can disable
