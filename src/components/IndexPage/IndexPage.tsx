@@ -184,11 +184,11 @@ function IndexPage() {
             completely done.
           </b>{" "}
           Bunny-Head has been working to adapt the KOF94 health bar avatars into
-          character select screen avatars. The existing KOF95/98 avatars will be
-          made available as an optional add on if you prefer them. That will be
-          version <b>1.3.0</b>. And as always there may be some follow up bug
-          fix releases. But I don&apos;t anticipate too many bugs because this
-          is mostly a graphics resource change.
+          character select screen avatars. The existing KOF95/98 avatars will
+          still be available, you can choose which ones you want when building
+          the rom. That will be version <b>1.3.0</b>. And as always there may be
+          some follow up bug fix releases. But I don&apos;t anticipate too many
+          bugs because this is mostly a graphics resource change.
         </p>
         <div className="mb-16">
           <Hr />
