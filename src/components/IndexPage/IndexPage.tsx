@@ -452,6 +452,10 @@ function IndexPage() {
         <div className={styles.headerWithPadding} id="tips">
           <h2 className={styles.pageHeader}>Tips</h2>
           <ul className="list-disc ml-4 mb-8 mt-2">
+            <li>The hack does not work correctly in some emulators. 
+              The supported environments are: MAME, Final Burn Neo, the MiSTer, and the original Neo Geo. 
+              The hack will work perfectly when using one of these.
+            </li>
             <li>
               Hold p1 start and p2 start together while on the character select
               screen to see the version. Please include it when reporting a bug.
