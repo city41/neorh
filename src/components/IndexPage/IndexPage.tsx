@@ -4,6 +4,7 @@ import Image from "next/image";
 import charSelectPng from "./charSelect.png";
 import cpuCustomTeamsPng from "./cpuCustomTeams.png";
 import charSelectOldPng from "./charSelectOld.png";
+import charSelectA94Png from "./charSelect_a94.png";
 import orderSelectPng from "./orderSelect.png";
 import gameplayPng from "./gameplay.png";
 import fightAgainstRugalPng from "./fightAgainstRugal.png";
@@ -12,7 +13,7 @@ import continueScreenPng from "./continueScreen.png";
 import gameOverPng from "./gameOver.png";
 import cutscene2Png from "./cutscene2.png";
 import usaEndingPng from "./usaEnding.png";
-import versionStringPng from "./versionString.png";
+import versionStringPng from "./titleScreenWithVersion.png";
 
 import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
 import rugalFocusedPng from "./rugalFocused.png";
@@ -111,6 +112,15 @@ function IndexPage() {
             <p>The CPU can choose custom teams too.</p>
             <Image
               className="shadow-xl"
+              src={charSelectA94Png.src}
+              width={charSelectA94Png.width}
+              height={charSelectA94Png.height}
+              alt="Optional KOF94 style avatars."
+              priority
+            />
+            <p>Optional KOF94 style avatars.</p>
+            <Image
+              className="shadow-xl"
               src={orderSelectPng.src}
               width={orderSelectPng.width}
               height={orderSelectPng.height}
@@ -178,19 +188,36 @@ function IndexPage() {
         <div className={styles.headerWithPadding} id="release-notes">
           <h2 className={styles.pageHeader}>Release Notes</h2>
         </div>
-        <p className="my-4 p-2 bg-green-300 border-2 border-green-700">
-          <b>
-            Heads up, there will be on more major release then this hack will be
-            completely done.
-          </b>{" "}
-          Bunny-Head has been working to adapt the KOF94 health bar avatars into
-          character select screen avatars. The existing KOF95/98 avatars will
-          still be available, you can choose which ones you want when building
-          the rom. That will be version <b>1.3.0</b>. And as always there may be
-          some follow up bug fix releases. But I don&apos;t anticipate too many
-          bugs because this is mostly a graphics resource change.
-        </p>
         <div className="mb-16">
+          <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.3.0</h3>
+          <p>
+            This version brings in KOF94 style avatars, made by Bunny-Head. To
+            get them, choose them in the optional add-ons section when building
+            the ROM. Thanks to Bunny-Head for the great work!
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>KOF94 style avatars add-on.</li>
+            <li>The hack&apos;s version is now on the title screen.</li>
+            <li>
+              <b>Bug fix:</b> When choosing a character, the choice confirmation
+              sound effect would not play. That is now fixed.
+            </li>
+            <li>
+              <b>Bug fix:</b> Fixed some graphical issues in Raine and Kawaks.
+              Thanks to zelurker for the fix.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>
+            Minor graphical glitching can happen on real hardware and the
+            MiSTer. This has always been true since day one of the hack. More
+            info{" "}
+            <a href="https://github.com/city41/kof94te/issues/134/">
+              at GitHub.
+            </a>{" "}
+          </p>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.2.4</h3>
           <p>Fixes an obscure but pretty annoying bug.</p>
@@ -453,9 +480,8 @@ function IndexPage() {
           <h2 className={styles.pageHeader}>Tips</h2>
           <ul className="list-disc ml-4 mb-8 mt-2">
             <li>
-              Hold p1 start and p2 start together while on the character select
-              screen to see the version. Please include it when reporting a bug.
-              Bugs can be reported at{" "}
+              The version of the hack is on the title screen. Please include it
+              when reporting a bug. Bugs can be reported at{" "}
               <a href="https://github.com/city41/kof94te/issues">Github</a> or{" "}
               <a href="https://discord.gg/Uuaka5mq">Discord</a>.
               <Image
@@ -613,7 +639,7 @@ function IndexPage() {
         </div>
         <p>
           These people helped make the hack possible: SieKensou, PsychoRFG, Ge
-          Os, Jay Bee, leonardofmatheus, Alice愛麗絲
+          Os, Jay Bee, leonardofmatheus, Alice愛麗絲, Bunny-Head
         </p>
         <div className="mt-16 mb-4 flex flex-col items-center text-xs">
           <div>

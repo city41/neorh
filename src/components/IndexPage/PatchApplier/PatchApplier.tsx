@@ -4,9 +4,7 @@ import { DropZone } from "./DropZone";
 import { unzip } from "./unzip";
 import { zip } from "./zip";
 import { validateFiles } from "./validateFiles";
-import { AddOnMap, RomFileEntry } from "./types";
-import { applyPatches } from "./applyPatches";
-import { getPatch } from "./getPatch";
+import { AddOnMap, RomFileEntry, Variant } from "./types";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
 import {
   buildNeoFile,
@@ -15,10 +13,11 @@ import {
 } from "neosdconv/lib/buildNeoFile";
 import { Genre } from "neosdconv/lib/genres";
 import { tagPatchedFiles } from "./tagPatchedFiles";
+import charSelectA94Png from "../charSelect_a94.png";
 import cleanFontPng from "./cleanFont.png";
 import cheatsheetPng from "./cheatsheet.png";
 import { AddOn } from "./AddOn";
-import { applyAddOns } from "./applyAddOns";
+import { getFinalRom } from "./getFinalRom";
 
 type PatchApplierProps = {
   className?: string;
@@ -68,65 +67,70 @@ function DownloadButton({
 
 function PatchApplier({ className }: PatchApplierProps) {
   const [zipData, setZipData] = useState<Uint8Array | null>(null);
+  const [unzippedSourceFiles, setUnzippedSourceFiles] = useState<
+    RomFileEntry[] | null
+  >(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [patchedRomFiles, setPatchedRomFiles] = useState<RomFileEntry[] | null>(
-    null
-  );
+  const [variant, setVariant] = useState<Variant>("a95");
 
-  const [addOns, setAddOns] = useState<AddOnMap>({ font: false, cs: false });
+  const [addOns, setAddOns] = useState<AddOnMap>({
+    font: false,
+    cs: false,
+  });
 
   useEffect(() => {
     if (zipData !== null) {
       unzip(zipData)
         .then((unzippedFiles) => {
           return validateFiles(unzippedFiles).then(() => {
-            return getPatch().then((patchFiles) => {
-              const patchedRomFiles = applyPatches(unzippedFiles, patchFiles);
-              setPatchedRomFiles(patchedRomFiles);
-              setErrorMsg(null);
-            });
+            setUnzippedSourceFiles(unzippedFiles);
+            setErrorMsg(null);
           });
         })
         .catch((e: Error) => {
           setErrorMsg(e.message);
-          setPatchedRomFiles(null);
+          setUnzippedSourceFiles(null);
         });
     }
-  }, [zipData, setErrorMsg, setPatchedRomFiles]);
+  }, [zipData, setErrorMsg, setUnzippedSourceFiles]);
 
   const handleDownloadZip = useCallback(() => {
-    if (!patchedRomFiles) {
+    if (!unzippedSourceFiles) {
       throw new Error(
-        "handleDownloadZip: patchedRomFiles is unexpectedly null"
+        "handleDownloadZip: unzippedSourceFiles is unexpectedly null"
       );
     }
+    setErrorMsg(null);
 
-    return applyAddOns(patchedRomFiles, addOns).then(
-      (patchedRomFilesWithAddOns) => {
-        return zip(patchedRomFilesWithAddOns).then((zippedRom) => {
+    return getFinalRom(unzippedSourceFiles, variant, addOns)
+      .then((patchedRomFiles) => {
+        return zip(patchedRomFiles).then((zippedRom) => {
           const fileBlob = new Blob([zippedRom.buffer], {
             type: "application/octet-stream",
           });
 
           sendBlobToAnchorTag(fileBlob, "kof94te.zip");
         });
-      }
-    );
-  }, [patchedRomFiles, addOns]);
+      })
+      .catch((e) => {
+        setErrorMsg(`unexpected error: ${e.message}`);
+        console.error(e);
+      });
+  }, [unzippedSourceFiles, variant, addOns]);
 
   const handleDownloadFBNeoZip = useCallback(() => {
-    if (!patchedRomFiles) {
+    if (!unzippedSourceFiles) {
       throw new Error(
-        "handleDownloadFBNeoZip: patchedRomFiles is unexpectedly null..."
+        "handleDownloadFBNeoZip: unzippedSourceFiles is unexpectedly null..."
       );
     }
+    setErrorMsg(null);
 
-    return applyAddOns(patchedRomFiles, addOns).then(
-      (patchedRomFilesWithAddOns) => {
-        const finalFiles = tagPatchedFiles(
-          patchedRomFilesWithAddOns,
-          "te"
-        ).filter((f) => f.patched);
+    return getFinalRom(unzippedSourceFiles, variant, addOns)
+      .then((patchedRomFiles) => {
+        const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
+          (f) => f.patched
+        );
 
         return zip(finalFiles).then((zippedRom) => {
           const fileBlob = new Blob([zippedRom.buffer], {
@@ -135,17 +139,22 @@ function PatchApplier({ className }: PatchApplierProps) {
 
           sendBlobToAnchorTag(fileBlob, "kof94te.zip");
         });
-      }
-    );
-  }, [patchedRomFiles, addOns]);
+      })
+      .catch((e) => {
+        setErrorMsg(`unexpected error: ${e.message}`);
+        console.error(e);
+      });
+  }, [unzippedSourceFiles, variant, addOns]);
 
   const handleNeoSD = useCallback(() => {
-    if (!patchedRomFiles) {
-      throw new Error("handleNeoSD: patchedRomFiles is unexpectedly null");
+    if (!unzippedSourceFiles) {
+      throw new Error("handleNeoSD: unzippedSourceFiles is unexpectedly null");
     }
 
-    return applyAddOns(patchedRomFiles, addOns).then(
-      (patchedRomFilesWithAddons) => {
+    setErrorMsg(null);
+
+    return getFinalRom(unzippedSourceFiles, variant, addOns)
+      .then((patchedRomFiles) => {
         const convertOptions: ConvertOptions = {
           genre: Genre.Fighting,
           manufacturer: "SNK_city41",
@@ -155,7 +164,7 @@ function PatchApplier({ className }: PatchApplierProps) {
         };
 
         const filesInMemory: FilesInMemory =
-          patchedRomFilesWithAddons.reduce<FilesInMemory>((accum, f) => {
+          patchedRomFiles.reduce<FilesInMemory>((accum, f) => {
             accum[f.fileName] = f.data;
             return accum;
           }, {});
@@ -166,9 +175,12 @@ function PatchApplier({ className }: PatchApplierProps) {
         });
 
         sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
-      }
-    );
-  }, [patchedRomFiles, addOns]);
+      })
+      .catch((e) => {
+        setErrorMsg(`unexpected error: ${e.message}`);
+        console.error(e);
+      });
+  }, [unzippedSourceFiles, variant, addOns]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>
@@ -184,11 +196,25 @@ function PatchApplier({ className }: PatchApplierProps) {
           );
         }}
       </DropZone>
-      {patchedRomFiles && (
+      {unzippedSourceFiles && (
         <>
           <div className="my-4">
             <h3 className="font-bold text-xl">Optional add ons</h3>
             <div className="flex flex-col gap-y-2 my-2">
+              <AddOn
+                title="KOF94 style avatars"
+                description="The character select avatars, created by Bunny-Head, are based on the health bar avatars in KOF94, instead of being taken from KOF95 and KOF98."
+                screenshot={charSelectA94Png}
+                onClick={() => {
+                  setVariant((v) => {
+                    if (v === "a94") {
+                      return "a95";
+                    } else {
+                      return "a94";
+                    }
+                  });
+                }}
+              />
               <AddOn
                 title="Clean Font"
                 description="Cleans up the main font a bit for English and Spanish. It adds a pixel of spacing. The screenshot shows before and after."
@@ -216,7 +242,7 @@ function PatchApplier({ className }: PatchApplierProps) {
                 }}
               />
             </div>
-            {(addOns.cs || addOns.font) && (
+            {(addOns.cs || addOns.font || variant === "a94") && (
               <p className="my-2 mt-6 p-2 border border-red-500 bg-red-300">
                 <b>FBNeo users!</b> Be aware these add ons will cause FBNeo to
                 warn the ROM CRCs are not what it was expecting. You can disable
