@@ -13,7 +13,7 @@ import continueScreenPng from "./continueScreen.png";
 import gameOverPng from "./gameOver.png";
 import cutscene2Png from "./cutscene2.png";
 import usaEndingPng from "./usaEnding.png";
-import versionStringPng from "./versionString.png";
+import versionStringPng from "./titleScreenWithVersion.png";
 
 import rugalTurnongOnDebugDipPng from "./rugalTurningOnDebugDip.png";
 import rugalFocusedPng from "./rugalFocused.png";
@@ -190,7 +190,7 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.3.0b0</h3>
+          <h3 className="heading text-lg font-bold pb-4">Version 1.3.0</h3>
           <p>
             This version brings in KOF94 style avatars, made by Bunny-Head. To
             get them, choose them in the optional add-ons section when building
@@ -199,15 +199,24 @@ function IndexPage() {
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
             <li>KOF94 style avatars add-on.</li>
+            <li>The hack&apos;s version is now on the title screen.</li>
             <li>
               <b>Bug fix:</b> When choosing a character, the choice confirmation
               sound effect would not play. That is now fixed.
             </li>
+            <li>
+              <b>Bug fix:</b> Fixed some graphical issues in Raine and Kawaks.
+              Thanks to zelurker for the fix.
+            </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <p>
-            The new endings are messed up in Japanese. Not to worry, it was a
-            simple oversight and is already fixed for the next release.
+            Minor graphical glitching can happen on real hardware and the
+            MiSTer. This has always been true since day one of the hack. More
+            info{" "}
+            <a href="https://github.com/city41/kof94te/issues/134/">
+              at GitHub.
+            </a>{" "}
           </p>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.2.4</h3>
@@ -470,14 +479,9 @@ function IndexPage() {
         <div className={styles.headerWithPadding} id="tips">
           <h2 className={styles.pageHeader}>Tips</h2>
           <ul className="list-disc ml-4 mb-8 mt-2">
-            <li>The hack does not work correctly in some emulators. 
-              The supported environments are: MAME, Final Burn Neo, the MiSTer, and the original Neo Geo. 
-              The hack will work perfectly when using one of these.
-            </li>
             <li>
-              Hold p1 start and p2 start together while on the character select
-              screen to see the version. Please include it when reporting a bug.
-              Bugs can be reported at{" "}
+              The version of the hack is on the title screen. Please include it
+              when reporting a bug. Bugs can be reported at{" "}
               <a href="https://github.com/city41/kof94te/issues">Github</a> or{" "}
               <a href="https://discord.gg/Uuaka5mq">Discord</a>.
               <Image
