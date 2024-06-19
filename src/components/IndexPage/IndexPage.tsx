@@ -208,6 +208,11 @@ function IndexPage() {
               <b>Bug fix:</b> Fixed some graphical issues in Raine and Kawaks.
               Thanks to zelurker for the fix.
             </li>
+            <li>
+              <b>Bug fix:</b> Character select screen was so laggy on MiSTer as
+              to be unplayable. That is now fixed. But also see known issues
+              just below.
+            </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <p>
