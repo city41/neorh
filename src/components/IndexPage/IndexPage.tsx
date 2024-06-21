@@ -190,6 +190,42 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1b0</h3>
+          <p>
+            A large rewrite of the hack to address the graphical glitches that
+            occur on real hardware and the MiSTer. This is the very first beta
+            of a big change, there are likely (many) bugs.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              <b>Bug fix:</b> no more graphical sprite glitches on MiSTer and
+              real Neo Geos. This issue never impacted emulators.
+            </li>
+            <li>
+              <b>Bug fix:</b> when playing on player one side, against the cpu,
+              using cpu custom teams, and then continuing, the cpu characters
+              would be flipped. That is now fixed.
+            </li>
+            <li>
+              When the CPU is not using custom teams, it now chooses the next
+              team to fight more closely to how KOF95 does it.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Continuing on the MiSTer causes a sound to play over and over
+              again.
+            </li>
+            <li>
+              Demo mode chooses wrong teams when not using CPU custom teams.
+            </li>
+            <li>
+              The minor player cursor fixes have not been implemented yet.
+            </li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.3.0</h3>
           <p>
             This version brings in KOF94 style avatars, made by Bunny-Head. To
