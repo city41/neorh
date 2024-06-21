@@ -214,10 +214,7 @@ function IndexPage() {
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <ul className="list-disc ml-4">
-            <li>
-              Continuing on the MiSTer causes a sound to play over and over
-              again.
-            </li>
+            <li>Continuing causes a sound to play over and over again.</li>
             <li>
               Demo mode chooses wrong teams when not using CPU custom teams.
             </li>
