@@ -224,6 +224,11 @@ function IndexPage() {
             <li>
               The minor player cursor fixes have not been implemented yet.
             </li>
+            <li>
+              Once the player chooses their team, the CPU team immediately
+              starts randomizing, causing the &quot;choice&quot; sound effect of
+              the player&apos;s final character to not play.
+            </li>
           </ul>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.3.0</h3>
