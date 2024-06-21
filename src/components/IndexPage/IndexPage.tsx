@@ -190,6 +190,33 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1b1</h3>
+          <p>
+            Fixes that repeated sound effect that would play when continuing.
+            Sorry about that. Other than that, this release is identical to
+            1.3.1b0
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              <b>Bug fix:</b> Fix the repeated sound effect when continuing.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              Demo mode chooses wrong teams when not using CPU custom teams.
+            </li>
+            <li>
+              The minor player cursor fixes have not been implemented yet.
+            </li>
+            <li>
+              Once the player chooses their team, the CPU team immediately
+              starts randomizing, causing the &quot;choice&quot; sound effect of
+              the player&apos;s final character to not play.
+            </li>
+          </ul>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.3.1b0</h3>
           <p>
             A large rewrite of the hack to address the graphical glitches that
