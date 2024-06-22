@@ -190,6 +190,22 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1rc0</h3>
+          <p>
+            Feeling good about this one. But going to give it one more round of
+            testing before final release.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>More tweaks and improvements to character select cursors.</li>
+            <li>
+              Fixed several very obscure bugs. So obscure I&apos;m not even sure
+              I could adequately describe them here :)
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>No known issues</p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.3.1b3</h3>
           <p>
             All known and found issues have been fixed, but there still may be
