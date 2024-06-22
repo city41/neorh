@@ -190,6 +190,18 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1b3</h3>
+          <p>
+            All known and found issues have been fixed, but there still may be
+            bugs.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Tweaks and improvements to character select cursors.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>No known issues</p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.3.1b1</h3>
           <p>
             Fixes that repeated sound effect that would play when continuing.
