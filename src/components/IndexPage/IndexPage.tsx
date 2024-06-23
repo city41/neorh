@@ -190,6 +190,24 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1rc1</h3>
+          <p>Found one more bug.</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              <b>Bug fix:</b> When choosing team random select, the
+              &quot;choice&quot; sound effect would not play. That is now fixed.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>
+            When playing on a MiSTer, on the character select screen, and
+            another player joins, during the &quot;HERE COMES CHALLENGER&quot;
+            message, there is some slight graphical glitching at the top of the
+            screen and slight lagginess. I have no plans to fix this. Fixing it
+            would be really difficult and all in all it is not a big deal.
+          </p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.3.1rc0</h3>
           <p>
             Feeling good about this one. But going to give it one more round of
