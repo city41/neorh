@@ -62,7 +62,7 @@ function IndexPage() {
             </a>
           </li>
           <li>
-            <a className="menu-item" href="https://discord.gg/Uuaka5mq">
+            <a className="menu-item" href="https://discord.gg/tvm4fpkUNq">
               Discord
             </a>
           </li>
