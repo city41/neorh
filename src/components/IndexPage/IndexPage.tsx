@@ -190,6 +190,40 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.4.0b0</h3>
+          <p>
+            Skipping the 1.3.1 release and going to 1.4.0. That is because I
+            realized a feature I&apos;ve always wanted is now possible. 1.4.0
+            includes:
+          </p>
+          <ul className="list-disc ml-4 my-4">
+            <li>working on the mister with proper wait cycles</li>
+            <li>many bug fixes, tweaks and bits of polish</li>
+            <li>
+              a scaling/sliding transition from character select to order
+              select, instead of being an abrupt change
+            </li>
+          </ul>
+          <p>
+            The last feature is why this is 1.4.0 and back to beta, as that
+            change needs to be tested.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>
+              A scaling/sliding transition when going from character select to
+              order select.
+            </li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>
+            When playing on a MiSTer, on the character select screen, and
+            another player joins, during the &quot;HERE COMES CHALLENGER&quot;
+            message, there is some slight graphical glitching at the top of the
+            screen and slight lagginess. I have no plans to fix this. Fixing it
+            would be really difficult and all in all it is not a big deal.
+          </p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.3.1rc1</h3>
           <p>Found one more bug.</p>
           <h4 className="heading font-bold py-4">Changes</h4>
