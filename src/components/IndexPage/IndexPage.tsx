@@ -190,6 +190,18 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.4.0rc1</h3>
+          <p>Got a little eager on the last one. Sorry about that.</p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Fights are no longer always in Brazil.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>
+            No known issues. But this is a release candidate, there could still
+            be bugs.
+          </p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.4.0rc0</h3>
           <p>
             All known issues have been resolved. This includes all graphical
