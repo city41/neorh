@@ -197,11 +197,11 @@ function IndexPage() {
             includes:
           </p>
           <ul className="list-disc ml-4 my-4">
-            <li>working on the mister with proper wait cycles</li>
-            <li>many bug fixes, tweaks and bits of polish</li>
+            <li>Working on the MiSTer with proper wait cycles.</li>
+            <li>Many bug fixes, tweaks and bits of polish.</li>
             <li>
-              a scaling/sliding transition from character select to order
-              select, instead of being an abrupt change
+              A scaling/sliding transition from character select to order
+              select, instead of being an abrupt change.
             </li>
           </ul>
           <p>
