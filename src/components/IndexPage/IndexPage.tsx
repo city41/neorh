@@ -190,6 +190,23 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
+          <h3 className="heading text-lg font-bold pb-4">Version 1.4.0rc0</h3>
+          <p>
+            All known issues have been resolved. This includes all graphical
+            glitches/lag on the MiSTer! It just needs another round of testing
+            before final release.
+          </p>
+          <h4 className="heading font-bold py-4">Changes</h4>
+          <ul className="list-disc ml-4">
+            <li>Improvements and tweaks to the scaling/sliding effect.</li>
+            <li>
+              The scaling effect no longer shows black patches unexpectedly.
+            </li>
+            <li>All lag on the MiSTer has been resolved.</li>
+          </ul>
+          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <p>No known issues.</p>
+          <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.4.0b0</h3>
           <p>
             Skipping the 1.3.1 release and going to 1.4.0. That is because I
