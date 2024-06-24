@@ -214,6 +214,10 @@ function IndexPage() {
               A scaling/sliding transition when going from character select to
               order select.
             </li>
+            <li>
+              Team USA&apos;s colors are now correct in the KOF95 style
+              character avatars. Thanks to Leonard for pointing that out.
+            </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
           <p>
