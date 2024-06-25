@@ -190,183 +190,62 @@ function IndexPage() {
         </div>
         <div className="mb-16">
           <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.4.0rc1</h3>
-          <p>Got a little eager on the last one. Sorry about that.</p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>Fights are no longer always in Brazil.</li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
+          <h3 className="heading text-lg font-bold pb-4">Version 1.4.0</h3>
           <p>
-            No known issues. But this is a release candidate, there could still
-            be bugs.
+            The original purpose of this release was to address the lagginess on
+            the MiSTer. It also got a lot of bug fixes and a lot of polish. Even
+            if you don&apos;t play on a MiSTer, this version is highly
+            recommended.
           </p>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.4.0rc0</h3>
-          <p>
-            All known issues have been resolved. This includes all graphical
-            glitches/lag on the MiSTer! It just needs another round of testing
-            before final release.
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>Improvements and tweaks to the scaling/sliding effect.</li>
-            <li>
-              The scaling effect no longer shows black patches unexpectedly.
-            </li>
-            <li>All lag on the MiSTer has been resolved.</li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <p>No known issues.</p>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.4.0b0</h3>
-          <p>
-            Skipping the 1.3.1 release and going to 1.4.0. That is because I
-            realized a feature I&apos;ve always wanted is now possible. 1.4.0
-            includes:
-          </p>
-          <ul className="list-disc ml-4 my-4">
-            <li>Working on the MiSTer with proper wait cycles.</li>
-            <li>Many bug fixes, tweaks and bits of polish.</li>
-            <li>
-              A scaling/sliding transition from character select to order
-              select, instead of being an abrupt change.
-            </li>
-          </ul>
-          <p>
-            The last feature is why this is 1.4.0 and back to beta, as that
-            change needs to be tested.
+          <p className="bg-green-200 border-green-700 border px-4 py-2 my-4">
+            <b>This is the final planned release.</b> There will be no more
+            features added to the hack. The only way there will be more releases
+            beyond this one is if a bug is found. Even then, a judgment call
+            will be made on how bad the bug is.
           </p>
           <h4 className="heading font-bold py-4">Changes</h4>
           <ul className="list-disc ml-4">
             <li>
-              A scaling/sliding transition when going from character select to
-              order select.
+              All laginess and graphical glitches on the MiSTer are resolved. It
+              plays on the MiSTer beautifully now.
             </li>
             <li>
-              Team USA&apos;s colors are now correct in the KOF95 style
-              character avatars. Thanks to Leonard for pointing that out.
+              A new scaling and sliding transition when going from character
+              select to order select. Similar to KOF95&apos;s, (but not exactly
+              the same).
             </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <p>
-            When playing on a MiSTer, on the character select screen, and
-            another player joins, during the &quot;HERE COMES CHALLENGER&quot;
-            message, there is some slight graphical glitching at the top of the
-            screen and slight lagginess. I have no plans to fix this. Fixing it
-            would be really difficult and all in all it is not a big deal.
-          </p>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1rc1</h3>
-          <p>Found one more bug.</p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
+            <li>Player and CPU cursor tweaks and polish.</li>
             <li>
-              <b>Bug fix:</b> When choosing team random select, the
-              &quot;choice&quot; sound effect would not play. That is now fixed.
-            </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <p>
-            When playing on a MiSTer, on the character select screen, and
-            another player joins, during the &quot;HERE COMES CHALLENGER&quot;
-            message, there is some slight graphical glitching at the top of the
-            screen and slight lagginess. I have no plans to fix this. Fixing it
-            would be really difficult and all in all it is not a big deal.
-          </p>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1rc0</h3>
-          <p>
-            Feeling good about this one. But going to give it one more round of
-            testing before final release.
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>More tweaks and improvements to character select cursors.</li>
-            <li>
-              Fixed several very obscure bugs. So obscure I&apos;m not even sure
-              I could adequately describe them here :)
-            </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <p>No known issues</p>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1b3</h3>
-          <p>
-            All known and found issues have been fixed, but there still may be
-            bugs.
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>Tweaks and improvements to character select cursors.</li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <p>No known issues</p>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1b1</h3>
-          <p>
-            Fixes that repeated sound effect that would play when continuing.
-            Sorry about that. Other than that, this release is identical to
-            1.3.1b0
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              <b>Bug fix:</b> Fix the repeated sound effect when continuing.
-            </li>
-          </ul>
-          <h4 className="heading font-bold py-4">Known Issues</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              Demo mode chooses wrong teams when not using CPU custom teams.
+              When the CPU is using non-custom teams, the way it selects its
+              team is now similar to how KOF95 does it.
             </li>
             <li>
-              The minor player cursor fixes have not been implemented yet.
+              <b>Bug fix:</b> when using KOF95/98 avatars on the character
+              select screen, team USA had the wrong colors. They are now
+              correct.
             </li>
             <li>
-              Once the player chooses their team, the CPU team immediately
-              starts randomizing, causing the &quot;choice&quot; sound effect of
-              the player&apos;s final character to not play.
-            </li>
-          </ul>
-          <Hr />
-          <h3 className="heading text-lg font-bold pb-4">Version 1.3.1b0</h3>
-          <p>
-            A large rewrite of the hack to address the graphical glitches that
-            occur on real hardware and the MiSTer. This is the very first beta
-            of a big change, there are likely (many) bugs.
-          </p>
-          <h4 className="heading font-bold py-4">Changes</h4>
-          <ul className="list-disc ml-4">
-            <li>
-              <b>Bug fix:</b> no more graphical sprite glitches on MiSTer and
-              real Neo Geos. This issue never impacted emulators.
+              <b>Bug fix: </b>when choosing team random select, the
+              &quot;choice&quot; sound effect would not play. It now does.
             </li>
             <li>
-              <b>Bug fix:</b> when playing on player one side, against the cpu,
+              <b>Bug fix: </b>when playing on player one side, against the cpu,
               using cpu custom teams, and then continuing, the cpu characters
               would be flipped. That is now fixed.
             </li>
             <li>
-              When the CPU is not using custom teams, it now chooses the next
-              team to fight more closely to how KOF95 does it.
+              <b>Bug fix: </b>when winning the game on the player 2 side, the
+              wrong team member would speak during certain cutscenes. That is
+              now fixed.
             </li>
           </ul>
           <h4 className="heading font-bold py-4">Known Issues</h4>
-          <ul className="list-disc ml-4">
-            <li>Continuing causes a sound to play over and over again.</li>
-            <li>
-              Demo mode chooses wrong teams when not using CPU custom teams.
-            </li>
-            <li>
-              The minor player cursor fixes have not been implemented yet.
-            </li>
-            <li>
-              Once the player chooses their team, the CPU team immediately
-              starts randomizing, causing the &quot;choice&quot; sound effect of
-              the player&apos;s final character to not play.
-            </li>
-          </ul>
+          <p>
+            Graphical glitches can occur when playing on real hardware with a
+            NeoSD or the Darksoft multi. This is due to limitations in these
+            carts. The original KOF94 game played on these carts has the same
+            graphical glitches. There is no way to fix this.
+          </p>
           <Hr />
           <h3 className="heading text-lg font-bold pb-4">Version 1.3.0</h3>
           <p>
