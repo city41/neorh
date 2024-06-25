@@ -12,6 +12,11 @@ function GameEntry({ className, game }: GameEntryProps) {
       <h2 className="px-4 py-8 bg-blue-900 text-white font-bold text-2xl">
         {game.gameName}
       </h2>
+      <ul>
+        {game.hacks.map((h) => {
+          return <li>{h.name}</li>;
+        })}
+      </ul>
     </div>
   );
 }

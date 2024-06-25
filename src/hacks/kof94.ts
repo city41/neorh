@@ -88,4 +88,4 @@ const kof94: RomHackGameEntry = {
   ],
 };
 
-export default kof94;
+export { kof94 };
