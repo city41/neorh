@@ -4,7 +4,7 @@ import { DropZone } from "./DropZone";
 import { unzip } from "./unzip";
 import { zip } from "./zip";
 import { validateFiles } from "./validateFiles";
-import { AddOnMap, RomFileEntry, Variant } from "./types";
+import { AddOnMap, RomFileEntry, Variant } from "../../../types";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
 import {
   buildNeoFile,

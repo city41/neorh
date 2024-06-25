@@ -1,4 +1,4 @@
-import { RomFileEntry } from "./types";
+import { RomFileEntry } from "../../../types";
 
 function parseFileName(fileName: string) {
   const split = fileName.split(".");

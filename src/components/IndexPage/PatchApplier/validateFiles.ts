@@ -1,5 +1,5 @@
 import { calculateHash } from "./calculateHash";
-import { RomFileEntry } from "./types";
+import { RomFileEntry } from "../../../types";
 
 const expectedFiles = [
   {

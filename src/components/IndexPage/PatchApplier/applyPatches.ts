@@ -1,4 +1,4 @@
-import { RomFileEntry, Variant } from "./types";
+import { RomFileEntry, Variant } from "../../../types";
 
 function patchHasValidMagicNumber(p: number[]): boolean {
   const magicNumber = "PATCH".split("").map((c) => c.charCodeAt(0));
