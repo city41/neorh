@@ -211,7 +211,7 @@ function IndexPage() {
             </li>
             <li>
               A new scaling and sliding transition when going from character
-              select to order select. Similar to KOF95&apos;s, (but not exactly
+              select to order select. Similar to KOF95&apos;s (but not exactly
               the same).
             </li>
             <li>Player and CPU cursor tweaks and polish.</li>
