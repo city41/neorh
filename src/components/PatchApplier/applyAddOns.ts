@@ -1,5 +1,5 @@
 import { applyPatches } from "./applyPatches";
-import { AddOnMap, RomFileEntry } from "../../../types";
+import { AddOnMap, RomFileEntry } from "../../types";
 
 type TargetRom = "055-c1.c1" | "055-p1.p1";
 type AddOn = "font" | "cs";

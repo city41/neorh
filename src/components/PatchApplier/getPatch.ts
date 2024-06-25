@@ -1,4 +1,4 @@
-import { RomFileEntry } from "../../../types";
+import { RomFileEntry } from "../../types";
 import { unzip } from "./unzip";
 
 async function getPatch(patchUrl: string): Promise<RomFileEntry[]> {

@@ -20,7 +20,7 @@ import rugalFocusedPng from "./rugalFocused.png";
 import rugalPickFullFormPng from "./rugalPickFullForm.png";
 
 import styles from "./IndexPage.module.css";
-import { PatchApplier } from "./PatchApplier";
+import { PatchApplier } from "../PatchApplier";
 
 function Hr() {
   return <div className="border-b-2 border-gray-600 my-8 -mx-8"></div>;

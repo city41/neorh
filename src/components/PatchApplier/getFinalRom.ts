@@ -1,7 +1,7 @@
 import { applyAddOns } from "./applyAddOns";
 import { applyPatches } from "./applyPatches";
 import { getPatch } from "./getPatch";
-import { AddOnMap, RomFileEntry, Variant } from "../../../types";
+import { AddOnMap, RomFileEntry, Variant } from "../../types";
 
 const PATCH_A94_URL = "/kof94teIpsPatches_a94.zip";
 const PATCH_A95_URL = "/kof94teIpsPatches_a95.zip";

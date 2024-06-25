@@ -1,5 +1,5 @@
 import { Uint8ArrayReader, ZipReader } from "@zip.js/zip.js";
-import { RomFileEntry } from "../../../types";
+import { RomFileEntry } from "../../types";
 
 async function unzip(zippedData: Uint8Array): Promise<RomFileEntry[]> {
   const uint8Reader = new Uint8ArrayReader(zippedData);

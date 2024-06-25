@@ -5,7 +5,10 @@ export type OriginalFile = {
 };
 
 export type RomHack = {
+  id: string;
   name: string;
+  incompatibleWith: string[];
+  repo?: string;
 };
 
 export type RomHackGameEntry = {

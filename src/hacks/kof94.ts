@@ -77,13 +77,28 @@ const kof94: RomHackGameEntry = {
   ],
   hacks: [
     {
-      name: "Team Edit Edition",
+      id: "kof94te_a95",
+      name: "Team Edit Edition: KOF95 style portraits",
+      incompatibleWith: ["kof94te_a94"],
+      repo: "https://github.com/city41/kof94te",
     },
     {
+      id: "kof94te_a94",
+      name: "Team Edit Edition: KOF94 style portraits",
+      incompatibleWith: ["kof94te_a95"],
+      repo: "https://github.com/city41/kof94te",
+    },
+    {
+      id: "kof94cs",
       name: "Cheat Sheet",
+      incompatibleWith: [],
+      repo: "https://github.com/city41/kof9cs",
     },
     {
+      id: "kof94font",
       name: "Clean Font",
+      incompatibleWith: [],
+      repo: "https://github.com/city41/kof9font",
     },
   ],
 };

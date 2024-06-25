@@ -4,7 +4,7 @@ import { DropZone } from "./DropZone";
 import { unzip } from "./unzip";
 import { zip } from "./zip";
 import { validateFiles } from "./validateFiles";
-import { AddOnMap, RomFileEntry, Variant } from "../../../types";
+import { AddOnMap, RomFileEntry, Variant } from "../../types";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
 import {
   buildNeoFile,
@@ -13,7 +13,7 @@ import {
 } from "neosdconv/lib/buildNeoFile";
 import { Genre } from "neosdconv/lib/genres";
 import { tagPatchedFiles } from "./tagPatchedFiles";
-import charSelectA94Png from "../charSelect_a94.png";
+import charSelectA94Png from "../IndexPage/charSelect_a94.png";
 import cleanFontPng from "./cleanFont.png";
 import cheatsheetPng from "./cheatsheet.png";
 import { AddOn } from "./AddOn";
