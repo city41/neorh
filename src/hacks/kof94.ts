@@ -100,6 +100,22 @@ const kof94: RomHackGameEntry = {
           fileName: "cpuCustomTeams.png",
           description: "The CPU can choose custom teams too.",
         },
+        {
+          fileName: "gameplay.png",
+          description: "Fighting with custom teams.",
+        },
+        {
+          fileName: "winScreen.png",
+          description: "The win screen with custom teams.",
+        },
+        {
+          fileName: "continueScreen.png",
+          description: "The continue screen with custom teams.",
+        },
+        {
+          fileName: "usaEnding.png",
+          description: "Surprising new endings.",
+        },
       ],
       youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
     },
