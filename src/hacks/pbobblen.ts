@@ -93,7 +93,7 @@ const pbobblen: RomHackGameEntry = {
       creators: ["Matt Greer"],
       incompatibleWith: ["precise-controls"],
       repo: "https://github.com/city41/rotary-bobble",
-      zip: "",
+      zip: "pbobblenrotaryIpsPatches.zip",
       details: [
         "Changes the controls to be rotary based instead of using a joystick. Really, how the game should have been from the start.",
         "This hack requires building a custom controller",
