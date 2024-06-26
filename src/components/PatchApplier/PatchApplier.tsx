@@ -66,6 +66,7 @@ function DownloadButton({
 }
 
 function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
+  const [choseDotNeo, setChoseDotNeo] = useState(false);
   const [zipData, setZipData] = useState<Uint8Array | null>(null);
   const [unzippedSourceFiles, setUnzippedSourceFiles] = useState<
     RomFileEntry[] | null
@@ -95,6 +96,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
       );
     }
     setErrorMsg(null);
+    setChoseDotNeo(false);
 
     return getFinalRom(unzippedSourceFiles, game, chosenHacks)
       .then((patchedRomFiles) => {
@@ -120,6 +122,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
       );
     }
     setErrorMsg(null);
+    setChoseDotNeo(false);
 
     return getFinalRom(unzippedSourceFiles, game, chosenHacks)
       .then((patchedRomFiles) => {
@@ -148,6 +151,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
     }
 
     setErrorMsg(null);
+    setChoseDotNeo(false);
 
     return getFinalRom(unzippedSourceFiles, game, chosenHacks)
       .then((patchedRomFiles) => {
@@ -174,12 +178,13 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         });
 
         sendBlobToAnchorTag(neoFileBlob, `${game.mameName}_${patches}.neo`);
+        setChoseDotNeo(true);
       })
       .catch((e) => {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles, chosenHacks]);
+  }, [unzippedSourceFiles, chosenHacks, choseDotNeo]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>
@@ -223,6 +228,14 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
               disabled={chosenHacks.length === 0}
             />
           </div>
+          {choseDotNeo && (
+            <div className="bg-green-300 border-2 border-green-800 px-4 py-2 mt-8">
+              Look for it on your system menu by the name{" "}
+              <b>
+                {game.mameName}_{chosenHacks.map((ch) => ch.id).join("_")}
+              </b>
+            </div>
+          )}
         </div>
       )}
       {errorMsg && (
