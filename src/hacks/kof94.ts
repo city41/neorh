@@ -91,6 +91,7 @@ const kof94: RomHackGameEntry = {
         "This version uses character portraits from KOF95 and KOF98.",
       ],
       screenshots: [],
+      youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
     },
     {
       id: "te94",
@@ -105,6 +106,7 @@ const kof94: RomHackGameEntry = {
         "This version uses KOF94 style character portraits based on the health bar portraits created by Bunny-Head.",
       ],
       screenshots: [],
+      youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
     },
     {
       id: "cheatsheet",

@@ -14,6 +14,7 @@ export type RomHack = {
   fbNeo?: boolean;
   details: string[];
   screenshots: string[];
+  youtube?: string;
 };
 
 export type RomHackGameEntry = {

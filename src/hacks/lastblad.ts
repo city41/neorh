@@ -19,6 +19,7 @@ const lastblad: RomHackGameEntry = {
         "This hack has the mini game play instead of the attract mode.",
       ],
       screenshots: [],
+      youtube: "https://www.youtube.com/watch?v=AdHPz36y-SU",
     },
   ],
 };
