@@ -76,24 +76,27 @@ function applyPatch(
 
 function applyPatches(
   inputFiles: RomFileEntry[],
-  patches: RomFileEntry[],
-  variant?: Variant
+  patches: RomFileEntry[]
 ): RomFileEntry[] {
-  return inputFiles.map((inputFile) => {
-    const patchName = `kof94${variant ? `_${variant}` : ""}.${
-      inputFile.fileName
-    }.ips`;
+  let patchCount = 0;
 
-    const patch = patches.find((p) => p.fileName === patchName);
+  const patchedFiles = inputFiles.map((inputFile) => {
+    const patch = patches.find((p) =>
+      p.fileName.endsWith(`${inputFile.fileName}.ips`)
+    );
 
     if (patch) {
       console.log("applying patch", patch.fileName);
+      ++patchCount;
       return applyPatch(inputFile, patch);
     } else {
       console.log("no patch found for", inputFile.fileName);
       return inputFile;
     }
   });
+
+  console.log("patched", patchCount, "files");
+  return patchedFiles;
 }
 
 export { applyPatches };

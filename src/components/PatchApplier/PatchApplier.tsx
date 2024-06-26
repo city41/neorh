@@ -4,7 +4,7 @@ import { DropZone } from "./DropZone";
 import { unzip } from "./unzip";
 import { zip } from "./zip";
 import { validateFiles } from "./validateFiles";
-import { RomFileEntry, RomHack, RomHackGameEntry, Variant } from "../../types";
+import { RomFileEntry, RomHack, RomHackGameEntry } from "../../types";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
 import {
   buildNeoFile,
@@ -103,7 +103,8 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
             type: "application/octet-stream",
           });
 
-          sendBlobToAnchorTag(fileBlob, "kof94te.zip");
+          const patches = chosenHacks.map((ch) => ch.id).join("_");
+          sendBlobToAnchorTag(fileBlob, `${game.mameName}_${patches}.zip`);
         });
       })
       .catch((e) => {
