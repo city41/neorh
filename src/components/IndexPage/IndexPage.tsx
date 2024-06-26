@@ -11,7 +11,7 @@ function IndexPage({ games }: IndexPageProps) {
     <div className="mt-8 mb-16">
       <div className="mb-2 text-gray-400 text-sm">choose a game</div>
       <ul
-        className="grid items-start gap-x-2 gap-y-4"
+        className="grid items-start gap-x-4 gap-y-4"
         style={{
           gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr)",
         }}
