@@ -7,11 +7,13 @@ export type OriginalFile = {
 export type RomHack = {
   id: string;
   name: string;
-  author: string;
+  creators: string[];
   incompatibleWith: string[];
   zip: string;
   repo?: string;
   fbNeo?: boolean;
+  details: string[];
+  screenshots: string[];
 };
 
 export type RomHackGameEntry = {

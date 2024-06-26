@@ -84,8 +84,13 @@ const kof94: RomHackGameEntry = {
       incompatibleWith: ["kof94te_a94"],
       repo: "https://github.com/city41/kof94te",
       zip: "kof94teIpsPatches_a95.zip",
-      author: "Matt Greer",
+      creators: ["Matt Greer"],
       fbNeo: true,
+      details: [
+        "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
+        "This version uses character portraits from KOF95 and KOF98.",
+      ],
+      screenshots: [],
     },
     {
       id: "te94",
@@ -93,8 +98,13 @@ const kof94: RomHackGameEntry = {
       incompatibleWith: ["kof94te_a95"],
       repo: "https://github.com/city41/kof94te",
       zip: "kof94teIpsPatches_a94.zip",
-      author: "Matt Greer",
+      creators: ["Matt Greer", "Bunny-Head"],
       fbNeo: true,
+      details: [
+        "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
+        "This version uses KOF94 style character portraits based on the health bar portraits created by Bunny-Head.",
+      ],
+      screenshots: [],
     },
     {
       id: "cheatsheet",
@@ -102,7 +112,11 @@ const kof94: RomHackGameEntry = {
       incompatibleWith: [],
       repo: "https://github.com/city41/kof9cs",
       zip: "kof94csIpsPatches.zip",
-      author: "Matt Greer",
+      creators: ["Matt Greer"],
+      details: [
+        "When playing a single player game in AES/home mode, pausing the game shows your current character's move list",
+      ],
+      screenshots: [],
     },
     {
       id: "font",
@@ -110,7 +124,11 @@ const kof94: RomHackGameEntry = {
       incompatibleWith: [],
       repo: "https://github.com/city41/kof9font",
       zip: "kof94fontIpsPatches.zip",
-      author: "Matt Greer",
+      creators: ["Matt Greer"],
+      details: [
+        "For Spanish and English, cleans up the main font a little bit by adding a 1 pixel gap.",
+      ],
+      screenshots: [],
     },
   ],
 };

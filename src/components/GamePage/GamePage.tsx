@@ -4,6 +4,7 @@ import { useState } from "react";
 import { RomHack, RomHackGameEntry } from "@/types";
 import { PatchApplier } from "../PatchApplier";
 import { MetaEntry } from "./MetaEntry";
+import { HackEntry } from "./HackEntry";
 
 type PublicGamePageProps = {
   game: RomHackGameEntry;
@@ -43,6 +44,7 @@ function GamePage({ game }: PublicGamePageProps) {
               <label className="flex flex-row my-2">
                 <input
                   type="checkbox"
+                  className="self-start mt-1"
                   onChange={(e) => {
                     setChosenHacks((chs) => {
                       if (e.target.checked) {
@@ -57,7 +59,7 @@ function GamePage({ game }: PublicGamePageProps) {
                     });
                   }}
                 />
-                <div className="ml-4">{h.name}</div>
+                <HackEntry className="ml-4" hack={h} />
               </label>
             </li>
           );
