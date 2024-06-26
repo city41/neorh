@@ -18,7 +18,16 @@ const lastblad: RomHackGameEntry = {
         "The developers of the game hid a mini game deep inside of it. It's normally tricky to get to.",
         "This hack has the mini game play instead of the attract mode.",
       ],
-      screenshots: [],
+      screenshots: [
+        {
+          fileName: "level1.png",
+          description: "The first level",
+        },
+        {
+          fileName: "level2.png",
+          description: "and the second level",
+        },
+      ],
       youtube: "https://www.youtube.com/watch?v=AdHPz36y-SU",
     },
   ],
