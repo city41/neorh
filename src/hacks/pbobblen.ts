@@ -79,7 +79,7 @@ const pbobblen: RomHackGameEntry = {
       creators: ["Matt Greer"],
       incompatibleWith: ["rotary"],
       repo: "https://github.com/city41/pb-precise-controls-hack",
-      zip: "",
+      zip: "pbobblenprecise-controlsIpsPatches.zip",
       details: [
         'A simple hack that brings the "slow controls" from the SNES port into the Neo Geo version.',
 

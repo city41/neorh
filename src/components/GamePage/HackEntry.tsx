@@ -47,6 +47,9 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
           {hack.repo && (
             <MetaEntry metaKey="GitHub" value={hack.repo} hyperlink />
           )}
+          {hack.youtube && (
+            <MetaEntry metaKey="YouTube" value={hack.youtube} hyperlink />
+          )}
         </div>
       )}
     </div>
