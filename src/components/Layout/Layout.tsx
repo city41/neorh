@@ -14,9 +14,11 @@ function Layout({ children }: LayoutProps) {
       <div className="mx-auto w-full lg:max-w-5xl bg-white px-8 lg:shadow-2xl lg:rounded-2xl overflow-hidden">
         <header className="flex flex-col sm:flex-row items-center pt-2 pb-4 bg-gray-200 -mx-8 px-4 sm:px-8">
           <div>
-            <h1 className="font-bold text-2xl mb-4 sm:mb-0">
-              Neo Geo ROM hacks
-            </h1>
+            <Link href="/">
+              <h1 className="font-bold text-2xl mb-4 sm:mb-0">
+                Neo Geo ROM hacks
+              </h1>
+            </Link>
             <p className="text-sm text-gray-700 invisible sm:visible">
               enhance your Neo games with ease
             </p>
