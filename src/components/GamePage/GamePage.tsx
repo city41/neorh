@@ -33,7 +33,6 @@ function GamePage({ game }: PublicGamePageProps) {
             width={logoImg.width}
             height={logoImg.height}
             src={logoImg.src}
-            className="shadow-xl"
             alt={`${game.gameName} logo`}
             priority
           />
