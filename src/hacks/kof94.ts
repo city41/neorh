@@ -89,6 +89,7 @@ const kof94: RomHackGameEntry = {
       details: [
         "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
         "This version uses character portraits from KOF95 and KOF98.",
+        "This is a big hack, for more details, check the hack's website.",
       ],
       screenshots: [
         {
@@ -117,6 +118,7 @@ const kof94: RomHackGameEntry = {
           description: "Surprising new endings.",
         },
       ],
+      website: "https://kof94te.mattgreer.dev",
       youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
     },
     {
@@ -130,6 +132,7 @@ const kof94: RomHackGameEntry = {
       details: [
         "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
         "This version uses KOF94 style character portraits based on the health bar portraits created by Bunny-Head.",
+        "This is a big hack, for more details, check the hack's website.",
       ],
       screenshots: [
         {
@@ -158,6 +161,7 @@ const kof94: RomHackGameEntry = {
           description: "Surprising new endings.",
         },
       ],
+      website: "https://kof94te.mattgreer.dev",
       youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
     },
     {
