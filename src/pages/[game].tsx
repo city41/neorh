@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
 import { games } from "../hacks";
 import { GamePage, PublicGamePageProps } from "@/components/GamePage/GamePage";
+import { Layout } from "@/components/Layout/Layout";
 import { GetStaticPropsContext, GetStaticPropsResult } from "next";
 
 export const getStaticPaths = () => {
@@ -28,7 +28,11 @@ export function getStaticProps(
 }
 
 function NextGamePage(props: PublicGamePageProps) {
-  return <GamePage {...props} />;
+  return (
+    <Layout>
+      <GamePage {...props} />
+    </Layout>
+  );
 }
 
 export default NextGamePage;
