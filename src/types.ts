@@ -11,6 +11,7 @@ export type RomHack = {
   incompatibleWith: string[];
   zip: string;
   repo?: string;
+  fbNeo?: boolean;
 };
 
 export type RomHackGameEntry = {

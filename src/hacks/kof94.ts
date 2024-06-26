@@ -83,6 +83,7 @@ const kof94: RomHackGameEntry = {
       repo: "https://github.com/city41/kof94te",
       zip: "kof94teIpsPatches_ap5.zip",
       author: "Matt Greer",
+      fbNeo: true,
     },
     {
       id: "kof94te_a94",
@@ -91,6 +92,7 @@ const kof94: RomHackGameEntry = {
       repo: "https://github.com/city41/kof94te",
       zip: "kof94teIpsPatches_ap4.zip",
       author: "Matt Greer",
+      fbNeo: true,
     },
     {
       id: "kof94cs",

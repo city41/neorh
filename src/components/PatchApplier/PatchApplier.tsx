@@ -96,7 +96,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
     }
     setErrorMsg(null);
 
-    return getFinalRom(unzippedSourceFiles)
+    return getFinalRom(unzippedSourceFiles, game, chosenHacks)
       .then((patchedRomFiles) => {
         return zip(patchedRomFiles).then((zippedRom) => {
           const fileBlob = new Blob([zippedRom.buffer], {
@@ -110,7 +110,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles]);
+  }, [unzippedSourceFiles, chosenHacks]);
 
   const handleDownloadFBNeoZip = useCallback(() => {
     if (!unzippedSourceFiles) {
@@ -120,7 +120,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
     }
     setErrorMsg(null);
 
-    return getFinalRom(unzippedSourceFiles)
+    return getFinalRom(unzippedSourceFiles, game, chosenHacks)
       .then((patchedRomFiles) => {
         const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
           (f) => f.patched
@@ -138,7 +138,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles]);
+  }, [unzippedSourceFiles, chosenHacks]);
 
   const handleNeoSD = useCallback(() => {
     if (!unzippedSourceFiles) {
@@ -147,7 +147,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
 
     setErrorMsg(null);
 
-    return getFinalRom(unzippedSourceFiles)
+    return getFinalRom(unzippedSourceFiles, game, chosenHacks)
       .then((patchedRomFiles) => {
         const convertOptions: ConvertOptions = {
           genre: Genre.Fighting,
@@ -174,7 +174,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles]);
+  }, [unzippedSourceFiles, chosenHacks]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>
@@ -200,12 +200,14 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
               description="for use on NeoSD or MiSTer"
               disabled={chosenHacks.length === 0}
             />
-            <DownloadButton
-              onClick={handleDownloadFBNeoZip}
-              title="download as FBNeo .zip"
-              description="For use on FinalBurn Neo"
-              disabled={chosenHacks.length === 0}
-            />
+            {chosenHacks.some((ch) => ch.fbNeo) && (
+              <DownloadButton
+                onClick={handleDownloadFBNeoZip}
+                title="download as FBNeo .zip"
+                description="For use on FinalBurn Neo"
+                disabled={chosenHacks.length === 0}
+              />
+            )}
             <DownloadButton
               onClick={handleDownloadZip}
               title="download as MAME .zip"

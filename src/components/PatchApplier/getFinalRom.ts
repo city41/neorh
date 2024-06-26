@@ -1,23 +1,23 @@
 import { applyPatches } from "./applyPatches";
 import { getPatch } from "./getPatch";
-import { RomFileEntry, Variant } from "../../types";
+import { RomFileEntry, RomHack, RomHackGameEntry, Variant } from "../../types";
 
 const PATCH_A94_URL = "/kof94teIpsPatches_a94.zip";
 const PATCH_A95_URL = "/kof94teIpsPatches_a95.zip";
 
 async function getFinalRom(
-  unzippedSourceFiles: RomFileEntry[]
+  unzippedSourceFiles: RomFileEntry[],
+  game: RomHackGameEntry,
+  hacks: RomHack[]
 ): Promise<RomFileEntry[]> {
-  const patchUrl = PATCH_A95_URL;
-  const patchFiles = await getPatch(patchUrl);
+  let patchedFiles = unzippedSourceFiles;
 
-  const patchedBaseRomFiles = applyPatches(
-    unzippedSourceFiles,
-    patchFiles,
-    "a95"
-  );
+  for (const hack of hacks) {
+    const patchFiles = await getPatch(game.mameName, hack.zip);
+    patchedFiles = applyPatches(unzippedSourceFiles, patchFiles);
+  }
 
-  return patchedBaseRomFiles;
+  return patchedFiles;
 }
 
 export { getFinalRom };
