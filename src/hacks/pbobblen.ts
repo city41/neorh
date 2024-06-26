@@ -96,7 +96,7 @@ const pbobblen: RomHackGameEntry = {
       zip: "pbobblenrotaryIpsPatches.zip",
       details: [
         "Changes the controls to be rotary based instead of using a joystick. Really, how the game should have been from the start.",
-        "This hack requires building a custom controller",
+        "This hack requires building a custom controller, check the hack's website for more info.",
       ],
       screenshots: [],
       youtube: "https://www.youtube.com/watch?v=buq1Kh65goU",
