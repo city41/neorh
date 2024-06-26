@@ -18,8 +18,6 @@ async function getPatch(
   const arrayBuffer = await response.arrayBuffer();
   const data = new Uint8Array(arrayBuffer);
 
-  console.log("data", data);
-
   return unzip(data);
 }
 
