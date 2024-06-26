@@ -37,7 +37,7 @@ function GamePage({ game }: PublicGamePageProps) {
       </div>
 
       <h3 className="font-bold text-lg">First: Choose your hacks</h3>
-      <ul className="ml-4">
+      <ul className="sm:ml-4">
         {game.hacks.map((h) => {
           return (
             <li key={h.id}>
@@ -59,7 +59,7 @@ function GamePage({ game }: PublicGamePageProps) {
                     });
                   }}
                 />
-                <HackEntry className="ml-4" hack={h} />
+                <HackEntry className="ml-4" game={game} hack={h} />
               </label>
             </li>
           );

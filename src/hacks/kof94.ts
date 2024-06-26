@@ -90,7 +90,33 @@ const kof94: RomHackGameEntry = {
         "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
         "This version uses character portraits from KOF95 and KOF98.",
       ],
-      screenshots: [],
+      screenshots: [
+        {
+          fileName: "charSelect_a95.png",
+          description:
+            "A full on character select screen, modeled after KOF95.",
+        },
+        {
+          fileName: "cpuCustomTeams_a95.png",
+          description: "The CPU can choose custom teams too.",
+        },
+        {
+          fileName: "gameplay.png",
+          description: "Fighting with custom teams.",
+        },
+        {
+          fileName: "winScreen.png",
+          description: "The win screen with custom teams.",
+        },
+        {
+          fileName: "continueScreen.png",
+          description: "The continue screen with custom teams.",
+        },
+        {
+          fileName: "usaEnding.png",
+          description: "Surprising new endings.",
+        },
+      ],
       youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
     },
     {
@@ -105,7 +131,33 @@ const kof94: RomHackGameEntry = {
         "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
         "This version uses KOF94 style character portraits based on the health bar portraits created by Bunny-Head.",
       ],
-      screenshots: [],
+      screenshots: [
+        {
+          fileName: "charSelect_a94.png",
+          description:
+            "A full on character select screen, modeled after KOF95.",
+        },
+        {
+          fileName: "cpuCustomTeams_a94.png",
+          description: "The CPU can choose custom teams too.",
+        },
+        {
+          fileName: "gameplay.png",
+          description: "Fighting with custom teams.",
+        },
+        {
+          fileName: "winScreen.png",
+          description: "The win screen with custom teams.",
+        },
+        {
+          fileName: "continueScreen.png",
+          description: "The continue screen with custom teams.",
+        },
+        {
+          fileName: "usaEnding.png",
+          description: "Surprising new endings.",
+        },
+      ],
       youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
     },
     {
@@ -118,7 +170,13 @@ const kof94: RomHackGameEntry = {
       details: [
         "When playing a single player game in AES/home mode, pausing the game shows your current character's move list",
       ],
-      screenshots: [],
+      screenshots: [
+        {
+          fileName: "cheatsheet.png",
+          description:
+            "Your current player's moves shown when you pause the game.",
+        },
+      ],
     },
     {
       id: "font",
@@ -130,7 +188,13 @@ const kof94: RomHackGameEntry = {
       details: [
         "For Spanish and English, cleans up the main font a little bit by adding a 1 pixel gap.",
       ],
-      screenshots: [],
+      screenshots: [
+        {
+          fileName: "cleanFont.png",
+          description:
+            "The font without the hack (above) and with the hack (below)",
+        },
+      ],
     },
   ],
 };

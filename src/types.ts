@@ -4,6 +4,11 @@ export type OriginalFile = {
   sha: string;
 };
 
+export type Screenshot = {
+  fileName: string;
+  description: string;
+};
+
 export type RomHack = {
   id: string;
   name: string;
@@ -13,7 +18,7 @@ export type RomHack = {
   repo?: string;
   fbNeo?: boolean;
   details: string[];
-  screenshots: string[];
+  screenshots: Screenshot[];
   youtube?: string;
 };
 
