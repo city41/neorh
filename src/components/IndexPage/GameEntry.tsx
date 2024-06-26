@@ -11,7 +11,12 @@ function GameEntry({ className, game }: GameEntryProps) {
   const logoImg = require(`../../logos/${game.mameName}.png`).default;
 
   return (
-    <div className="flex flex-col items-stretch bg-black rounded-tl-2xl rounded-br-2xl overflow-hidden h-full">
+    <div
+      className={clsx(
+        className,
+        "flex flex-col items-stretch bg-black rounded-tl-2xl rounded-br-2xl overflow-hidden h-full"
+      )}
+    >
       <div className="grid place-items-center">
         <Image
           width={logoImg.width}

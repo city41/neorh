@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { RomHack, RomHackGameEntry } from "@/types";
 import { PatchApplier } from "../PatchApplier";
+import { MetaEntry } from "./MetaEntry";
 
 type PublicGamePageProps = {
   game: RomHackGameEntry;
@@ -15,32 +16,27 @@ function GamePage({ game }: PublicGamePageProps) {
 
   return (
     <>
-      <div className="grid grid-cols-8 gap-8 auto-rows-min px-8 sm:px-0 mb-8">
-        <div className="col-start-1 col-end-9 sm:col-start-1 sm:col-end-5 grid place-items-center">
-          <div className="flex flex-col h-full mt-16 gap-y-4">
-            <h1 className="font-bold text-3xl sm:text-4xl text-center">
-              {game.gameName}
-            </h1>
-            <div>{game.developer}</div>
-            <div>{game.year}</div>
-            <div>
-              {game.hacks.length} hack{game.hacks.length === 1 ? "" : "s"}
-            </div>
-          </div>
-        </div>
-        <div className="col-start-1 col-end-9 sm:h-auto sm:col-start-5 sm:col-end-9 self-stretch flex flex-col gap-y-4 py-4 items-center">
-          <Image
-            width={logoImg.width}
-            height={logoImg.height}
-            src={logoImg.src}
-            alt={`${game.gameName} logo`}
-            priority
-          />
+      <div className="flex flex-col items-center bg-black -mx-8 mb-12">
+        <h1 className="font-bold self-end text-white pt-2 pr-2 -mb-4">
+          {game.gameName}
+        </h1>
+        <Image
+          width={logoImg.width}
+          height={logoImg.height}
+          src={logoImg.src}
+          alt={`${game.gameName} logo`}
+          className="w-1/2"
+          style={{ imageRendering: "pixelated" }}
+          priority
+        />
+        <div className="flex flex-row text-white self-start pl-4 gap-x-8 pb-1">
+          <MetaEntry metaKey="developer" value={game.developer} />
+          <MetaEntry metaKey="year" value={game.year} />
         </div>
       </div>
 
-      <p>Choose your hacks</p>
-      <ul>
+      <h3 className="font-bold text-lg">First: Choose your hacks</h3>
+      <ul className="ml-4">
         {game.hacks.map((h) => {
           return (
             <li key={h.id}>
@@ -67,8 +63,14 @@ function GamePage({ game }: PublicGamePageProps) {
           );
         })}
       </ul>
-
-      <PatchApplier game={game} chosenHacks={chosenHacks} />
+      {chosenHacks.length > 0 && (
+        <div className="mt-8">
+          <h3 className="font-bold text-lg mb-2">
+            Next: Provide the original ROM
+          </h3>
+          <PatchApplier game={game} chosenHacks={chosenHacks} />
+        </div>
+      )}
     </>
   );
 }

@@ -192,9 +192,12 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         }}
       </DropZone>
       {unzippedSourceFiles && (
-        <>
+        <div className="mt-8">
+          <h3 className="font-bold text-lg mb-2">
+            Finally: Grab the patched game
+          </h3>
           {chosenHacks.length === 0 && <div>Choose at least one hack</div>}
-          <div className="flex flex-row flex-wrap justify-around py-8 gap-8 px-8">
+          <div className="flex flex-row flex-wrap justify-around gap-8 px-8">
             <DownloadButton
               onClick={handleNeoSD}
               title="download as .neo"
@@ -216,7 +219,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
               disabled={chosenHacks.length === 0}
             />
           </div>
-        </>
+        </div>
       )}
       {errorMsg && (
         <div className="bg-red-300 text-black mt-4 p-2">
