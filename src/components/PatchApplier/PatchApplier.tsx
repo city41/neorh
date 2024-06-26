@@ -4,7 +4,7 @@ import { DropZone } from "./DropZone";
 import { unzip } from "./unzip";
 import { zip } from "./zip";
 import { validateFiles } from "./validateFiles";
-import { AddOnMap, RomFileEntry, Variant } from "../../types";
+import { RomFileEntry, RomHack, RomHackGameEntry, Variant } from "../../types";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
 import {
   buildNeoFile,
@@ -13,14 +13,12 @@ import {
 } from "neosdconv/lib/buildNeoFile";
 import { Genre } from "neosdconv/lib/genres";
 import { tagPatchedFiles } from "./tagPatchedFiles";
-import charSelectA94Png from "../IndexPage/charSelect_a94.png";
-import cleanFontPng from "./cleanFont.png";
-import cheatsheetPng from "./cheatsheet.png";
-import { AddOn } from "./AddOn";
 import { getFinalRom } from "./getFinalRom";
 
 type PatchApplierProps = {
   className?: string;
+  game: RomHackGameEntry;
+  chosenHacks: RomHack[];
 };
 
 function DownloadButton({
@@ -28,6 +26,7 @@ function DownloadButton({
   onClick,
   title,
   description,
+  disabled,
   ...rest
 }: JSX.IntrinsicElements["button"] & { title: string; description: string }) {
   const [clicked, setClicked] = useState(false);
@@ -53,10 +52,11 @@ function DownloadButton({
 
   return (
     <button
-      className={clsx(
-        className,
-        "px-8 py-4 border-2 border-blue-800 bg-blue-200 hover:bg-blue-800 hover:text-white"
-      )}
+      className={clsx(className, "px-8 py-4 border-2", {
+        "border-blue-800 bg-blue-200 hover:bg-blue-800 hover:text-white cursor-pointer":
+          !disabled,
+        "border-gray-800 bg-gray-200 text-black cursor-not-allowed": disabled,
+      })}
       onClick={handleClick}
       {...rest}
     >
@@ -65,18 +65,12 @@ function DownloadButton({
   );
 }
 
-function PatchApplier({ className }: PatchApplierProps) {
+function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
   const [zipData, setZipData] = useState<Uint8Array | null>(null);
   const [unzippedSourceFiles, setUnzippedSourceFiles] = useState<
     RomFileEntry[] | null
   >(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [variant, setVariant] = useState<Variant>("a95");
-
-  const [addOns, setAddOns] = useState<AddOnMap>({
-    font: false,
-    cs: false,
-  });
 
   useEffect(() => {
     if (zipData !== null) {
@@ -102,7 +96,7 @@ function PatchApplier({ className }: PatchApplierProps) {
     }
     setErrorMsg(null);
 
-    return getFinalRom(unzippedSourceFiles, variant, addOns)
+    return getFinalRom(unzippedSourceFiles)
       .then((patchedRomFiles) => {
         return zip(patchedRomFiles).then((zippedRom) => {
           const fileBlob = new Blob([zippedRom.buffer], {
@@ -116,7 +110,7 @@ function PatchApplier({ className }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles, variant, addOns]);
+  }, [unzippedSourceFiles]);
 
   const handleDownloadFBNeoZip = useCallback(() => {
     if (!unzippedSourceFiles) {
@@ -126,7 +120,7 @@ function PatchApplier({ className }: PatchApplierProps) {
     }
     setErrorMsg(null);
 
-    return getFinalRom(unzippedSourceFiles, variant, addOns)
+    return getFinalRom(unzippedSourceFiles)
       .then((patchedRomFiles) => {
         const finalFiles = tagPatchedFiles(patchedRomFiles, "te").filter(
           (f) => f.patched
@@ -144,7 +138,7 @@ function PatchApplier({ className }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles, variant, addOns]);
+  }, [unzippedSourceFiles]);
 
   const handleNeoSD = useCallback(() => {
     if (!unzippedSourceFiles) {
@@ -153,7 +147,7 @@ function PatchApplier({ className }: PatchApplierProps) {
 
     setErrorMsg(null);
 
-    return getFinalRom(unzippedSourceFiles, variant, addOns)
+    return getFinalRom(unzippedSourceFiles)
       .then((patchedRomFiles) => {
         const convertOptions: ConvertOptions = {
           genre: Genre.Fighting,
@@ -180,7 +174,7 @@ function PatchApplier({ className }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles, variant, addOns]);
+  }, [unzippedSourceFiles]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>
@@ -191,81 +185,32 @@ function PatchApplier({ className }: PatchApplierProps) {
         {(clickToChoose) => {
           return (
             <div>
-              Drag <b>kof94.zip</b> from MAME here, {clickToChoose}
+              Drag <b>{game.mameName}.zip</b> from MAME here, {clickToChoose}
             </div>
           );
         }}
       </DropZone>
       {unzippedSourceFiles && (
         <>
-          <div className="my-4">
-            <h3 className="font-bold text-xl">Optional add ons</h3>
-            <div className="flex flex-col gap-y-2 my-2">
-              <AddOn
-                title="KOF94 style avatars"
-                description="The character select avatars, created by Bunny-Head, are based on the health bar avatars in KOF94, instead of being taken from KOF95 and KOF98."
-                screenshot={charSelectA94Png}
-                onClick={() => {
-                  setVariant((v) => {
-                    if (v === "a94") {
-                      return "a95";
-                    } else {
-                      return "a94";
-                    }
-                  });
-                }}
-              />
-              <AddOn
-                title="Clean Font"
-                description="Cleans up the main font a bit for English and Spanish. It adds a pixel of spacing. The screenshot shows before and after."
-                screenshot={cleanFontPng}
-                onClick={() => {
-                  setAddOns((ao) => {
-                    return {
-                      ...ao,
-                      font: !ao.font,
-                    };
-                  });
-                }}
-              />
-              <AddOn
-                title="Cheat Sheet"
-                description="Shows special move inputs for your current character when the game is paused. You need to be playing a single player game and in AES mode for this to work."
-                screenshot={cheatsheetPng}
-                onClick={() => {
-                  setAddOns((ao) => {
-                    return {
-                      ...ao,
-                      cs: !ao.cs,
-                    };
-                  });
-                }}
-              />
-            </div>
-            {(addOns.cs || addOns.font || variant === "a94") && (
-              <p className="my-2 mt-6 p-2 border border-red-500 bg-red-300">
-                <b>FBNeo users!</b> Be aware these add ons will cause FBNeo to
-                warn the ROM CRCs are not what it was expecting. You can disable
-                this warning or just press OK. The game will still play fine.
-              </p>
-            )}
-          </div>
-
+          {chosenHacks.length === 0 && <div>Choose at least one hack</div>}
           <div className="flex flex-row flex-wrap justify-around py-8 gap-8 px-8">
             <DownloadButton
               onClick={handleNeoSD}
               title="download as .neo"
               description="for use on NeoSD or MiSTer"
+              disabled={chosenHacks.length === 0}
             />
             <DownloadButton
               onClick={handleDownloadFBNeoZip}
               title="download as FBNeo .zip"
               description="For use on FinalBurn Neo"
+              disabled={chosenHacks.length === 0}
             />
             <DownloadButton
               onClick={handleDownloadZip}
               title="download as MAME .zip"
               description="For use on all other emulators"
+              disabled={chosenHacks.length === 0}
             />
           </div>
         </>
