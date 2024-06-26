@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { RomHack } from "@/types";
+import { RomHack, RomHackGameEntry } from "@/types";
 import clsx from "clsx";
 import { MetaEntry } from "./MetaEntry";
+import { ScreenshotCarousel } from "./ScreenshotCarousel";
 
 type HackEntryProps = {
   className: string;
+  game: RomHackGameEntry;
   hack: RomHack;
 };
 
-function HackEntry({ className, hack }: HackEntryProps) {
+function HackEntry({ className, game, hack }: HackEntryProps) {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
@@ -26,12 +28,18 @@ function HackEntry({ className, hack }: HackEntryProps) {
         </a>
       </div>
       {showDetails && (
-        <div className="mb-8">
+        <div className="mb-8 mr-2 w-full">
+          <ScreenshotCarousel
+            gameMameName={game.mameName}
+            hackId={hack.id}
+            screenshots={hack.screenshots}
+          />
           <div className="flex flex-col my-4 gap-y-2 bg-gray-200 p-2">
             {hack.details.map((d) => {
               return <p key={d}>{d}</p>;
             })}
           </div>
+
           <MetaEntry
             metaKey={hack.creators.length === 1 ? "Creator" : "Creators"}
             value={hack.creators.join(", ")}

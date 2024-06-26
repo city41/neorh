@@ -90,7 +90,17 @@ const kof94: RomHackGameEntry = {
         "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
         "This version uses character portraits from KOF95 and KOF98.",
       ],
-      screenshots: [],
+      screenshots: [
+        // {
+        //   fileName: "charSelect.png",
+        //   description:
+        //     "A full on character select screen, modeled after KOF95.",
+        // },
+        {
+          fileName: "cpuCustomTeams.png",
+          description: "The CPU can choose custom teams too.",
+        },
+      ],
       youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
     },
     {
