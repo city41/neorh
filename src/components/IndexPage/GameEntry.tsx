@@ -14,7 +14,7 @@ function GameEntry({ className, game }: GameEntryProps) {
       </h2>
       <ul>
         {game.hacks.map((h) => {
-          return <li>{h.name}</li>;
+          return <li key={h.name}>{h.name}</li>;
         })}
       </ul>
     </div>
