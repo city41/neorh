@@ -24,7 +24,7 @@ function Layout({ children }: LayoutProps) {
           <div className="flex flex-row sm:flex-1 w-full items-center">
             <ul className="px-4 flex flex-col flex-wrap sm:flex-row items-start sm:items-center justify-start space-y-2 sm:space-y-0 sm:space-x-5 sm:place-content-between sm:px-16 sticky top-0">
               <li>
-                <a className="menu-item" href="#release-notes">
+                <a className="menu-item" href="/whats-new">
                   What&apos;s New
                 </a>
               </li>
@@ -33,7 +33,11 @@ function Layout({ children }: LayoutProps) {
                   Discord
                 </a>
               </li>
-              <li>About</li>
+              <li>
+                <a className="menu-item" href="/about">
+                  About
+                </a>
+              </li>
               <li>Add a Hack</li>
             </ul>
             <div className="flex-1"></div>
