@@ -3,7 +3,6 @@ import { RomHack, RomHackGameEntry } from "@/types";
 import clsx from "clsx";
 import { MetaEntry } from "./MetaEntry";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
-import { A } from "../A";
 
 type HackEntryProps = {
   className: string;
@@ -18,14 +17,15 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
     <div className={clsx(className, "flex flex-col")}>
       <div className="flex flex-row gap-x-2">
         <div>{hack.name}</div>
-        <A
+        <a
+          className="text-blue-700 hover:underline cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
             setShowDetails((sd) => !sd);
           }}
         >
           ({showDetails ? "hide" : "details"})
-        </A>
+        </a>
       </div>
       {showDetails && (
         <div className="mb-8 mr-2 w-full">

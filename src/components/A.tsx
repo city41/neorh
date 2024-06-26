@@ -1,8 +1,11 @@
-function A(props: JSX.IntrinsicElements["a"]) {
+import Link from "next/link";
+
+function A({ href, ...rest }: JSX.IntrinsicElements["a"]) {
   return (
-    <a
+    <Link
       className="text-blue-700 hover:underline cursor-pointer"
-      {...props}
+      href={href!}
+      {...rest}
       rel="noopener noreferer"
     />
   );
