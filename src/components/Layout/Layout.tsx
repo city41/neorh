@@ -25,30 +25,24 @@ function Layout({ children }: LayoutProps) {
           <div className="flex flex-row sm:flex-1 w-full items-center">
             <ul className="px-4 flex flex-col flex-wrap sm:flex-row items-start sm:items-center justify-start space-y-2 sm:space-y-0 sm:space-x-5 sm:place-content-between sm:px-16 sticky top-0">
               <li>
-                <a className="hover:underline cursor-pointer" href="/whats-new">
+                <A className="text-black" href="/whats-new">
                   What&apos;s New
-                </a>
+                </A>
               </li>
               <li>
-                <a
-                  className="hover:underline cursor-pointer"
-                  href="https://discord.gg/tvm4fpkUNq"
-                >
+                <A className="text-black" href="https://discord.gg/tvm4fpkUNq">
                   Discord
-                </a>
+                </A>
               </li>
               <li>
-                <a className="hover:underline cursor-pointer" href="/about">
+                <A className="text-black" href="/about">
                   About
-                </a>
+                </A>
               </li>
               <li>
-                <a
-                  className="hover:underline cursor-pointer"
-                  href="/add-a-hack"
-                >
+                <A className="text-black" href="/add-a-hack">
                   Add a Hack
-                </a>
+                </A>
               </li>
             </ul>
             <div className="flex-1"></div>
