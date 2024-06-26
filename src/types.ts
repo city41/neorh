@@ -8,6 +8,7 @@ export type RomHack = {
   id: string;
   name: string;
   incompatibleWith: string[];
+  zip: string;
   repo?: string;
 };
 
