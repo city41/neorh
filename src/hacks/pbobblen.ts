@@ -6,16 +6,20 @@ const pbobblen: RomHackGameEntry = {
   originalFiles: [],
   hacks: [
     {
-      id: "pb-precise-controls-hack",
+      id: "precise-controls",
       name: "Precise Controls",
-      incompatibleWith: ["rotary-bobble"],
+      author: "Matt Greer",
+      incompatibleWith: ["rotary"],
       repo: "https://github.com/city41/pb-precise-controls-hack",
+      zip: "",
     },
     {
-      id: "rotary-bobble",
+      id: "rotary",
       name: "Rotary Input",
-      incompatibleWith: ["pb-precise-controls-hack"],
+      author: "Matt Greer",
+      incompatibleWith: ["precise-controls"],
       repo: "https://github.com/city41/rotary-bobble",
+      zip: "",
     },
   ],
 };
