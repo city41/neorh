@@ -20,6 +20,7 @@ export type RomHack = {
   details: string[];
   screenshots: Screenshot[];
   youtube?: string;
+  website?: string;
 };
 
 export type RomHackGameEntry = {

@@ -40,16 +40,21 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
             })}
           </div>
 
-          <MetaEntry
-            metaKey={hack.creators.length === 1 ? "Creator" : "Creators"}
-            value={hack.creators.join(", ")}
-          />
-          {hack.repo && (
-            <MetaEntry metaKey="GitHub" value={hack.repo} hyperlink />
-          )}
-          {hack.youtube && (
-            <MetaEntry metaKey="YouTube" value={hack.youtube} hyperlink />
-          )}
+          <div className="flex flex-row gap-x-4">
+            <MetaEntry
+              metaKey={hack.creators.length === 1 ? "Creator" : "Creators"}
+              value={hack.creators.join(", ")}
+            />
+            {hack.website && (
+              <MetaEntry metaKey="WebSite" value={hack.website} hyperlink />
+            )}
+            {hack.youtube && (
+              <MetaEntry metaKey="YouTube" value={hack.youtube} hyperlink />
+            )}
+            {hack.repo && (
+              <MetaEntry metaKey="GitHub" value={hack.repo} hyperlink />
+            )}
+          </div>
         </div>
       )}
     </div>

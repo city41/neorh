@@ -99,6 +99,8 @@ const pbobblen: RomHackGameEntry = {
         "This hack requires building a custom controller",
       ],
       screenshots: [],
+      youtube: "https://www.youtube.com/watch?v=buq1Kh65goU",
+      website: "https://rotary-bobble.mattgreer.dev",
     },
   ],
 };

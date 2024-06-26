@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { A } from "../A";
 
 type MetaEntryProps = {
   className?: string;
@@ -8,15 +9,14 @@ type MetaEntryProps = {
 };
 
 function MetaEntry({ className, metaKey, value, hyperlink }: MetaEntryProps) {
-  const valEl = hyperlink ? (
-    <a href={value.toString()}>{value}</a>
-  ) : (
-    <div>{value}</div>
-  );
+  if (hyperlink) {
+    return <A href={value.toString()}>{metaKey}</A>;
+  }
+
   return (
     <div className={clsx(className, "flex flex-row gap-x-2")}>
       <div className="text-gray-400">{metaKey}</div>
-      {valEl}
+      <div>{value}</div>
     </div>
   );
 }
