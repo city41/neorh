@@ -76,7 +76,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
     if (zipData !== null) {
       unzip(zipData)
         .then((unzippedFiles) => {
-          return validateFiles(unzippedFiles).then(() => {
+          return validateFiles(unzippedFiles, game.originalFiles).then(() => {
             setUnzippedSourceFiles(unzippedFiles);
             setErrorMsg(null);
           });
@@ -224,8 +224,8 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
       {errorMsg && (
         <div className="bg-red-300 text-black mt-4 p-2">
           <div>
-            An error occured. Make sure this is kof94.zip meant for recent
-            versions of MAME.
+            An error occured. Make sure this is <b>{game.mameName}.zip</b> meant
+            for recent versions of MAME.
           </div>
           <div>{errorMsg}</div>
         </div>

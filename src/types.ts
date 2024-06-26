@@ -1,4 +1,4 @@
-export type OriginalFile = {
+export type FileInfo = {
   fileName: string;
   size: number;
   sha: string;
@@ -25,7 +25,7 @@ export type RomHack = {
 export type RomHackGameEntry = {
   gameName: string;
   mameName: string;
-  originalFiles: OriginalFile[];
+  originalFiles: FileInfo[];
   developer: string;
   year: number;
   hacks: RomHack[];
