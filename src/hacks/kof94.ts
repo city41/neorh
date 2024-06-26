@@ -91,11 +91,11 @@ const kof94: RomHackGameEntry = {
         "This version uses character portraits from KOF95 and KOF98.",
       ],
       screenshots: [
-        // {
-        //   fileName: "charSelect.png",
-        //   description:
-        //     "A full on character select screen, modeled after KOF95.",
-        // },
+        {
+          fileName: "charSelect.png",
+          description:
+            "A full on character select screen, modeled after KOF95.",
+        },
         {
           fileName: "cpuCustomTeams.png",
           description: "The CPU can choose custom teams too.",
