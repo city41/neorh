@@ -151,10 +151,13 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
 
     return getFinalRom(unzippedSourceFiles, game, chosenHacks)
       .then((patchedRomFiles) => {
+        const patches = chosenHacks.map((ch) => ch.id).join("_");
+
         const convertOptions: ConvertOptions = {
           genre: Genre.Fighting,
+          // TODO: incorporate hack.author
           manufacturer: "SNK_city41",
-          name: "The King of Fighters '94:TE Hack",
+          name: `${game.mameName}_${patches}`,
           year: 2024,
           ngh: "55",
         };
@@ -170,7 +173,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
           type: "application/octet-stream",
         });
 
-        sendBlobToAnchorTag(neoFileBlob, "kof94te.neo");
+        sendBlobToAnchorTag(neoFileBlob, `${game.mameName}_${patches}.neo`);
       })
       .catch((e) => {
         setErrorMsg(`unexpected error: ${e.message}`);
