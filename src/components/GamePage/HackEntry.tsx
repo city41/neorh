@@ -46,7 +46,7 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
               value={hack.creators.join(", ")}
             />
             {hack.website && (
-              <MetaEntry metaKey="WebSite" value={hack.website} hyperlink />
+              <MetaEntry metaKey="Website" value={hack.website} hyperlink />
             )}
             {hack.youtube && (
               <MetaEntry metaKey="YouTube" value={hack.youtube} hyperlink />

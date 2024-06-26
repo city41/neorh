@@ -45,10 +45,22 @@ function GamePage({ game }: PublicGamePageProps) {
                 <input
                   type="checkbox"
                   className="self-start mt-1"
+                  checked={
+                    chosenHacks.filter((ch) => ch.id === h.id).length === 1
+                  }
                   onChange={(e) => {
                     setChosenHacks((chs) => {
                       if (e.target.checked) {
-                        const added = [...chs, h];
+                        let added = [...chs, h];
+
+                        // TODO: remove this hack
+                        if (h.id === "te95") {
+                          added = added.filter((ah) => ah.id !== "te94");
+                        }
+
+                        if (h.id === "te94") {
+                          added = added.filter((ah) => ah.id !== "te95");
+                        }
 
                         return Array.from(new Set(added));
                       } else {

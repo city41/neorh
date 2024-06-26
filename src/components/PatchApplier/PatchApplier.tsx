@@ -132,6 +132,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
             type: "application/octet-stream",
           });
 
+          // TODO: this is fine for now, but this should be genericized
           sendBlobToAnchorTag(fileBlob, "kof94te.zip");
         });
       })
