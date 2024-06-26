@@ -3,6 +3,8 @@ import { RomHackGameEntry } from "..//types";
 const kof94: RomHackGameEntry = {
   gameName: "The King of Fighters '94",
   mameName: "kof94",
+  developer: "SNK",
+  year: 1994,
   originalFiles: [
     {
       fileName: "055-c1.c1",

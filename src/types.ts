@@ -18,6 +18,8 @@ export type RomHackGameEntry = {
   gameName: string;
   mameName: string;
   originalFiles: OriginalFile[];
+  developer: string;
+  year: number;
   hacks: RomHack[];
 };
 

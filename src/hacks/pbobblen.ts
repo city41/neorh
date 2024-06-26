@@ -3,6 +3,8 @@ import { RomHackGameEntry } from "@/types";
 const pbobblen: RomHackGameEntry = {
   gameName: "Puzzle Bobble",
   mameName: "pbobblen",
+  developer: "Taito",
+  year: 1994,
   originalFiles: [],
   hacks: [
     {
