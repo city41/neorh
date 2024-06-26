@@ -5,7 +5,73 @@ const pbobblen: RomHackGameEntry = {
   mameName: "pbobblen",
   developer: "Taito",
   year: 1994,
-  originalFiles: [],
+  originalFiles: [
+    {
+      fileName: "068-c1.c1",
+      size: 1048576,
+      sha: "6b09f7eb5b86c83b889fee884c27c613a83716f78c9308e75a6c6ee1ce3d9ea6",
+    },
+    {
+      fileName: "068-c2.c2",
+      size: 1048576,
+      sha: "8772cb813cd320079113d2a5cd2325e336147f9465419b69380afc7c7e21a527",
+    },
+    {
+      fileName: "068-c3.c3",
+      size: 1048576,
+      sha: "d9d86a5f720c373f0953e64656cdc558653b61e7b287caa467a8e9a83bedccb0",
+    },
+    {
+      fileName: "068-c4.c4",
+      size: 1048576,
+      sha: "a191b43d0ec2931ff6d8e71cf2059a1cb808cf41b9f1ac6f222d70b98e6f2a49",
+    },
+    {
+      fileName: "068-v1.v1",
+      size: 1048576,
+      sha: "a26c5140c2ce43bdced4f5c6fdefe0dd2300eb077be571ba4b7978376611d4d4",
+    },
+    {
+      fileName: "068-v2.v2",
+      size: 1048576,
+      sha: "fcd7ea5c9933a13c718f2351f81a524d681fac69dd91e7fba527713b1731c1a9",
+    },
+    {
+      fileName: "d96-01.v3",
+      size: 1048576,
+      sha: "a684726d1123a6a388148b42e93141cb308eff1a45b658509ac5cd1c1a1b5215",
+    },
+    {
+      fileName: "d96-02.c5",
+      size: 524288,
+      sha: "fa93412c75ef18c5535d23ed7cecc5986516701e72c78393435bbd7e1b8f8bde",
+    },
+    {
+      fileName: "d96-03.c6",
+      size: 524288,
+      sha: "5919203ec498729b9e1369c30cfb40dfc7e47eccd3b0338d19c5f9dcced98672",
+    },
+    {
+      fileName: "d96-04.s1",
+      size: 131072,
+      sha: "f7b40fc7f807c8edf1592332dd6d289d417ab602dc463636014850a1aa289c27",
+    },
+    {
+      fileName: "d96-05.v4",
+      size: 524288,
+      sha: "bc6a1ed785725c4fcfaa116a0c9943480b493240268983edaeedaab4f50a718d",
+    },
+    {
+      fileName: "d96-06.m1",
+      size: 131072,
+      sha: "7f394b283649d9b502bafe5daf7e16e9f36d6f87c90bf5d3aa3b854b7792af57",
+    },
+    {
+      fileName: "d96-07.ep1",
+      size: 524288,
+      sha: "8c91eee849e252b841c84785474b8cfd649516b38249e556c2b9babc17a5a189",
+    },
+  ],
   hacks: [
     {
       id: "precise-controls",

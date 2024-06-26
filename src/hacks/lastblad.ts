@@ -13,27 +13,27 @@ const lastblad: RomHackGameEntry = {
     },
     {
       fileName: "234-c2.c2",
-      size: 8338608,
+      size: 8388608,
       sha: "7cd8cb75f33af4b59b498e4d191a27114f9ce7bc4efda1e54eb1f7ec140c2eb8",
     },
     {
       fileName: "234-c3.c3",
-      size: 8338608,
+      size: 8388608,
       sha: "36a054445c3bb9e5d45e60a2f6554852d39fd1234d70a546740fa9e97c7eb16e",
     },
     {
       fileName: "234-c4.c4",
-      size: 8338608,
+      size: 8388608,
       sha: "3eead32fa1d444866a97275bc9e6140f1f51c2efc91f2b1e65b5162baf1b0189",
     },
     {
       fileName: "234-c5.c5",
-      size: 4194394,
+      size: 4194304,
       sha: "8af0fbc04c5ddf15fb36f8d1b41d03e3086f315f44bd62745e957ab39a1a7503",
     },
     {
       fileName: "234-c6.c6",
-      size: 4194394,
+      size: 4194304,
       sha: "8c40482de21ab92359c3b818354b9f6ed1b1cb5388e4e7638bdc90d68e139022",
     },
     {
@@ -48,7 +48,7 @@ const lastblad: RomHackGameEntry = {
     },
     {
       fileName: "234-p2.sp2",
-      size: 4194394,
+      size: 4194304,
       sha: "26770918dbf563ec1b4cd0830e13b50784ca8c94f43d66070a5c3a9a6ccb5718",
     },
     {
@@ -58,22 +58,22 @@ const lastblad: RomHackGameEntry = {
     },
     {
       fileName: "234-v1.v1",
-      size: 4194394,
+      size: 4194304,
       sha: "433b26eca445ef2fdab1fd069f1e8589037a4f2649425146323c21ed5ae315c4",
     },
     {
       fileName: "234-v2.v2",
-      size: 4194394,
+      size: 4194304,
       sha: "f842097af0ac01a4160beee5230825eb5ca2da88b07c75de22da89ba2b39f520",
     },
     {
       fileName: "234-v3.v3",
-      size: 4194394,
+      size: 4194304,
       sha: "b8e71df3da5b107e22539c03b8f7b9979aa28284ce0a6ee80f105462fee1c60f",
     },
     {
       fileName: "234-v4.v4",
-      size: 4194394,
+      size: 4194304,
       sha: "bddc6e2430def2d474e0de68210ff33e57ac2ab282ead42d1899a21b77016d67",
     },
   ],
