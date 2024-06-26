@@ -7,6 +7,7 @@ export type OriginalFile = {
 export type RomHack = {
   id: string;
   name: string;
+  author: string;
   incompatibleWith: string[];
   zip: string;
   repo?: string;

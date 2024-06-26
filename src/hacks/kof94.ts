@@ -82,6 +82,7 @@ const kof94: RomHackGameEntry = {
       incompatibleWith: ["kof94te_a94"],
       repo: "https://github.com/city41/kof94te",
       zip: "kof94teIpsPatches_ap5.zip",
+      author: "Matt Greer",
     },
     {
       id: "kof94te_a94",
@@ -89,6 +90,7 @@ const kof94: RomHackGameEntry = {
       incompatibleWith: ["kof94te_a95"],
       repo: "https://github.com/city41/kof94te",
       zip: "kof94teIpsPatches_ap4.zip",
+      author: "Matt Greer",
     },
     {
       id: "kof94cs",
@@ -96,6 +98,7 @@ const kof94: RomHackGameEntry = {
       incompatibleWith: [],
       repo: "https://github.com/city41/kof9cs",
       zip: "kof94csIpsPatches.zip",
+      author: "Matt Greer",
     },
     {
       id: "kof94font",
@@ -103,6 +106,7 @@ const kof94: RomHackGameEntry = {
       incompatibleWith: [],
       repo: "https://github.com/city41/kof9font",
       zip: "kof94fontIpsPatches.zip",
+      author: "Matt Greer",
     },
   ],
 };
