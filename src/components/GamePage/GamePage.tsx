@@ -10,7 +10,7 @@ type PublicGamePageProps = {
 function GamePage({ game }: PublicGamePageProps) {
   const [chosenHacks, setChosenHacks] = useState<RomHack[]>([]);
 
-  const logoImg = require(`../../logos/${game.mameName}.png`);
+  const logoImg = require(`../../logos/${game.mameName}.png`).default;
 
   return (
     <div className="w-full sm:py-16">
