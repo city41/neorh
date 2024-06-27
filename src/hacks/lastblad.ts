@@ -53,6 +53,7 @@ const lastblad: RomHackGameEntry = {
     },
     {
       fileName: "234-p2.sp2",
+      neosdconvFileName: "234-p2.p2",
       size: 4194304,
       sha: "26770918dbf563ec1b4cd0830e13b50784ca8c94f43d66070a5c3a9a6ccb5718",
     },
@@ -93,7 +94,9 @@ const lastblad: RomHackGameEntry = {
       details: [
         "The developers of the game hid a mini game deep inside of it. It's normally tricky to get to.",
         "This hack has the mini game play instead of the attract mode.",
+        "The only purpose of this hack is to expose the minigame. When done checking it out, please go back to a regular Last Blade ROM for playing the game.",
         "In both AES/Home and MVS/arcade mode, the mini game will start right after the Neo Geo eyecatcher has finished (don't try to skip it).",
+        "Controls: B to kick a lifesaver, D to restart the level.",
       ],
       screenshots: [
         {
@@ -106,7 +109,7 @@ const lastblad: RomHackGameEntry = {
         },
       ],
       youtube: "https://www.youtube.com/watch?v=AdHPz36y-SU",
-      downloadAs: ["mame"],
+      downloadAs: ["mame", "neosd"],
     },
   ],
 };

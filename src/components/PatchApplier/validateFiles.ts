@@ -14,7 +14,9 @@ async function validateFiles(files: RomFileEntry[], expectedFiles: FileInfo[]) {
     }
 
     if (!foundFile) {
-      throw new Error(`File not found: ${expectedFile.fileName}`);
+      throw new Error(
+        `File not found: ${expectedFile.fileName} (expected sha: ${expectedFile.sha})`
+      );
     }
 
     if (foundFile.fileName !== expectedFile.fileName) {
