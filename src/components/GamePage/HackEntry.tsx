@@ -62,6 +62,11 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
             {hack.repo && (
               <MetaEntry metaKey="GitHub" value={hack.repo} hyperlink />
             )}
+            <MetaEntry
+              metaKey="ips files"
+              value={`/ips/${game.mameName}/${hack.zip}`}
+              hyperlink
+            />
           </div>
         </div>
       )}
