@@ -1,5 +1,9 @@
 export type FileInfo = {
   fileName: string;
+  // TODO: wow this is such a hack...
+  // this is because neosdconv doesn't know how to deal
+  // with pbobblen's rom names
+  neosdconvFileName?: string;
   size: number;
   sha: string;
 };

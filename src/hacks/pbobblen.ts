@@ -43,36 +43,43 @@ const pbobblen: RomHackGameEntry = {
     },
     {
       fileName: "d96-01.v3",
+      neosdconvFileName: "068-v3.v3",
       size: 1048576,
       sha: "a684726d1123a6a388148b42e93141cb308eff1a45b658509ac5cd1c1a1b5215",
     },
     {
       fileName: "d96-02.c5",
+      neosdconvFileName: "068-c5.c5",
       size: 524288,
       sha: "e69c9bee37df657ae1d129aa10f5bc525c60d48db890d884ba0452f5de325e25",
     },
     {
       fileName: "d96-03.c6",
+      neosdconvFileName: "068-c6.c6",
       size: 524288,
       sha: "4ad384a01dad4bc9c2653ba38f87b29e41269b47ab1be516e8be3e382dbf37c3",
     },
     {
       fileName: "d96-04.s1",
+      neosdconvFileName: "068-s1.s1",
       size: 131072,
       sha: "f7b40fc7f807c8edf1592332dd6d289d417ab602dc463636014850a1aa289c27",
     },
     {
       fileName: "d96-05.v4",
+      neosdconvFileName: "068-v4.v4",
       size: 524288,
       sha: "bc6a1ed785725c4fcfaa116a0c9943480b493240268983edaeedaab4f50a718d",
     },
     {
       fileName: "d96-06.m1",
+      neosdconvFileName: "068-m1.m1",
       size: 131072,
       sha: "7f394b283649d9b502bafe5daf7e16e9f36d6f87c90bf5d3aa3b854b7792af57",
     },
     {
       fileName: "d96-07.ep1",
+      neosdconvFileName: "068-p1.p1",
       size: 524288,
       sha: "d833a95ed755c0dbe47f4ef1d85a697a4e2cc6521b416a5f0421c3fb91ce73a0",
     },

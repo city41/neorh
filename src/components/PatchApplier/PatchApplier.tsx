@@ -11,7 +11,6 @@ import {
   ConvertOptions,
   FilesInMemory,
 } from "neosdconv/lib/buildNeoFile";
-import { Genre } from "neosdconv/lib/genres";
 import { tagPatchedFiles } from "./tagPatchedFiles";
 import { getFinalRom } from "./getFinalRom";
 
@@ -20,6 +19,23 @@ type PatchApplierProps = {
   game: RomHackGameEntry;
   chosenHacks: RomHack[];
 };
+
+function getNeosdConvFileName(
+  game: RomHackGameEntry,
+  actualFileName: string
+): string {
+  const originalFileInfo = game.originalFiles.find(
+    (of) => of.fileName === actualFileName
+  );
+
+  if (!originalFileInfo) {
+    throw new Error(
+      `getNeosdConvFileName: failed to find a FileInfo for: ${actualFileName}`
+    );
+  }
+
+  return originalFileInfo.neosdconvFileName ?? originalFileInfo.fileName;
+}
 
 function DownloadButton({
   className,
@@ -167,7 +183,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
 
         const filesInMemory: FilesInMemory =
           patchedRomFiles.reduce<FilesInMemory>((accum, f) => {
-            accum[f.fileName] = f.data;
+            accum[getNeosdConvFileName(game, f.fileName)] = f.data;
             return accum;
           }, {});
 
@@ -183,7 +199,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles, chosenHacks, choseDotNeo]);
+  }, [game, unzippedSourceFiles, chosenHacks, choseDotNeo]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>
