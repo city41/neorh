@@ -55,6 +55,7 @@ function ScreenshotCarousel({
           <img
             key={ss.fileName}
             src={url.src}
+            className="cursor-pointer"
             onClick={() => {
               setCarouselIndex(index);
               setCarouselOpen(true);
