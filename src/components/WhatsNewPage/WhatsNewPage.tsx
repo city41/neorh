@@ -64,6 +64,12 @@ function WhatsNewPage() {
     <div className="mt-8 mb-16 flex flex-col gap-y-2">
       <h1 className="font-bold text-2xl mb-4 text-center">What&apos;s New</h1>
       <NewEntry
+        title="New hack: Samurai Shodown 4 cheat sheet"
+        date="2024-06-27"
+      >
+        <p>Pause the game to see your character&apos;s moves.</p>
+      </NewEntry>
+      <NewEntry
         title="KOF94 Cheat Sheet: now works in versus mode"
         date="2024-06-27"
       >

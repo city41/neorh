@@ -253,7 +253,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
           </div>
           {choseDotNeo && (
             <div className="bg-green-300 border-2 border-green-800 px-4 py-2 mt-8">
-              Look for it on your system menu by the name{" "}
+              Look for it on your NeoSD or MiSTer system menu by the name{" "}
               <b>
                 {game.mameName}_{chosenHacks.map((ch) => ch.id).join("_")}
               </b>
