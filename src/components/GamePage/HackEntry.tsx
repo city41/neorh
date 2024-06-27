@@ -20,7 +20,6 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
         <a
           className="text-blue-700 hover:underline cursor-pointer"
           onClick={(e) => {
-            e.preventDefault();
             setShowDetails((sd) => !sd);
           }}
         >
@@ -28,7 +27,15 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
         </a>
       </div>
       {showDetails && (
-        <div className="mb-8 mr-2 w-full" onClick={(e) => e.preventDefault()}>
+        <div
+          className="mb-8 mr-2 w-full"
+          onClick={(e) => {
+            const t = e.target as HTMLElement;
+            if (t.tagName?.toLowerCase() !== "a") {
+              e.preventDefault();
+            }
+          }}
+        >
           <ScreenshotCarousel
             gameMameName={game.mameName}
             hackId={hack.id}
