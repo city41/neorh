@@ -5,6 +5,7 @@ import { RomHack, RomHackGameEntry } from "@/types";
 import { PatchApplier } from "../PatchApplier";
 import { MetaEntry } from "./MetaEntry";
 import { HackEntry } from "./HackEntry";
+import { A } from "../A";
 
 type PublicGamePageProps = {
   game: RomHackGameEntry;
@@ -35,6 +36,16 @@ function GamePage({ game }: PublicGamePageProps) {
           <MetaEntry metaKey="year" value={game.year} />
         </div>
       </div>
+
+      {game.mameName === "kof94" && (
+        <div className="bg-green-300 border-2 border-green-800 px-4 py-2 my-8 flex flex-col gap-y-2">
+          <p>
+            Looking for the original KOF94TE website?{" "}
+            <A href="https://kof94te.mattgreer.dev">It has moved here</A>.
+          </p>
+          <p> To build KOF94TE, stay here, you can built it below.</p>
+        </div>
+      )}
 
       <h3 className="font-bold text-lg">First: Choose your hacks</h3>
       <ul className="sm:ml-4">

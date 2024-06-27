@@ -135,7 +135,7 @@ const kof94: RomHackGameEntry = {
       creators: ["Matt Greer", "Bunny-Head"],
       details: [
         "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
-        "This version uses KOF94 style character portraits based on the health bar portraits created by Bunny-Head.",
+        "This version uses KOF94 style character portraits based on the health bar portraits. They were created by Bunny-Head.",
         "This is a big hack, for more details, check the hack's website.",
       ],
       screenshots: [
