@@ -16,7 +16,7 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
   return (
     <div className={clsx(className, "flex flex-col")}>
       <div className="flex flex-row gap-x-2">
-        <div>{hack.name}</div>
+        <div className="cursor-pointer">{hack.name}</div>
         <a
           className="text-blue-700 hover:underline cursor-pointer"
           onClick={(e) => {
@@ -28,7 +28,7 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
         </a>
       </div>
       {showDetails && (
-        <div className="mb-8 mr-2 w-full">
+        <div className="mb-8 mr-2 w-full" onClick={(e) => e.preventDefault()}>
           <ScreenshotCarousel
             gameMameName={game.mameName}
             hackId={hack.id}

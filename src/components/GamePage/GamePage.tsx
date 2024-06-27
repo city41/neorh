@@ -55,7 +55,7 @@ function GamePage({ game }: PublicGamePageProps) {
               <label className="flex flex-row my-2">
                 <input
                   type="checkbox"
-                  className="self-start mt-1"
+                  className="self-start mt-1 cursor-pointer"
                   checked={
                     chosenHacks.filter((ch) => ch.id === h.id).length === 1
                   }
