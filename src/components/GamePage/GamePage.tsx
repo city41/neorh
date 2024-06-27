@@ -43,7 +43,7 @@ function GamePage({ game }: PublicGamePageProps) {
             Looking for the original KOF94TE website?{" "}
             <A href="https://kof94te.mattgreer.dev">It has moved here</A>.
           </p>
-          <p> To build KOF94TE, stay here, you can built it below.</p>
+          <p> To build KOF94TE, stay here, you can build it below.</p>
         </div>
       )}
 
