@@ -62,6 +62,16 @@ function GamePage({ game }: PublicGamePageProps) {
                           added = added.filter((ah) => ah.id !== "te95");
                         }
 
+                        if (h.id === "precise-controls") {
+                          added = added.filter((ah) => ah.id !== "rotary");
+                        }
+
+                        if (h.id === "rotary") {
+                          added = added.filter(
+                            (ah) => ah.id !== "precise-controls"
+                          );
+                        }
+
                         return Array.from(new Set(added));
                       } else {
                         const removed = chs.filter((ch) => ch !== h);

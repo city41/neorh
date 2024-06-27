@@ -1,3 +1,4 @@
+import { Genre } from "neosdconv/lib/genres";
 import { RomHackGameEntry } from "..//types";
 
 const kof94: RomHackGameEntry = {
@@ -5,6 +6,10 @@ const kof94: RomHackGameEntry = {
   mameName: "kof94",
   developer: "SNK",
   year: 1994,
+  neosdConvertOptions: {
+    genre: Genre.Fighting,
+    ngh: "55",
+  },
   originalFiles: [
     {
       fileName: "055-c1.c1",
@@ -85,7 +90,6 @@ const kof94: RomHackGameEntry = {
       repo: "https://github.com/city41/kof94te",
       zip: "kof94teIpsPatches_a95.zip",
       creators: ["Matt Greer"],
-      fbNeo: true,
       details: [
         "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
         "This version uses character portraits from KOF95 and KOF98.",
@@ -120,6 +124,7 @@ const kof94: RomHackGameEntry = {
       ],
       website: "https://kof94te.mattgreer.dev",
       youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
+      downloadAs: ["fbneo", "mame", "neosd"],
     },
     {
       id: "te94",
@@ -128,7 +133,6 @@ const kof94: RomHackGameEntry = {
       repo: "https://github.com/city41/kof94te",
       zip: "kof94teIpsPatches_a94.zip",
       creators: ["Matt Greer", "Bunny-Head"],
-      fbNeo: true,
       details: [
         "Adds custom teams to the game. This is a thorough hack, showing your custom team throughout all aspects of the game.",
         "This version uses KOF94 style character portraits based on the health bar portraits created by Bunny-Head.",
@@ -163,6 +167,7 @@ const kof94: RomHackGameEntry = {
       ],
       website: "https://kof94te.mattgreer.dev",
       youtube: "https://www.youtube.com/watch?v=LBum6iwyDpk",
+      downloadAs: ["fbneo", "mame", "neosd"],
     },
     {
       id: "cheatsheet",
@@ -181,6 +186,7 @@ const kof94: RomHackGameEntry = {
             "Your current player's moves shown when you pause the game.",
         },
       ],
+      downloadAs: ["mame", "neosd"],
     },
     {
       id: "font",
@@ -199,6 +205,7 @@ const kof94: RomHackGameEntry = {
             "The font without the hack (above) and with the hack (below)",
         },
       ],
+      downloadAs: ["mame", "neosd"],
     },
   ],
 };

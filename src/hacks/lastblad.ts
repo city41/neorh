@@ -1,10 +1,15 @@
 import { RomHackGameEntry } from "@/types";
+import { Genre } from "neosdconv/lib/genres";
 
 const lastblad: RomHackGameEntry = {
   gameName: "The Last Blade",
   mameName: "lastblad",
   developer: "SNK",
   year: 1997,
+  neosdConvertOptions: {
+    genre: Genre.Fighting,
+    ngh: "234",
+  },
   originalFiles: [
     {
       fileName: "234-c1.c1",
@@ -101,6 +106,7 @@ const lastblad: RomHackGameEntry = {
         },
       ],
       youtube: "https://www.youtube.com/watch?v=AdHPz36y-SU",
+      downloadAs: ["mame"],
     },
   ],
 };

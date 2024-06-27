@@ -1,10 +1,15 @@
 import { RomHackGameEntry } from "@/types";
+import { Genre } from "neosdconv/lib/genres";
 
 const pbobblen: RomHackGameEntry = {
   gameName: "Puzzle Bobble",
   mameName: "pbobblen",
   developer: "Taito",
   year: 1994,
+  neosdConvertOptions: {
+    genre: Genre.Puzzle,
+    ngh: "83",
+  },
   originalFiles: [
     {
       fileName: "068-c1.c1",
@@ -44,12 +49,12 @@ const pbobblen: RomHackGameEntry = {
     {
       fileName: "d96-02.c5",
       size: 524288,
-      sha: "fa93412c75ef18c5535d23ed7cecc5986516701e72c78393435bbd7e1b8f8bde",
+      sha: "e69c9bee37df657ae1d129aa10f5bc525c60d48db890d884ba0452f5de325e25",
     },
     {
       fileName: "d96-03.c6",
       size: 524288,
-      sha: "5919203ec498729b9e1369c30cfb40dfc7e47eccd3b0338d19c5f9dcced98672",
+      sha: "4ad384a01dad4bc9c2653ba38f87b29e41269b47ab1be516e8be3e382dbf37c3",
     },
     {
       fileName: "d96-04.s1",
@@ -69,7 +74,7 @@ const pbobblen: RomHackGameEntry = {
     {
       fileName: "d96-07.ep1",
       size: 524288,
-      sha: "8c91eee849e252b841c84785474b8cfd649516b38249e556c2b9babc17a5a189",
+      sha: "d833a95ed755c0dbe47f4ef1d85a697a4e2cc6521b416a5f0421c3fb91ce73a0",
     },
   ],
   hacks: [
@@ -86,6 +91,7 @@ const pbobblen: RomHackGameEntry = {
         "By holding down B, the joystick will only change one position at a time. This works for player 1 or player 2.",
       ],
       screenshots: [],
+      downloadAs: ["mame", "neosd"],
     },
     {
       id: "rotary",
@@ -101,6 +107,7 @@ const pbobblen: RomHackGameEntry = {
       screenshots: [],
       youtube: "https://www.youtube.com/watch?v=buq1Kh65goU",
       website: "https://rotary-bobble.mattgreer.dev",
+      downloadAs: ["mame", "neosd"],
     },
   ],
 };

@@ -9,6 +9,8 @@ export type Screenshot = {
   description: string;
 };
 
+export type DownloadType = "neosd" | "mame" | "fbneo";
+
 export type RomHack = {
   id: string;
   name: string;
@@ -16,11 +18,11 @@ export type RomHack = {
   incompatibleWith: string[];
   zip: string;
   repo?: string;
-  fbNeo?: boolean;
   details: string[];
   screenshots: Screenshot[];
   youtube?: string;
   website?: string;
+  downloadAs: DownloadType[];
 };
 
 export type RomHackGameEntry = {
@@ -30,6 +32,10 @@ export type RomHackGameEntry = {
   developer: string;
   year: number;
   hacks: RomHack[];
+  neosdConvertOptions: {
+    genre: number;
+    ngh: string;
+  };
 };
 
 export type RomFileEntry = {

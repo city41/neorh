@@ -158,12 +158,11 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         const patches = chosenHacks.map((ch) => ch.id).join("_");
 
         const convertOptions: ConvertOptions = {
-          genre: Genre.Fighting,
-          // TODO: incorporate hack.author
-          manufacturer: "SNK_city41",
+          genre: game.neosdConvertOptions.genre,
+          manufacturer: game.developer,
           name: `${game.mameName}_${patches}`,
-          year: 2024,
-          ngh: "55",
+          year: game.year,
+          ngh: game.neosdConvertOptions.ngh,
         };
 
         const filesInMemory: FilesInMemory =
@@ -207,13 +206,15 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
           </h3>
           {chosenHacks.length === 0 && <div>Choose at least one hack</div>}
           <div className="flex flex-row flex-wrap justify-around gap-8 px-8">
-            <DownloadButton
-              onClick={handleNeoSD}
-              title="download as .neo"
-              description="for use on NeoSD or MiSTer"
-              disabled={chosenHacks.length === 0}
-            />
-            {chosenHacks.some((ch) => ch.fbNeo) && (
+            {chosenHacks.every((ch) => ch.downloadAs.includes("neosd")) && (
+              <DownloadButton
+                onClick={handleNeoSD}
+                title="download as .neo"
+                description="for use on NeoSD or MiSTer"
+                disabled={chosenHacks.length === 0}
+              />
+            )}
+            {chosenHacks.some((ch) => ch.downloadAs.includes("fbneo")) && (
               <DownloadButton
                 onClick={handleDownloadFBNeoZip}
                 title="download as FBNeo .zip"
@@ -221,12 +222,14 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
                 disabled={chosenHacks.length === 0}
               />
             )}
-            <DownloadButton
-              onClick={handleDownloadZip}
-              title="download as MAME .zip"
-              description="For use on all other emulators"
-              disabled={chosenHacks.length === 0}
-            />
+            {chosenHacks.every((ch) => ch.downloadAs.includes("mame")) && (
+              <DownloadButton
+                onClick={handleDownloadZip}
+                title="download as MAME .zip"
+                description="For use on all other emulators"
+                disabled={chosenHacks.length === 0}
+              />
+            )}
           </div>
           {choseDotNeo && (
             <div className="bg-green-300 border-2 border-green-800 px-4 py-2 mt-8">
