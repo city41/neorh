@@ -118,6 +118,10 @@ const kof94: RomHackGameEntry = {
           description: "The continue screen with custom teams.",
         },
         {
+          fileName: "cutscene2.png",
+          description: "Custom teams during cutscenes",
+        },
+        {
           fileName: "usaEnding.png",
           description: "Surprising new endings.",
         },
@@ -159,6 +163,10 @@ const kof94: RomHackGameEntry = {
         {
           fileName: "continueScreen.png",
           description: "The continue screen with custom teams.",
+        },
+        {
+          fileName: "cutscene2.png",
+          description: "Custom teams during cutscenes",
         },
         {
           fileName: "usaEnding.png",
