@@ -242,7 +242,11 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
               <DownloadButton
                 onClick={handleDownloadZip}
                 title="download as MAME .zip"
-                description="For use on all other emulators"
+                description={
+                  chosenHacks.some((ch) => ch.downloadAs.includes("fbneo"))
+                    ? "For use on all other emulators"
+                    : "For use on emulators"
+                }
                 disabled={chosenHacks.length === 0}
               />
             )}

@@ -21,6 +21,7 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
           className="text-blue-700 hover:underline cursor-pointer"
           onClick={(e) => {
             setShowDetails((sd) => !sd);
+            e.preventDefault();
           }}
         >
           ({showDetails ? "hide" : "details"})
