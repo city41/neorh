@@ -185,7 +185,8 @@ const kof94: RomHackGameEntry = {
       zip: "kof94csIpsPatches.zip",
       creators: ["Matt Greer"],
       details: [
-        "When playing a single player game in AES/home mode, pausing the game shows your current character's move list",
+        "When playing in AES/home mode, pause the game to see your current character's move list",
+        "When playing in versus mode, whoever paused the game is who gets to see their move list.",
       ],
       screenshots: [
         {

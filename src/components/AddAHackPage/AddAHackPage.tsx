@@ -3,8 +3,8 @@ import { A } from "../A";
 function AddAHackPage() {
   return (
     <div className="mt-8 mb-16">
-      <h1 className="font-bold text-2xl mb-4">Add a hack</h1>
-      <div className="flex flex-col gap-y-2">
+      <h1 className="font-bold text-2xl mb-4 text-center">Add a hack</h1>
+      <div className="flex flex-col gap-y-2 px-0 sm:px-16">
         <p>
           You want to add a hack? Awesome! Make sure you meet these requirements
           first:
