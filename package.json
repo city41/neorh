@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@types/zip.js": "^2.0.33",
@@ -15,7 +16,8 @@
     "neosdconv": "^0.4.4",
     "next": "14.1.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-image-carousel-viewer": "^0.0.11"
   },
   "devDependencies": {
     "@types/node": "^20",
