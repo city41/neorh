@@ -103,11 +103,6 @@ const samsho4: RomHackGameEntry = {
       ],
       screenshots: [
         {
-          fileName: "cheatsheet.png",
-          description:
-            "Your current player's moves shown when you pause the game.",
-        },
-        {
           fileName: "kazuki.png",
           description:
             "Your current player's moves shown when you pause the game.",

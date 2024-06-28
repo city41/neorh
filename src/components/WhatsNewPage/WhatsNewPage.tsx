@@ -63,6 +63,12 @@ function WhatsNewPage() {
   return (
     <div className="mt-8 mb-16 flex flex-col gap-y-2">
       <h1 className="font-bold text-2xl mb-4 text-center">What&apos;s New</h1>
+      <NewEntry title="Samurai Shodown 4 Cheat Sheet fix" date="2024-06-28">
+        <p>
+          One of the combos listed on the common page was bogus. So it was
+          removed.
+        </p>
+      </NewEntry>
       <NewEntry
         title="New hack: Samurai Shodown 4 cheat sheet"
         date="2024-06-27"
