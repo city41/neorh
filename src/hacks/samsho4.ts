@@ -98,6 +98,8 @@ const samsho4: RomHackGameEntry = {
       zip: "samsho4csIpsPatches.zip",
       details: [
         "When you pause the game in AES/home mode, your character's move set is shown.",
+        "Hold A while paused to see the common moves all characters can use.",
+        "This works for both single player and versus mode. Whichever player pauses will see their move list.",
       ],
       screenshots: [
         {
@@ -109,6 +111,10 @@ const samsho4: RomHackGameEntry = {
           fileName: "kazuki.png",
           description:
             "Your current player's moves shown when you pause the game.",
+        },
+        {
+          fileName: "common.png",
+          description: "The common moves for all players shown when holding A.",
         },
       ],
       downloadAs: ["mame", "neosd"],
