@@ -49,7 +49,7 @@ const lastblad: RomHackGameEntry = {
     {
       fileName: "234-p1.p1",
       size: 1048576,
-      sha: "e3e8f2fcbf2941260aeb71847f47797f7bce479a8423348a76c9ae623ea680f9",
+      sha: "6269b137f58870df2a33d7e800f89f9bc132d0ced98214b1626b8c7f4a71049d",
     },
     {
       fileName: "234-p2.sp2",
