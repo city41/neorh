@@ -216,6 +216,25 @@ const kof94: RomHackGameEntry = {
       ],
       downloadAs: ["mame", "neosd"],
     },
+    {
+      id: "fixslowdown",
+      name: "Fix Slowdown",
+      incompatibleWith: [],
+      repo: "https://github.com/city41/kof9font",
+      zip: "kof94fixslowdownIpsPatches.zip",
+      creators: ["paulb-nl"],
+      details: [
+        "An experimental patch which removes most of the slowdown in the game for the MiSTer and real hardware.",
+        "This also removes the graphical glitching present on the NeoSD and Darksoft multi.",
+        "This patch is unnecessary if you play KOF94 on an emulator.",
+      ],
+      screenshots: [],
+      downloadAs: ["mame", "neosd"],
+      neosdConvertOptions: {
+        genre: Genre.Fighting,
+        ngh: "777",
+      },
+    },
   ],
 };
 

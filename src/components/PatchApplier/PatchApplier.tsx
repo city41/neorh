@@ -171,12 +171,21 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
       .then((patchedRomFiles) => {
         const patches = chosenHacks.map((ch) => ch.id).join("_");
 
+        const neosdConvertOptions = chosenHacks.reduce((accum, ch) => {
+          return {
+            ...accum,
+            ...(ch.neosdConvertOptions ?? {}),
+          };
+        }, game.neosdConvertOptions);
+
+        console.log("neosdConvertOptions", neosdConvertOptions);
+
         const convertOptions: ConvertOptions = {
-          genre: game.neosdConvertOptions.genre,
+          genre: neosdConvertOptions.genre,
           manufacturer: game.developer,
           name: `${game.mameName}_${patches}`,
           year: game.year,
-          ngh: game.neosdConvertOptions.ngh,
+          ngh: neosdConvertOptions.ngh,
         };
 
         const filesInMemory: FilesInMemory =
