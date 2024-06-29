@@ -178,7 +178,7 @@ const kof94: RomHackGameEntry = {
       downloadAs: ["fbneo", "mame", "neosd"],
     },
     {
-      id: "cheatsheet",
+      id: "cs",
       name: "Cheat Sheet",
       incompatibleWith: [],
       repo: "https://github.com/city41/kof9cs",
@@ -217,7 +217,7 @@ const kof94: RomHackGameEntry = {
       downloadAs: ["mame", "neosd"],
     },
     {
-      id: "fixslowdown",
+      id: "wc",
       name: "Fix Slowdown/Graphics (MiSTer and real hardware)",
       incompatibleWith: [],
       repo: "https://github.com/city41/kof9font",
