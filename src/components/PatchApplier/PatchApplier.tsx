@@ -23,15 +23,13 @@ type PatchApplierProps = {
 function getNeosdConvFileName(
   game: RomHackGameEntry,
   actualFileName: string
-): string {
+): string | null {
   const originalFileInfo = game.originalFiles.find(
     (of) => of.fileName === actualFileName
   );
 
   if (!originalFileInfo) {
-    throw new Error(
-      `getNeosdConvFileName: failed to find a FileInfo for: ${actualFileName}`
-    );
+    return null;
   }
 
   return originalFileInfo.neosdconvFileName ?? originalFileInfo.fileName;
@@ -183,7 +181,13 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
 
         const filesInMemory: FilesInMemory =
           patchedRomFiles.reduce<FilesInMemory>((accum, f) => {
-            accum[getNeosdConvFileName(game, f.fileName)] = f.data;
+            const fileName = getNeosdConvFileName(game, f.fileName);
+
+            if (fileName) {
+              // if we didn't get a filename, it's an extra file in the zip such as a bios
+              // which neosdconv specifically doesn't want
+              accum[fileName] = f.data;
+            }
             return accum;
           }, {});
 
