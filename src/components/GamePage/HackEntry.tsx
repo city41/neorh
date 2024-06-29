@@ -29,7 +29,7 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
       </div>
       {showDetails && (
         <div
-          className="mb-8 mr-2 w-full"
+          className="mb-8 mr-0 sm:mr-2"
           onClick={(e) => {
             const t = e.target as HTMLElement;
             if (t.tagName?.toLowerCase() !== "a") {
@@ -48,7 +48,7 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
             })}
           </div>
 
-          <div className="flex flex-row gap-x-4">
+          <div className="flex flex-row flex-wrap gap-x-4">
             <MetaEntry
               metaKey={hack.creators.length === 1 ? "Creator" : "Creators"}
               value={hack.creators.join(", ")}

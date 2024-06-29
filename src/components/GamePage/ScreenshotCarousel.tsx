@@ -46,7 +46,9 @@ function ScreenshotCarousel({
   return (
     <div
       className={clsx(className, "grid items-start gap-x-2 gap-y-2")}
-      style={{ gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr)" }}
+      style={{
+        gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr)",
+      }}
     >
       {screenshots.map((ss, index) => {
         const url =
