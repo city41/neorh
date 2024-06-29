@@ -178,8 +178,6 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
           };
         }, game.neosdConvertOptions);
 
-        console.log("neosdConvertOptions", neosdConvertOptions);
-
         const convertOptions: ConvertOptions = {
           genre: neosdConvertOptions.genre,
           manufacturer: game.developer,
