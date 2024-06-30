@@ -106,7 +106,21 @@ function GamePage({ game }: PublicGamePageProps) {
                     });
                   }}
                 />
-                <HackEntry className="ml-4" game={game} hack={h} />
+                <HackEntry
+                  className="ml-4"
+                  game={game}
+                  hack={h}
+                  showDetails={openHack === h.id}
+                  onToggleClick={() => {
+                    setOpenHack((oh) => {
+                      if (oh === h.id) {
+                        return null;
+                      }
+
+                      return h.id;
+                    });
+                  }}
+                />
               </label>
             </li>
           );

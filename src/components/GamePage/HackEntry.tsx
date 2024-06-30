@@ -8,11 +8,17 @@ type HackEntryProps = {
   className: string;
   game: RomHackGameEntry;
   hack: RomHack;
+  showDetails: boolean;
+  onToggleClick: () => void;
 };
 
-function HackEntry({ className, game, hack }: HackEntryProps) {
-  const [showDetails, setShowDetails] = useState(false);
-
+function HackEntry({
+  className,
+  game,
+  hack,
+  showDetails,
+  onToggleClick,
+}: HackEntryProps) {
   return (
     <div className={clsx(className, "flex flex-col")}>
       <div className="flex flex-row gap-x-2">
@@ -20,8 +26,8 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
         <a
           className="text-blue-700 hover:underline cursor-pointer"
           onClick={(e) => {
-            setShowDetails((sd) => !sd);
             e.preventDefault();
+            onToggleClick();
           }}
         >
           ({showDetails ? "hide" : "details"})
