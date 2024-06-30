@@ -38,12 +38,25 @@ function GamePage({ game }: PublicGamePageProps) {
       </div>
 
       {game.mameName === "kof94" && (
-        <div className="bg-green-300 border-2 border-green-800 px-4 py-2 my-8 flex flex-col gap-y-2">
-          <p>
-            Looking for the original KOF94TE website?{" "}
-            <A href="https://kof94te.mattgreer.dev">It has moved here</A>.
-          </p>
-          <p> To build KOF94TE, stay here, you can build it below.</p>
+        <div className="flex flex-col gap-y-4 my-8">
+          <div className="bg-green-300 border-2 border-green-800 px-4 py-2 flex flex-col gap-y-2">
+            <p>
+              Looking for the original KOF94TE website?{" "}
+              <A href="https://kof94te.mattgreer.dev">It has moved here</A>.
+            </p>
+            <p> To build KOF94TE, stay here, you can build it below.</p>
+          </div>
+          <div className="bg-red-400 border-2 border-red-800 px-4 py-2">
+            <p>
+              There has been{" "}
+              <A href="https://github.com/city41/kof94te/milestone/7?closed=1">
+                one bad bug
+              </A>{" "}
+              found in kof94te. So there will be another release. I&apos;m
+              holding off for now just in case more bugs are found. In a few
+              days to maybe a week, I will release 1.4.1.
+            </p>
+          </div>
         </div>
       )}
 
