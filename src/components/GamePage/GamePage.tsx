@@ -13,7 +13,7 @@ type PublicGamePageProps = {
 
 function GamePage({ game }: PublicGamePageProps) {
   const [chosenHacks, setChosenHacks] = useState<RomHack[]>([]);
-  const [openHack, setOpenHack] = useState<string | null>(null);
+  const [openHacks, setOpenHacks] = useState<string[]>([]);
 
   const logoImg = require(`../../logos/${game.mameName}.png`).default;
 
@@ -110,14 +110,14 @@ function GamePage({ game }: PublicGamePageProps) {
                   className="ml-4"
                   game={game}
                   hack={h}
-                  showDetails={openHack === h.id}
+                  showDetails={openHacks.includes(h.id)}
                   onToggleClick={() => {
-                    setOpenHack((oh) => {
-                      if (oh === h.id) {
-                        return null;
+                    setOpenHacks((oh) => {
+                      if (oh.includes(h.id)) {
+                        return oh.filter((hhh) => hhh !== h.id);
                       }
 
-                      return h.id;
+                      return [...oh, h.id];
                     });
                   }}
                 />
