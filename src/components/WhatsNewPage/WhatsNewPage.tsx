@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
+import { A } from "../A";
 
 function dateToHumanString(input: string): string {
   const date = new Date(input);
@@ -63,6 +64,32 @@ function WhatsNewPage() {
   return (
     <div className="mt-8 mb-16 flex flex-col gap-y-2">
       <h1 className="font-bold text-2xl mb-4 text-center">What&apos;s New</h1>
+      <NewEntry
+        title="KOF94 slowdown and NeoSD/Darksoft patch released"
+        date="2024-06-29"
+      >
+        <p>
+          paulb-nl of the MiSTer team has contributed a great patch for KOF94.
+          With it, most slowdown in the game is gone when playing on a MiSTer or
+          truly real hardware*.
+        </p>
+        <p>
+          This patch also fixes the graphical glitches that could occur on the
+          NeoSD or the Darksoft Multi.
+        </p>
+        <p>
+          If you play on any of these platforms, the patch is highly
+          recommended. It improves the game nicely. If you play on an emulator,
+          you will see no difference. The patch is on the{" "}
+          <A href="/kof94">King of Fighters 94</A> page.
+        </p>
+        <p className="text-gray-600 text-xs">
+          * "truly real hardware" means playing on a Neo Geo with the hack
+          burned onto eproms on a real Neo Geo cart, not a multi cart like the
+          NeoSD/Darksoft. They are similar, but don&apos;t quite simulate what
+          an actual cart does.
+        </p>
+      </NewEntry>
       <NewEntry title="Samurai Shodown 4 Cheat Sheet fix" date="2024-06-28">
         <p>
           One of the combos listed on the common page was bogus. So it was

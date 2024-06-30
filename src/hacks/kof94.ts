@@ -218,7 +218,7 @@ const kof94: RomHackGameEntry = {
     },
     {
       id: "slofix",
-      name: "Fix Slowdown/Graphics (MiSTer and real hardware)",
+      name: "Fix Slowdown/Graphics (for MiSTer/NeoSD/Darksoft)",
       incompatibleWith: [],
       repo: "https://github.com/city41/kof9font",
       zip: "kof94fixslowdownIpsPatches.zip",
