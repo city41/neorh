@@ -178,7 +178,7 @@ const kof94: RomHackGameEntry = {
       downloadAs: ["fbneo", "mame", "neosd"],
     },
     {
-      id: "cheatsheet",
+      id: "csheet",
       name: "Cheat Sheet",
       incompatibleWith: [],
       repo: "https://github.com/city41/kof9cs",
@@ -215,6 +215,25 @@ const kof94: RomHackGameEntry = {
         },
       ],
       downloadAs: ["mame", "neosd"],
+    },
+    {
+      id: "slofix",
+      name: "Fix Slowdown/Graphics (MiSTer and real hardware)",
+      incompatibleWith: [],
+      repo: "https://github.com/city41/kof9font",
+      zip: "kof94fixslowdownIpsPatches.zip",
+      creators: ["paulb-nl"],
+      details: [
+        "This patch removes most of the slowdown in the game for the MiSTer and real hardware.",
+        "This also removes the graphical glitching present on the NeoSD and Darksoft multi.",
+        "This patch is unnecessary if you play KOF94 on an emulator.",
+      ],
+      screenshots: [],
+      downloadAs: ["mame", "neosd"],
+      neosdConvertOptions: {
+        genre: Genre.Fighting,
+        ngh: "777",
+      },
     },
   ],
 };

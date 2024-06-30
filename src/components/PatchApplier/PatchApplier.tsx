@@ -171,12 +171,22 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
       .then((patchedRomFiles) => {
         const patches = chosenHacks.map((ch) => ch.id).join("_");
 
+        // this is really here so that the slowdown fix patch can make kof94
+        // something other than 55. That really only works if only one patch does this.
+        // TODO: figure out a better way to do this.
+        const neosdConvertOptions = chosenHacks.reduce((accum, ch) => {
+          return {
+            ...accum,
+            ...(ch.neosdConvertOptions ?? {}),
+          };
+        }, game.neosdConvertOptions);
+
         const convertOptions: ConvertOptions = {
-          genre: game.neosdConvertOptions.genre,
+          genre: neosdConvertOptions.genre,
           manufacturer: game.developer,
           name: `${game.mameName}_${patches}`,
           year: game.year,
-          ngh: game.neosdConvertOptions.ngh,
+          ngh: neosdConvertOptions.ngh,
         };
 
         const filesInMemory: FilesInMemory =

@@ -27,6 +27,10 @@ export type RomHack = {
   youtube?: string;
   website?: string;
   downloadAs: DownloadType[];
+  neosdConvertOptions?: {
+    genre: number;
+    ngh: string;
+  };
 };
 
 export type RomHackGameEntry = {
