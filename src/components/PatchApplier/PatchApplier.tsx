@@ -101,7 +101,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
           setUnzippedSourceFiles(null);
         });
     }
-  }, [zipData, setErrorMsg, setUnzippedSourceFiles]);
+  }, [game, zipData, setErrorMsg, setUnzippedSourceFiles]);
 
   const handleDownloadZip = useCallback(() => {
     if (!unzippedSourceFiles) {
@@ -127,7 +127,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles, chosenHacks]);
+  }, [game, unzippedSourceFiles, chosenHacks]);
 
   const handleDownloadFBNeoZip = useCallback(() => {
     if (!unzippedSourceFiles) {
@@ -157,7 +157,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [unzippedSourceFiles, chosenHacks]);
+  }, [game, unzippedSourceFiles, chosenHacks]);
 
   const handleNeoSD = useCallback(() => {
     if (!unzippedSourceFiles) {
@@ -213,7 +213,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         setErrorMsg(`unexpected error: ${e.message}`);
         console.error(e);
       });
-  }, [game, unzippedSourceFiles, chosenHacks, choseDotNeo]);
+  }, [game, unzippedSourceFiles, chosenHacks]);
 
   return (
     <div className={clsx(className, "flex flex-col")}>

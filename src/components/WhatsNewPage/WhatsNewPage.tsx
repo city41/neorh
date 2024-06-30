@@ -84,10 +84,10 @@ function WhatsNewPage() {
           <A href="/kof94">King of Fighters 94</A> page.
         </p>
         <p className="text-gray-600 text-xs">
-          * "truly real hardware" means playing on a Neo Geo with the hack
-          burned onto eproms on a real Neo Geo cart, not a multi cart like the
-          NeoSD/Darksoft. They are similar, but don&apos;t quite simulate what
-          an actual cart does.
+          * &quot;truly real hardware&quot; means playing on a Neo Geo with the
+          hack burned onto eproms on a real Neo Geo cart, not a multi cart like
+          the NeoSD/Darksoft. They are similar, but don&apos;t quite simulate
+          what an actual cart does.
         </p>
       </NewEntry>
       <NewEntry title="Samurai Shodown 4 Cheat Sheet fix" date="2024-06-28">

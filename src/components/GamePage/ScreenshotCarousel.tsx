@@ -57,6 +57,7 @@ function ScreenshotCarousel({
           <img
             key={ss.fileName}
             src={url.src}
+            alt={`screenshot for ${gameMameName}`}
             className="cursor-pointer"
             onClick={() => {
               setCarouselIndex(index);
