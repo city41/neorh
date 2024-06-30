@@ -13,6 +13,7 @@ type PublicGamePageProps = {
 
 function GamePage({ game }: PublicGamePageProps) {
   const [chosenHacks, setChosenHacks] = useState<RomHack[]>([]);
+  const [openHack, setOpenHack] = useState<string | null>(null);
 
   const logoImg = require(`../../logos/${game.mameName}.png`).default;
 

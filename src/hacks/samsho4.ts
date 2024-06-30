@@ -90,7 +90,7 @@ const samsho4: RomHackGameEntry = {
   ],
   hacks: [
     {
-      id: "cheatsheet",
+      id: "csheet",
       name: "Cheat Sheet",
       creators: ["Matt Greer"],
       incompatibleWith: [],
