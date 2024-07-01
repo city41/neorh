@@ -1,6 +1,5 @@
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RomHack, RomHackGameEntry } from "@/types";
 import { PatchApplier } from "../PatchApplier";
 import { MetaEntry } from "./MetaEntry";
@@ -15,7 +14,31 @@ function GamePage({ game }: PublicGamePageProps) {
   const [chosenHacks, setChosenHacks] = useState<RomHack[]>([]);
   const [openHacks, setOpenHacks] = useState<string[]>([]);
 
+  function addOpenHack(hid: string) {
+    setOpenHacks((oh) => {
+      if (oh.includes(hid)) {
+        return oh.filter((h) => h !== hid);
+      }
+
+      return [...oh, hid];
+    });
+  }
+
+  useEffect(() => {
+    const hash = window.location.hash.trim().replace("#", "");
+
+    if (game.hacks.some((h) => h.id === hash)) {
+      addOpenHack(hash);
+
+      setTimeout(() => {
+        const hackElement = document.getElementById(hash);
+        hackElement?.scrollIntoView();
+      }, 1);
+    }
+  }, []);
+
   const logoImg = require(`../../logos/${game.mameName}.png`).default;
+  console.log(openHacks);
 
   return (
     <>

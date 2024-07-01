@@ -20,7 +20,7 @@ function HackEntry({
   onToggleClick,
 }: HackEntryProps) {
   return (
-    <div className={clsx(className, "flex flex-col")}>
+    <div className={clsx(className, "flex flex-col")} id={hack.id}>
       <div className="flex flex-row gap-x-2">
         <div className="cursor-pointer">{hack.name}</div>
         <a
