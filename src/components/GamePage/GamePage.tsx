@@ -1,5 +1,5 @@
+import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { useState } from "react";
 import { RomHack, RomHackGameEntry } from "@/types";
 import { PatchApplier } from "../PatchApplier";
@@ -9,29 +9,58 @@ import { A } from "../A";
 
 type PublicGamePageProps = {
   game: RomHackGameEntry;
+  focusedHackId?: string;
 };
 
-function GamePage({ game }: PublicGamePageProps) {
+function getSortedHacks(
+  hacks: RomHack[],
+  focusedHackId: string | undefined
+): RomHack[] {
+  if (!focusedHackId) {
+    return hacks;
+  }
+
+  const openHack = hacks.find((h) => h.id === focusedHackId);
+
+  if (!openHack) {
+    return hacks;
+  }
+
+  const hacksWithoutOpen = hacks.filter((h) => h.id !== focusedHackId);
+
+  return [openHack, ...hacksWithoutOpen];
+}
+
+function GamePage({ game, focusedHackId }: PublicGamePageProps) {
   const [chosenHacks, setChosenHacks] = useState<RomHack[]>([]);
-  const [openHack, setOpenHack] = useState<string | null>(null);
+  const [openHacks, setOpenHacks] = useState<string[]>(
+    focusedHackId ? [focusedHackId] : []
+  );
 
   const logoImg = require(`../../logos/${game.mameName}.png`).default;
 
   return (
     <>
       <div className="flex flex-col items-center bg-black -mx-8 mb-12">
-        <h1 className="font-bold self-end text-white pt-2 pr-2 -mb-4">
-          {game.gameName}
-        </h1>
-        <Image
-          width={logoImg.width}
-          height={logoImg.height}
-          src={logoImg.src}
-          alt={`${game.gameName} logo`}
-          className="w-1/2"
-          style={{ imageRendering: "pixelated" }}
-          priority
-        />
+        <Link href={`/${game.mameName}`} className="self-end">
+          <h1 className="font-bold text-white pt-2 pr-2 -mb-4">
+            {game.gameName}
+          </h1>
+        </Link>
+        <Link
+          href={`/${game.mameName}`}
+          className="w-full grid place-items-center"
+        >
+          <Image
+            width={logoImg.width}
+            height={logoImg.height}
+            src={logoImg.src}
+            alt={`${game.gameName} logo`}
+            className="w-1/2"
+            style={{ imageRendering: "pixelated" }}
+            priority
+          />
+        </Link>
         <div className="flex flex-row text-white self-start pl-4 gap-x-8 pb-1">
           <MetaEntry metaKey="developer" value={game.developer} />
           <MetaEntry metaKey="year" value={game.year} />
@@ -39,23 +68,11 @@ function GamePage({ game }: PublicGamePageProps) {
       </div>
 
       {game.mameName === "kof94" && (
-        <div className="flex flex-col gap-y-4 my-8">
-          <div className="bg-green-300 border-2 border-green-800 px-4 py-2 flex flex-col gap-y-2">
+        <div className="flex flex-col">
+          <div className="bg-green-300 border-2 border-green-800 px-4 py-2 flex flex-col gap-y-2 mb-8 w-full sm:w-1/3 sm:self-end">
             <p>
               Looking for the original KOF94TE website?{" "}
               <A href="https://kof94te.mattgreer.dev">It has moved here</A>.
-            </p>
-            <p> To build KOF94TE, stay here, you can build it below.</p>
-          </div>
-          <div className="bg-red-400 border-2 border-red-800 px-4 py-2">
-            <p>
-              There has been{" "}
-              <A href="https://github.com/city41/kof94te/milestone/7?closed=1">
-                one bad bug
-              </A>{" "}
-              found in kof94te. So there will be another release. I&apos;m
-              holding off for now just in case more bugs are found. In a few
-              days to maybe a week, I will release 1.4.1.
             </p>
           </div>
         </div>
@@ -63,7 +80,7 @@ function GamePage({ game }: PublicGamePageProps) {
 
       <h3 className="font-bold text-lg">First: Choose your hacks</h3>
       <ul className="sm:ml-4">
-        {game.hacks.map((h) => {
+        {getSortedHacks(game.hacks, focusedHackId).map((h) => {
           return (
             <li key={h.id}>
               <label className="flex flex-row my-2">
@@ -106,7 +123,22 @@ function GamePage({ game }: PublicGamePageProps) {
                     });
                   }}
                 />
-                <HackEntry className="ml-4" game={game} hack={h} />
+                <HackEntry
+                  className="ml-4"
+                  game={game}
+                  hack={h}
+                  showDetails={openHacks.includes(h.id)}
+                  isFocused={h.id === focusedHackId}
+                  onToggleClick={() => {
+                    setOpenHacks((oh) => {
+                      if (oh.includes(h.id)) {
+                        return oh.filter((hhh) => hhh !== h.id);
+                      }
+
+                      return [...oh, h.id];
+                    });
+                  }}
+                />
               </label>
             </li>
           );

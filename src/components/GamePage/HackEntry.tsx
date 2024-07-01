@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { RomHack, RomHackGameEntry } from "@/types";
 import clsx from "clsx";
+import { RomHack, RomHackGameEntry } from "@/types";
 import { MetaEntry } from "./MetaEntry";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 
@@ -8,20 +7,37 @@ type HackEntryProps = {
   className: string;
   game: RomHackGameEntry;
   hack: RomHack;
+  isFocused: boolean;
+  showDetails: boolean;
+  onToggleClick: () => void;
 };
 
-function HackEntry({ className, game, hack }: HackEntryProps) {
-  const [showDetails, setShowDetails] = useState(false);
-
+function HackEntry({
+  className,
+  game,
+  hack,
+  isFocused,
+  showDetails,
+  onToggleClick,
+}: HackEntryProps) {
   return (
-    <div className={clsx(className, "flex flex-col")}>
+    <div
+      className={clsx(className, "flex flex-col", { "mb-16": isFocused })}
+      id={hack.id}
+    >
       <div className="flex flex-row gap-x-2">
-        <div className="cursor-pointer">{hack.name}</div>
+        <div
+          className={clsx("cursor-pointer", {
+            "font-bold text-lg": isFocused,
+          })}
+        >
+          {hack.name}
+        </div>
         <a
           className="text-blue-700 hover:underline cursor-pointer"
           onClick={(e) => {
-            setShowDetails((sd) => !sd);
             e.preventDefault();
+            onToggleClick();
           }}
         >
           ({showDetails ? "hide" : "details"})
@@ -65,6 +81,11 @@ function HackEntry({ className, game, hack }: HackEntryProps) {
             <MetaEntry
               metaKey="ips files"
               value={`/ips/${game.mameName}/${hack.zip}`}
+              hyperlink
+            />
+            <MetaEntry
+              metaKey="permalink"
+              value={`/${game.mameName}/${hack.id}`}
               hyperlink
             />
           </div>

@@ -1,11 +1,13 @@
-import { games } from "../hacks";
+import { games } from "@/hacks";
 import { GamePage, PublicGamePageProps } from "@/components/GamePage/GamePage";
 import { Layout } from "@/components/Layout/Layout";
 import { GetStaticPropsContext, GetStaticPropsResult } from "next";
 
 export const getStaticPaths = () => {
-  const paths = games.map((g) => {
-    return { params: { game: g.mameName } };
+  const paths = games.flatMap((g) => {
+    return g.hacks.map((h) => {
+      return { params: { game: g.mameName, openHackId: h.id } };
+    });
   });
 
   return {
@@ -20,9 +22,14 @@ export function getStaticProps(
   const mameSlug = context.params!.game as string;
   const game = games.find((g) => g.mameName === mameSlug)!;
 
+  const openHackIdp = context.params!.openHackId;
+
+  const openHackId = Array.isArray(openHackIdp) ? openHackIdp[0] : openHackIdp;
+
   return {
     props: {
       game,
+      focusedHackId: openHackId,
     },
   };
 }
