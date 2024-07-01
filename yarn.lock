@@ -1916,10 +1916,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-neosdconv@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/neosdconv/-/neosdconv-0.4.4.tgz#7fb055a20b75464d58efa084537423726efc68f5"
-  integrity sha512-6xWqXnQ9nvkCCH2CAMJBaHz7M87+U4GBBcWoc0riGk5c+Qttey+muo2lwxAYl75xuvvR2fg2Yb5uyNhERT4RwA==
+neosdconv@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/neosdconv/-/neosdconv-1.0.2.tgz#6e0cd3c8482211be92d04247320d7b9905145f31"
+  integrity sha512-KNilOAOux6zFmy6ZvTFtK5k7//zmY/4j/0RjfjLBjKRRqO/idOiZIh1QBhI3ONzgBkZl7MYs0qzV74ulSSkXxA==
   dependencies:
     commander "^8.1.0"
     extract-zip "^2.0.1"

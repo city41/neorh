@@ -7,9 +7,9 @@ import { validateFiles } from "./validateFiles";
 import { RomFileEntry, RomHack, RomHackGameEntry } from "../../types";
 import { sendBlobToAnchorTag } from "./sendBlobToAnchorTag";
 import {
-  buildNeoFile,
   ConvertOptions,
   FilesInMemory,
+  buildNeoFile,
 } from "neosdconv/lib/buildNeoFile";
 import { tagPatchedFiles } from "./tagPatchedFiles";
 import { getFinalRom } from "./getFinalRom";
@@ -201,13 +201,14 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
             return accum;
           }, {});
 
-        const neoFile = buildNeoFile(convertOptions, filesInMemory);
-        const neoFileBlob = new Blob([neoFile.buffer], {
-          type: "application/octet-stream",
-        });
+        return buildNeoFile(convertOptions, filesInMemory).then((neoFile) => {
+          const neoFileBlob = new Blob([neoFile.buffer], {
+            type: "application/octet-stream",
+          });
 
-        sendBlobToAnchorTag(neoFileBlob, `${game.mameName}_${patches}.neo`);
-        setChoseDotNeo(true);
+          sendBlobToAnchorTag(neoFileBlob, `${game.mameName}_${patches}.neo`);
+          setChoseDotNeo(true);
+        });
       })
       .catch((e) => {
         setErrorMsg(`unexpected error: ${e.message}`);
