@@ -181,7 +181,7 @@ const kof94: RomHackGameEntry = {
       id: "csheet",
       name: "Cheat Sheet",
       incompatibleWith: [],
-      repo: "https://github.com/city41/kof9cs",
+      repo: "https://github.com/city41/kof94cs",
       zip: "kof94csIpsPatches.zip",
       creators: ["Matt Greer"],
       details: [
@@ -201,7 +201,7 @@ const kof94: RomHackGameEntry = {
       id: "font",
       name: "Clean Font",
       incompatibleWith: [],
-      repo: "https://github.com/city41/kof9font",
+      repo: "https://github.com/city41/kof94font",
       zip: "kof94fontIpsPatches.zip",
       creators: ["Matt Greer"],
       details: [
@@ -220,7 +220,7 @@ const kof94: RomHackGameEntry = {
       id: "slofix",
       name: "Fix Slowdown/Graphics (for MiSTer/NeoSD/Darksoft)",
       incompatibleWith: [],
-      repo: "https://github.com/city41/kof9font",
+      repo: "https://github.com/city41/kof94fixslowdown",
       zip: "kof94fixslowdownIpsPatches.zip",
       creators: ["paulb-nl"],
       details: [
