@@ -217,6 +217,25 @@ const kof94: RomHackGameEntry = {
       downloadAs: ["mame", "neosd"],
     },
     {
+      id: "rfix",
+      name: "Prevent color corruption when using Rugal",
+      incompatibleWith: [],
+      zip: "kof94rugalPaletteFixIpsPatches.zip",
+      creators: [],
+      details: [
+        "When using Rugal with the debug dip, the stage colors get messed up in his second form.",
+        "This patch prevents that from happening.",
+      ],
+      screenshots: [
+        {
+          fileName: "rugalInItaly.png",
+          description:
+            "Second form Rugal fighting, and Italy doesn't look like the apocalypse.",
+        },
+      ],
+      downloadAs: ["mame", "neosd"],
+    },
+    {
       id: "slofix",
       name: "Fix Slowdown/Graphics (for MiSTer/NeoSD/Darksoft)",
       incompatibleWith: [],

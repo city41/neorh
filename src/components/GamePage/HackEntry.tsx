@@ -65,10 +65,12 @@ function HackEntry({
           </div>
 
           <div className="flex flex-row flex-wrap gap-x-4">
-            <MetaEntry
-              metaKey={hack.creators.length === 1 ? "Creator" : "Creators"}
-              value={hack.creators.join(", ")}
-            />
+            {hack.creators.length > 0 && (
+              <MetaEntry
+                metaKey={hack.creators.length === 1 ? "Creator" : "Creators"}
+                value={hack.creators.join(", ")}
+              />
+            )}
             {hack.website && (
               <MetaEntry metaKey="Website" value={hack.website} hyperlink />
             )}
