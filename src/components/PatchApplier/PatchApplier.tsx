@@ -170,6 +170,8 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
     return getFinalRom(unzippedSourceFiles, game, chosenHacks)
       .then((patchedRomFiles) => {
         const patches = chosenHacks.map((ch) => ch.id).join("_");
+        const gameName = `${game.mameName}_${patches}`;
+        console.log({ gameName, l: gameName.length });
 
         // this is really here so that the slowdown fix patch can make kof94
         // something other than 55. That really only works if only one patch does this.

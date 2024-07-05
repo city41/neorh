@@ -178,7 +178,7 @@ const kof94: RomHackGameEntry = {
       downloadAs: ["fbneo", "mame", "neosd"],
     },
     {
-      id: "csheet",
+      id: "csht",
       name: "Cheat Sheet",
       incompatibleWith: [],
       repo: "https://github.com/city41/kof94cs",
