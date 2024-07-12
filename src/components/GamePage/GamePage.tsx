@@ -79,6 +79,12 @@ function GamePage({ game, focusedHackId }: PublicGamePageProps) {
       )}
 
       <h3 className="font-bold text-lg">First: Choose your hacks</h3>
+      {game.mameName === "kof94" && (
+        <div className="bg-red-300 border-2 border-red-800 px-4 py-2 flex flex-col gap-y-2 my-8 w-full">
+          The Rugal color corruption hack and Team Edit Edition are not
+          compatible with each other. Sorry about that.
+        </div>
+      )}
       <ul className="sm:ml-4">
         {getSortedHacks(game.hacks, focusedHackId).map((h) => {
           return (
@@ -97,11 +103,21 @@ function GamePage({ game, focusedHackId }: PublicGamePageProps) {
 
                         // TODO: remove this hack
                         if (h.id === "te95") {
-                          added = added.filter((ah) => ah.id !== "te94");
+                          added = added.filter(
+                            (ah) => ah.id !== "te94" && ah.id !== "rfix"
+                          );
                         }
 
                         if (h.id === "te94") {
-                          added = added.filter((ah) => ah.id !== "te95");
+                          added = added.filter(
+                            (ah) => ah.id !== "te95" && ah.id !== "rfix"
+                          );
+                        }
+
+                        if (h.id === "rfix") {
+                          added = added.filter(
+                            (ah) => ah.id !== "te94" && ah.id !== "te95"
+                          );
                         }
 
                         if (h.id === "precise-controls") {
