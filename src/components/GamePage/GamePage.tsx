@@ -81,7 +81,7 @@ function GamePage({ game, focusedHackId }: PublicGamePageProps) {
       <h3 className="font-bold text-lg">First: Choose your hacks</h3>
       {game.mameName === "kof94" && (
         <div className="bg-red-300 border-2 border-red-800 px-4 py-2 flex flex-col gap-y-2 my-8 w-full">
-          The Rugal color corruption hack and Team Edit Edition are not
+          The Rugal color corruption fix and Team Edit Edition are not
           compatible with each other. Sorry about that.
         </div>
       )}
