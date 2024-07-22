@@ -32,18 +32,8 @@ function Layout({ children }: LayoutProps) {
                 </A>
               </li>
               <li>
-                <A className="text-black" href="https://discord.gg/tvm4fpkUNq">
-                  Discord
-                </A>
-              </li>
-              <li>
                 <A className="text-black" href="/about">
                   About
-                </A>
-              </li>
-              <li>
-                <A className="text-black" href="/add-a-hack">
-                  Add a Hack
                 </A>
               </li>
             </ul>
