@@ -278,7 +278,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         </DropZone>
       )}
       {(!game.zips && unzippedSourceFiles.length === 1) ||
-        (game.zips.length === unzippedSourceFiles.length && (
+        (game.zips && game.zips.length === unzippedSourceFiles.length && (
           <div className="mt-8">
             <h3 className="font-bold text-lg mb-2">
               Finally: Grab the patched game
