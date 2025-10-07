@@ -32,7 +32,7 @@ const maglordh: RomHackGameEntry = {
       name: "Again Changes From Hell (english-engrish)",
       zip: "maglord_acfh-english-engrish-1.0.0.zip",
       repo: "https://github.com/Boomchil/maglord-acfh",
-      incompatibleWith: [],
+      incompatibleWith: ["acfh-fa"],
       details: ["TODO, a proper description"],
       screenshots: [
         {
@@ -48,7 +48,7 @@ const maglordh: RomHackGameEntry = {
       name: "Again Changes From Hell (francais-anglais)",
       zip: "maglord_acfh-francais-anglais-1.0.0.zip",
       repo: "https://github.com/Boomchil/maglord-acfh",
-      incompatibleWith: [],
+      incompatibleWith: ["acfh-ee"],
       details: ["TODO, a proper description"],
       screenshots: [
         {
