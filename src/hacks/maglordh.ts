@@ -1,9 +1,9 @@
 import { RomHackGameEntry } from "@/types";
 import { Genre } from "neosdconv/lib/genres";
 
-const maglord: RomHackGameEntry = {
+const maglordh: RomHackGameEntry = {
   gameName: "Magician Lord",
-  mameName: "maglord",
+  mameName: "maglordh",
   zips: ["maglord", "maglordh"],
   developer: "ADK",
   year: 1990,
@@ -61,4 +61,4 @@ const maglord: RomHackGameEntry = {
   ],
 };
 
-export { maglord };
+export { maglordh };

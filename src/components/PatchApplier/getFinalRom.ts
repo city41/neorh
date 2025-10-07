@@ -3,7 +3,7 @@ import { getPatch } from "./getPatch";
 import { RomFileEntry, RomHack, RomHackGameEntry } from "../../types";
 
 async function getFinalRom(
-  unzippedSourceFiles: RomFileEntry[],
+  unzippedSourceFiles: RomFileEntry[][],
   game: RomHackGameEntry,
   hacks: RomHack[]
 ): Promise<RomFileEntry[]> {
