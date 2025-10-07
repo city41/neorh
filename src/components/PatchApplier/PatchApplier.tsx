@@ -95,17 +95,19 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
   useEffect(() => {
     if (
       (!game.zips && zipData.length === 1) ||
-      zipData.length === game.zips.length
+      zipData.length === (game.zips?.length ?? 0)
     ) {
       zipData.forEach((z) => {
-        unzip(z)
+        unzip(z.data)
           .then((unzippedFiles) => {
-            return validateFiles(unzippedFiles, game.originalFiles).then(() => {
-              setUnzippedSourceFiles((uzsf) => uzsf.concat(unzippedFiles));
-              setErrorMsg(null);
-            });
+            return validateFiles(unzippedFiles, game.originalFiles, z.zip).then(
+              () => {
+                setUnzippedSourceFiles((uzsf) => uzsf.concat([unzippedFiles]));
+              }
+            );
           })
           .catch((e: Error) => {
+            console.error("unzip error", e);
             setErrorMsg(e.message);
             setUnzippedSourceFiles([]);
           });
@@ -230,11 +232,16 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
 
   return (
     <div className={clsx(className, "flex flex-col space-y-4")}>
-      {game.zips?.length > 1 &&
+      {game.zips &&
+        game.zips.length > 1 &&
         game.zips.map((z) => {
           return (
             <DropZone
+              obtained={zipData.some((zd) => zd.zip === z)}
+              fileName={`${z}.zip`}
+              key={z}
               className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
+              obtainedClassName="rounded-lg border-4 border-green-500 p-4 flex justify-center items-center"
               onData={(data) =>
                 setZipData((zd) => {
                   return zd.concat({ data, zip: z });
@@ -319,10 +326,19 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         ))}
       {errorMsg && (
         <div className="bg-red-300 text-black mt-4 p-2">
-          <div>
-            An error occured. Make sure this is <b>{game.mameName}.zip</b> meant
-            for recent versions of MAME.
-          </div>
+          {game.zips && game.zips.length > 1 && (
+            <div>
+              An error occured. Make sure these are{" "}
+              <b>{game.zips.map((z) => `${z}.zip`).join(", ")}</b> meant for
+              recent versions of MAME.
+            </div>
+          )}
+          {!game.zips && (
+            <div>
+              An error occured. Make sure this is <b>{game.mameName}.zip</b>{" "}
+              meant for recent versions of MAME.
+            </div>
+          )}
           <div>{errorMsg}</div>
         </div>
       )}

@@ -40,7 +40,7 @@ const maglordh: RomHackGameEntry = {
           description: "The first level",
         },
       ],
-      downloadAs: ["mame", "neosd"],
+      downloadAs: ["mame"],
     },
     {
       id: "acfh-fa",
@@ -56,7 +56,7 @@ const maglordh: RomHackGameEntry = {
           description: "The first level",
         },
       ],
-      downloadAs: ["mame", "neosd"],
+      downloadAs: ["mame"],
     },
   ],
 };

@@ -40,7 +40,7 @@ export type RomHack = {
 export type RomHackGameEntry = {
   gameName: string;
   mameName: string;
-  zips: string[];
+  zips?: string[];
   originalFiles: FileInfo[];
   developer: string;
   year: number;
