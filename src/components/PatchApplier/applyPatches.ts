@@ -60,12 +60,15 @@ function applyPatch(
     if (runLength === 0) {
       // this is an RLE entry
       const rleLength = getRunLength(patchData, pi + 5);
-      const rleValue = patchData[pi + 6];
+      const rleValue = patchData[pi + 7];
       runData = new Array(rleLength).fill(rleValue);
+
+      console.log({ offset, rleLength, rleValue });
 
       pi += 8;
     } else {
       runData = patchData.slice(pi + 5, pi + 5 + runLength);
+      console.log({ offset, runLength, rdl: runData.length });
 
       if (offset >= patchedFileData.length) {
         throw new Error(
