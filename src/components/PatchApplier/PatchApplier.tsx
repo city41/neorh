@@ -81,32 +81,42 @@ function DownloadButton({
 
 function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
   const [choseDotNeo, setChoseDotNeo] = useState(false);
-  const [zipData, setZipData] = useState<Uint8Array | null>(null);
+  const [zipData, setZipData] = useState<
+    Array<{
+      data: Uint8Array;
+      zip: string;
+    }>
+  >([]);
   const [unzippedSourceFiles, setUnzippedSourceFiles] = useState<
-    RomFileEntry[] | null
-  >(null);
+    RomFileEntry[][]
+  >([]);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
-    if (zipData !== null) {
-      unzip(zipData)
-        .then((unzippedFiles) => {
-          return validateFiles(unzippedFiles, game.originalFiles).then(() => {
-            setUnzippedSourceFiles(unzippedFiles);
-            setErrorMsg(null);
+    if (
+      (!game.zips && zipData.length === 1) ||
+      zipData.length === game.zips.length
+    ) {
+      zipData.forEach((z) => {
+        unzip(z)
+          .then((unzippedFiles) => {
+            return validateFiles(unzippedFiles, game.originalFiles).then(() => {
+              setUnzippedSourceFiles((uzsf) => uzsf.concat(unzippedFiles));
+              setErrorMsg(null);
+            });
+          })
+          .catch((e: Error) => {
+            setErrorMsg(e.message);
+            setUnzippedSourceFiles([]);
           });
-        })
-        .catch((e: Error) => {
-          setErrorMsg(e.message);
-          setUnzippedSourceFiles(null);
-        });
+      });
     }
   }, [game, zipData, setErrorMsg, setUnzippedSourceFiles]);
 
   const handleDownloadZip = useCallback(() => {
-    if (!unzippedSourceFiles) {
+    if (unzippedSourceFiles.length === 0) {
       throw new Error(
-        "handleDownloadZip: unzippedSourceFiles is unexpectedly null"
+        "handleDownloadZip: unzippedSourceFiles is unexpectedly empty"
       );
     }
     setErrorMsg(null);
@@ -219,65 +229,94 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
   }, [game, unzippedSourceFiles, chosenHacks]);
 
   return (
-    <div className={clsx(className, "flex flex-col")}>
-      <DropZone
-        className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
-        onData={(data) => setZipData(data)}
-      >
-        {(clickToChoose) => {
+    <div className={clsx(className, "flex flex-col space-y-4")}>
+      {game.zips?.length > 1 &&
+        game.zips.map((z) => {
           return (
-            <div>
-              Drag <b>{game.mameName}.zip</b> from MAME here, {clickToChoose}
-            </div>
+            <DropZone
+              className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
+              onData={(data) =>
+                setZipData((zd) => {
+                  return zd.concat({ data, zip: z });
+                })
+              }
+            >
+              {(clickToChoose) => {
+                return (
+                  <div>
+                    Drag <b>{z}.zip</b> from MAME here, {clickToChoose}
+                  </div>
+                );
+              }}
+            </DropZone>
           );
-        }}
-      </DropZone>
-      {unzippedSourceFiles && (
-        <div className="mt-8">
-          <h3 className="font-bold text-lg mb-2">
-            Finally: Grab the patched game
-          </h3>
-          {chosenHacks.length === 0 && <div>Choose at least one hack</div>}
-          <div className="flex flex-row flex-wrap justify-around gap-8 px-8">
-            {chosenHacks.every((ch) => ch.downloadAs.includes("neosd")) && (
-              <DownloadButton
-                onClick={handleNeoSD}
-                title="download as .neo"
-                description="for use on NeoSD or MiSTer"
-                disabled={chosenHacks.length === 0}
-              />
-            )}
-            {chosenHacks.some((ch) => ch.downloadAs.includes("fbneo")) && (
-              <DownloadButton
-                onClick={handleDownloadFBNeoZip}
-                title="download as FBNeo .zip"
-                description="For use on FinalBurn Neo"
-                disabled={chosenHacks.length === 0}
-              />
-            )}
-            {chosenHacks.every((ch) => ch.downloadAs.includes("mame")) && (
-              <DownloadButton
-                onClick={handleDownloadZip}
-                title="download as MAME .zip"
-                description={
-                  chosenHacks.some((ch) => ch.downloadAs.includes("fbneo"))
-                    ? "For use on all other emulators"
-                    : "For use on emulators"
-                }
-                disabled={chosenHacks.length === 0}
-              />
+        })}
+
+      {!game.zips && (
+        <DropZone
+          className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
+          onData={(data) =>
+            setZipData((zd) => {
+              return zd.concat({ data, zip: `${game.mameName}.zip` });
+            })
+          }
+        >
+          {(clickToChoose) => {
+            return (
+              <div>
+                Drag <b>{game.mameName}.zip</b> from MAME here, {clickToChoose}
+              </div>
+            );
+          }}
+        </DropZone>
+      )}
+      {(!game.zips && unzippedSourceFiles.length === 1) ||
+        (game.zips.length === unzippedSourceFiles.length && (
+          <div className="mt-8">
+            <h3 className="font-bold text-lg mb-2">
+              Finally: Grab the patched game
+            </h3>
+            {chosenHacks.length === 0 && <div>Choose at least one hack</div>}
+            <div className="flex flex-row flex-wrap justify-around gap-8 px-8">
+              {chosenHacks.every((ch) => ch.downloadAs.includes("neosd")) && (
+                <DownloadButton
+                  onClick={handleNeoSD}
+                  title="download as .neo"
+                  description="for use on NeoSD or MiSTer"
+                  disabled={chosenHacks.length === 0}
+                />
+              )}
+              {chosenHacks.some((ch) => ch.downloadAs.includes("fbneo")) && (
+                <DownloadButton
+                  onClick={handleDownloadFBNeoZip}
+                  title="download as FBNeo .zip"
+                  description="For use on FinalBurn Neo"
+                  disabled={chosenHacks.length === 0}
+                />
+              )}
+              {chosenHacks.every((ch) => ch.downloadAs.includes("mame")) && (
+                <DownloadButton
+                  onClick={handleDownloadZip}
+                  title="download as MAME .zip"
+                  description={
+                    chosenHacks.some((ch) => ch.downloadAs.includes("fbneo"))
+                      ? "For use on all other emulators"
+                      : "For use on emulators"
+                  }
+                  disabled={chosenHacks.length === 0}
+                />
+              )}
+            </div>
+            {choseDotNeo && (
+              <div className="bg-green-300 border-2 border-green-800 px-4 py-2 mt-8">
+                Look for it on your NeoSD or MiSTer system menu by the name{" "}
+                <b>
+                  {game.mameName}_{chosenHacks.map((ch) => ch.id).join("_")}
+                </b>
+              </div>
             )}
           </div>
-          {choseDotNeo && (
-            <div className="bg-green-300 border-2 border-green-800 px-4 py-2 mt-8">
-              Look for it on your NeoSD or MiSTer system menu by the name{" "}
-              <b>
-                {game.mameName}_{chosenHacks.map((ch) => ch.id).join("_")}
-              </b>
-            </div>
-          )}
-        </div>
-      )}
+        ))}
       {errorMsg && (
         <div className="bg-red-300 text-black mt-4 p-2">
           <div>

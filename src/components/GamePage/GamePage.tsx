@@ -163,7 +163,9 @@ function GamePage({ game, focusedHackId }: PublicGamePageProps) {
       {chosenHacks.length > 0 && (
         <div className="mt-8">
           <h3 className="font-bold text-lg mb-2">
-            Next: Provide the original ROM
+            Next: Provide the original{" "}
+            {game.zips?.length > 1 ? game.zips.length.toString() : ""} ROM
+            {game.zips?.length > 1 ? "s" : ""}
           </h3>
           <PatchApplier game={game} chosenHacks={chosenHacks} />
         </div>
