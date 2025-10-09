@@ -7,7 +7,7 @@ type DropZoneProps = {
   obtained?: boolean;
   fileName?: string;
   style?: CSSProperties;
-  onData: (data: Uint8Array) => void;
+  onData: (args: { data: Uint8Array; fileName: string }) => void;
   children: (clickToChoose: ReactNode) => ReactNode;
 };
 
@@ -26,7 +26,7 @@ function DropZone({
     const reader = new FileReader();
     reader.addEventListener("loadend", () => {
       const data = new Uint8Array(reader.result as ArrayBuffer);
-      onData(data);
+      onData({ data, fileName: file.name });
     });
     reader.readAsArrayBuffer(file);
   }

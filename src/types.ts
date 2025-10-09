@@ -35,6 +35,7 @@ export type RomHack = {
   youtube?: string;
   website?: string;
   downloadAs: DownloadType[];
+  mameDownloadName?: string;
   neosdConvertOptions?: {
     genre: number;
     ngh: string;
@@ -44,6 +45,7 @@ export type RomHack = {
 export type RomHackGameEntry = {
   gameName: string;
   mameName: string;
+  mergedMameName?: string;
   originalFiles: OriginalFileInfo[];
   developer: string;
   year: number;

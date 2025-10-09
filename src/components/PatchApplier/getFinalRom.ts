@@ -41,9 +41,9 @@ async function combineSourceFiles(
     }
   }
 
-  if (combinedSourceFiles.length !== game.originalFiles.length) {
+  if (combinedSourceFiles.length < game.originalFiles.length) {
     throw new Error(
-      `combineSourceFiles: unexpected file count mismatch. Expected ${game.originalFiles.length}, got ${combinedSourceFiles.length}`
+      `combineSourceFiles: unexpected file count mismatch. Expected at least ${game.originalFiles.length}, but got ${combinedSourceFiles.length}`
     );
   }
 

@@ -3,9 +3,18 @@ import { OriginalFileInfo, RomFileEntry } from "../../types";
 
 async function validateFiles(
   files: RomFileEntry[],
-  expectedFiles: OriginalFileInfo[]
+  expectedFiles: OriginalFileInfo[],
+  options?: { isFallback: boolean }
 ): Promise<string | undefined> {
-  for (const expectedFile of expectedFiles) {
+  let actualExpectedFiles;
+  if (options?.isFallback) {
+    actualExpectedFiles = expectedFiles.filter((ef) => !!ef.fallBackZip);
+  } else {
+    debugger;
+    actualExpectedFiles = expectedFiles;
+  }
+
+  for (const expectedFile of actualExpectedFiles) {
     let foundFile = null;
     for (const candidateFile of files) {
       const candidateSha = await calculateHash(candidateFile.data);

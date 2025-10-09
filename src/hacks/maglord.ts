@@ -4,6 +4,7 @@ import { Genre } from "neosdconv/lib/genres";
 const maglord: RomHackGameEntry = {
   gameName: "Magician Lord",
   mameName: "maglord",
+  mergedMameName: "maglordh",
   developer: "ADK",
   year: 1990,
   neosdConvertOptions: {
@@ -13,37 +14,37 @@ const maglord: RomHackGameEntry = {
   originalFiles: [
     {
       fileName: "005-c1.c1",
-      size: 0,
+      size: 524288,
       sha: "98a7b51b6ad5e2556e57c5de27fe17f18e175fc59a9497743b8c8aeba969ee35",
     },
     {
       fileName: "005-c2.c2",
-      size: 0,
+      size: 524288,
       sha: "e2249dddc5d90dcf4a1c526ff8723748d5119f7c8970e417eb7113260aff1acf",
     },
     {
       fileName: "005-c3.c3",
-      size: 0,
+      size: 524288,
       sha: "d31de38ea72198fd6c8c16b41394281fa2fea8efa8a732a25438495cd8220f90",
     },
     {
       fileName: "005-c4.c4",
-      size: 0,
+      size: 524288,
       sha: "b1a3ca5b61802e57897432c4bce10ff8e77863124b5c91d982d9d2da1823fe5a",
     },
     {
       fileName: "005-c5.c5",
-      size: 0,
+      size: 524288,
       sha: "3a2b1c907c543b5bc70e6a069fcb5c1505c547b0962673c2d43409cddd2fbfb0",
     },
     {
       fileName: "005-c6.c6",
-      size: 0,
+      size: 524288,
       sha: "5423f16077c806c91ff7555ae849e06c126c22b164344082f1d9ccd2a3040bea",
     },
     {
       fileName: "005-m1.m1",
-      size: 0,
+      size: 524288,
       sha: "99b4ccd4d84f105905ed69d005c1bdebc2eba4cded2cc2daff43c0bdb97c8f0e",
     },
     {
@@ -59,17 +60,17 @@ const maglord: RomHackGameEntry = {
     },
     {
       fileName: "005-v11.v11",
-      size: 0,
+      size: 524288,
       sha: "e2288fc82288711258d87aa605a2efb1ca6563d324d7f59bb7f4b312a3fb5938",
     },
     {
       fileName: "005-v21.v21",
-      size: 0,
+      size: 524288,
       sha: "27600fe09f1bf12dc0e9c55eb650f2aaa514739a02d7b0373f6a76d277ae4f51",
     },
     {
       fileName: "005-v22.22",
-      size: 0,
+      size: 524288,
       sha: "b0296bf7d8f62473c380a751d86ac690c3e4c53a9b881b97b5cfe2252255d959",
     },
   ],
@@ -89,6 +90,7 @@ const maglord: RomHackGameEntry = {
         },
       ],
       downloadAs: ["mame"],
+      mameDownloadName: "maglordh",
     },
     {
       id: "acfh-fa",
@@ -105,6 +107,7 @@ const maglord: RomHackGameEntry = {
         },
       ],
       downloadAs: ["mame"],
+      mameDownloadName: "maglordh",
     },
   ],
 };
