@@ -12,6 +12,10 @@ export type FileInfo = {
   sha: string;
 };
 
+export type OriginalFileInfo = FileInfo & {
+  fallBackZip?: string;
+};
+
 export type Screenshot = {
   fileName: string;
   description: string;
@@ -40,8 +44,7 @@ export type RomHack = {
 export type RomHackGameEntry = {
   gameName: string;
   mameName: string;
-  zips?: string[];
-  originalFiles: FileInfo[];
+  originalFiles: OriginalFileInfo[];
   developer: string;
   year: number;
   hacks: RomHack[];

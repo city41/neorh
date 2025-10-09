@@ -1,10 +1,9 @@
 import { RomHackGameEntry } from "@/types";
 import { Genre } from "neosdconv/lib/genres";
 
-const maglordh: RomHackGameEntry = {
+const maglord: RomHackGameEntry = {
   gameName: "Magician Lord",
-  mameName: "maglordh",
-  zips: ["maglord", "maglordh"],
+  mameName: "maglord",
   developer: "ADK",
   year: 1990,
   neosdConvertOptions: {
@@ -13,16 +12,65 @@ const maglordh: RomHackGameEntry = {
   },
   originalFiles: [
     {
+      fileName: "005-c1.c1",
+      size: 0,
+      sha: "",
+    },
+    {
+      fileName: "005-c2.c2",
+      size: 0,
+      sha: "",
+    },
+    {
+      fileName: "005-c3.c3",
+      size: 0,
+      sha: "",
+    },
+    {
+      fileName: "005-c4.c4",
+      size: 0,
+      sha: "",
+    },
+    {
+      fileName: "005-c5.c5",
+      size: 0,
+      sha: "",
+    },
+    {
+      fileName: "005-c6.c6",
+      size: 0,
+      sha: "",
+    },
+    {
+      fileName: "005-c6.c6",
+      size: 0,
+      sha: "",
+    },
+    {
       fileName: "005-p1.p1",
       size: 524288,
       sha: "a315c99a9bca39fd0b37e2313717013697d2534b6f7f524cf398cc27e4278915",
-      zipName: "maglordh.zip",
+      fallBackZip: "maglordh.zip",
     },
     {
       fileName: "005-s1.s1",
       size: 131072,
       sha: "a7124fdb61bc9603884507cc1e92cf58de35f67c7226ff46125f511ab3393f5f",
-      zipName: "maglord.zip",
+    },
+    {
+      fileName: "005-v11.v11",
+      size: 0,
+      sha: "",
+    },
+    {
+      fileName: "005-v21.v21",
+      size: 0,
+      sha: "",
+    },
+    {
+      fileName: "005-v22.22",
+      size: 0,
+      sha: "",
     },
   ],
   hacks: [
@@ -61,4 +109,4 @@ const maglordh: RomHackGameEntry = {
   ],
 };
 
-export { maglordh };
+export { maglord };

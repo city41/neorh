@@ -81,39 +81,49 @@ function DownloadButton({
 
 function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
   const [choseDotNeo, setChoseDotNeo] = useState(false);
-  const [zipData, setZipData] = useState<
-    Array<{
-      data: Uint8Array;
-      zip: string;
-    }>
-  >([]);
+  const [zipData, setZipData] = useState<{
+    data: Uint8Array;
+    zip: string;
+  } | null>(null);
+  const [fallbackZipData, setFallbackZipData] = useState<{
+    data: Uint8Array;
+    zip: string;
+  } | null>(null);
   const [unzippedSourceFiles, setUnzippedSourceFiles] = useState<
     RomFileEntry[][]
   >([]);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [neededFallback, setNeededFallback] = useState<string | null>(null);
 
   useEffect(() => {
-    if (
-      (!game.zips && zipData.length === 1) ||
-      zipData.length === (game.zips?.length ?? 0)
-    ) {
-      zipData.forEach((z) => {
-        unzip(z.data)
-          .then((unzippedFiles) => {
-            return validateFiles(unzippedFiles, game.originalFiles, z.zip).then(
-              () => {
-                setUnzippedSourceFiles((uzsf) => uzsf.concat([unzippedFiles]));
-              }
-            );
-          })
-          .catch((e: Error) => {
-            console.error("unzip error", e);
-            setErrorMsg(e.message);
-            setUnzippedSourceFiles([]);
+    if (zipData) {
+      unzip(zipData.data)
+        .then((unzippedFiles) => {
+          return validateFiles(
+            unzippedFiles,
+            game.originalFiles,
+            zipData.zip
+          ).then((fallback?: string) => {
+            if (fallback) {
+              setNeededFallback(fallback);
+            }
+            setUnzippedSourceFiles((uzsf) => uzsf.concat([unzippedFiles]));
           });
-      });
+        })
+        .catch((e: Error) => {
+          console.error("unzip error", e);
+          setErrorMsg(e.message);
+          setUnzippedSourceFiles([]);
+        });
     }
   }, [game, zipData, setErrorMsg, setUnzippedSourceFiles]);
+
+  useEffect(() => {}, [
+    game,
+    fallbackZipData,
+    setErrorMsg,
+    setUnzippedSourceFiles,
+  ]);
 
   const handleDownloadZip = useCallback(() => {
     if (unzippedSourceFiles.length === 0) {
@@ -232,53 +242,44 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
 
   return (
     <div className={clsx(className, "flex flex-col space-y-4")}>
-      {game.zips &&
-        game.zips.length > 1 &&
-        game.zips.map((z) => {
+      <DropZone
+        className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
+        onData={(data) => setZipData({ data, zip: `${game.mameName}.zip` })}
+      >
+        {(clickToChoose) => {
           return (
-            <DropZone
-              obtained={zipData.some((zd) => zd.zip === z)}
-              fileName={`${z}.zip`}
-              key={z}
-              className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
-              obtainedClassName="rounded-lg border-4 border-green-500 p-4 flex justify-center items-center"
-              onData={(data) =>
-                setZipData((zd) => {
-                  return zd.concat({ data, zip: z });
-                })
-              }
-            >
-              {(clickToChoose) => {
-                return (
-                  <div>
-                    Drag <b>{z}.zip</b> from MAME here, {clickToChoose}
-                  </div>
-                );
-              }}
-            </DropZone>
+            <div>
+              Drag <b>{game.mameName}.zip</b> from MAME here, {clickToChoose}
+            </div>
           );
-        })}
-
-      {!game.zips && (
-        <DropZone
-          className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
-          onData={(data) =>
-            setZipData((zd) => {
-              return zd.concat({ data, zip: `${game.mameName}.zip` });
-            })
-          }
-        >
-          {(clickToChoose) => {
-            return (
-              <div>
-                Drag <b>{game.mameName}.zip</b> from MAME here, {clickToChoose}
-              </div>
-            );
-          }}
-        </DropZone>
+        }}
+      </DropZone>
+      {neededFallback && (
+        <div>
+          <div className="bg-orange-100 px-8 py-4 text-orange-600">
+            A needed ROM was missing in {game.mameName}.zip. This ROM can also
+            be found in {neededFallback}.zip. If you have that, load it up here.
+            Otherwise, you will need to get different ROM files.
+          </div>
+          <DropZone
+            className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
+            onData={(data) =>
+              setFallbackZipData({ data, zip: `${neededFallback}.zip` })
+            }
+          >
+            {(clickToChoose) => {
+              return (
+                <div>
+                  Drag <b>{neededFallback}.zip</b> from MAME here,{" "}
+                  {clickToChoose}
+                </div>
+              );
+            }}
+          </DropZone>
+        </div>
       )}
-      {(!game.zips && unzippedSourceFiles.length === 1) ||
-        (game.zips && game.zips.length === unzippedSourceFiles.length && (
+      {(!neededFallback && unzippedSourceFiles.length === 1) ||
+        (!!neededFallback && unzippedSourceFiles.length === 2 && (
           <div className="mt-8">
             <h3 className="font-bold text-lg mb-2">
               Finally: Grab the patched game
@@ -326,19 +327,11 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         ))}
       {errorMsg && (
         <div className="bg-red-300 text-black mt-4 p-2">
-          {game.zips && game.zips.length > 1 && (
-            <div>
-              An error occured. Make sure these are{" "}
-              <b>{game.zips.map((z) => `${z}.zip`).join(", ")}</b> meant for
-              recent versions of MAME.
-            </div>
-          )}
-          {!game.zips && (
-            <div>
-              An error occured. Make sure this is <b>{game.mameName}.zip</b>{" "}
-              meant for recent versions of MAME.
-            </div>
-          )}
+          <div>
+            An error occured. Make sure this is{" "}
+            <b>{neededFallback ?? game.mameName}.zip</b> meant for recent
+            versions of MAME.
+          </div>
           <div>{errorMsg}</div>
         </div>
       )}

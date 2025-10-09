@@ -5,7 +5,7 @@ async function validateFiles(
   files: RomFileEntry[],
   expectedFiles: FileInfo[],
   zipFileName?: string
-) {
+): Promise<string | undefined> {
   const actualExpectedFiles = zipFileName
     ? expectedFiles.filter((ef) => ef.zipName === `${zipFileName}.zip`)
     : expectedFiles;

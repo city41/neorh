@@ -22,12 +22,21 @@ async function combineSourceFiles(
 
   const combinedSourceFiles: RomFileEntry[] = [];
 
+  // this is because the multiple zip files could have the same rom files inside
+  // for example both maglord.zip could have the home version p rom file that is
+  // also in maglordh.zip
+  const collectedRomShas: Record<string, boolean> = {};
+
   for (const originalFile of game.originalFiles) {
     for (const flattenedFile of flattenedFiles) {
       const flattenedSha = await calculateHash(flattenedFile.data);
 
-      if (originalFile.sha === flattenedSha) {
+      if (
+        originalFile.sha === flattenedSha &&
+        !collectedRomShas[flattenedSha]
+      ) {
         combinedSourceFiles.push(flattenedFile);
+        collectedRomShas[flattenedSha] = true;
       }
     }
   }
