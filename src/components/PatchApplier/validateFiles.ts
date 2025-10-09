@@ -1,16 +1,11 @@
 import { calculateHash } from "./calculateHash";
-import { FileInfo, RomFileEntry } from "../../types";
+import { OriginalFileInfo, RomFileEntry } from "../../types";
 
 async function validateFiles(
   files: RomFileEntry[],
-  expectedFiles: FileInfo[],
-  zipFileName?: string
+  expectedFiles: OriginalFileInfo[]
 ): Promise<string | undefined> {
-  const actualExpectedFiles = zipFileName
-    ? expectedFiles.filter((ef) => ef.zipName === `${zipFileName}.zip`)
-    : expectedFiles;
-
-  for (const expectedFile of actualExpectedFiles) {
+  for (const expectedFile of expectedFiles) {
     let foundFile = null;
     for (const candidateFile of files) {
       const candidateSha = await calculateHash(candidateFile.data);
@@ -22,9 +17,13 @@ async function validateFiles(
     }
 
     if (!foundFile) {
-      throw new Error(
-        `File not found: ${expectedFile.fileName} (expected sha: ${expectedFile.sha})`
-      );
+      if (expectedFile.fallBackZip) {
+        return expectedFile.fallBackZip;
+      } else {
+        throw new Error(
+          `File not found: ${expectedFile.fileName} (expected sha: ${expectedFile.sha})`
+        );
+      }
     }
 
     if (foundFile.fileName !== expectedFile.fileName) {

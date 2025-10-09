@@ -243,6 +243,9 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
   return (
     <div className={clsx(className, "flex flex-col space-y-4")}>
       <DropZone
+        obtained={!!zipData}
+        obtainedClassName="rounded-lg border-4 border-green-500 p-4 flex justify-center items-center"
+        fileName={`${game.mameName}.zip`}
         className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
         onData={(data) => setZipData({ data, zip: `${game.mameName}.zip` })}
       >
@@ -258,10 +261,13 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         <div>
           <div className="bg-orange-100 px-8 py-4 text-orange-600">
             A needed ROM was missing in {game.mameName}.zip. This ROM can also
-            be found in {neededFallback}.zip. If you have that, load it up here.
-            Otherwise, you will need to get different ROM files.
+            be found in <b>{neededFallback}.zip</b>. If you have that, load it
+            up here. Otherwise, you will need to get different ROM files.
           </div>
           <DropZone
+            obtained={!!fallbackZipData}
+            obtainedClassName="rounded-lg border-4 border-green-500 p-4 flex justify-center items-center"
+            fileName={`${neededFallback}.zip`}
             className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
             onData={(data) =>
               setFallbackZipData({ data, zip: `${neededFallback}.zip` })
