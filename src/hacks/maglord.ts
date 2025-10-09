@@ -89,7 +89,7 @@ const maglord: RomHackGameEntry = {
           description: "The first level",
         },
       ],
-      downloadAs: ["mame"],
+      downloadAs: ["mame", "neosd"],
       mameDownloadName: "maglordh",
     },
     {
@@ -106,7 +106,7 @@ const maglord: RomHackGameEntry = {
           description: "The first level",
         },
       ],
-      downloadAs: ["mame"],
+      downloadAs: ["mame", "neosd"],
       mameDownloadName: "maglordh",
     },
   ],
