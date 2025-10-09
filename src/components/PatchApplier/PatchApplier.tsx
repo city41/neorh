@@ -362,7 +362,7 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
           <div>
             An error occured. Make sure this is{" "}
             <b>{neededFallback ?? game.mameName}.zip</b>
-            {game.mergedMameName && (
+            {!neededFallback && game.mergedMameName && (
               <>
                 {" "}
                 (or a merged <b>{game.mergedMameName}.zip</b>)

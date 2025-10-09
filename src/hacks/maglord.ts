@@ -95,7 +95,7 @@ const maglord: RomHackGameEntry = {
     {
       id: "acfh-fa",
       creators: ["Boomchild"],
-      name: "Again Changes From Hell (francais-anglais)",
+      name: "Again Changes From Hell (français-anglais)",
       zip: "maglord_acfh-francais-anglais-1.0.0.zip",
       repo: "https://github.com/Boomchil/maglord-acfh",
       incompatibleWith: ["acfh-ee"],
