@@ -65,6 +65,17 @@ function WhatsNewPage() {
     <div className="mt-8 mb-16 flex flex-col gap-y-2">
       <h1 className="font-bold text-2xl mb-4 text-center">What&apos;s New</h1>
       <NewEntry
+        title="Magician Lord hack: Again Changes From Hell"
+        date="2025-10-09"
+      >
+        <p>
+          A cool ROM hack for Magician Lord was added. Again Changes From Hell,
+          by Boomchild, makes the game more balanced, tweaks the difficulty, and
+          other changes to make it more inline with typical 16 bit action games
+          of the era.
+        </p>
+      </NewEntry>
+      <NewEntry
         title="KOF94 slowdown and NeoSD/Darksoft patch released"
         date="2024-06-29"
       >
