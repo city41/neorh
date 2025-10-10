@@ -10,7 +10,6 @@ async function validateFiles(
   if (options?.isFallback) {
     actualExpectedFiles = expectedFiles.filter((ef) => !!ef.fallBackZip);
   } else {
-    debugger;
     actualExpectedFiles = expectedFiles;
   }
 
