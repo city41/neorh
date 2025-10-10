@@ -65,6 +65,9 @@ function HackEntry({
           </div>
 
           <div className="flex flex-row flex-wrap gap-x-4">
+            {hack.version && (
+              <MetaEntry metaKey="Version" value={hack.version} />
+            )}
             {hack.creators.length > 0 && (
               <MetaEntry
                 metaKey={hack.creators.length === 1 ? "Creator" : "Creators"}

@@ -104,6 +104,7 @@ const maglord: RomHackGameEntry = {
   hacks: [
     {
       id: "acfh-ee",
+      version: "1.0.0",
       creators: ["Boomchild"],
       name: "Again Changes From Hell (english-engrish)",
       zip: "maglord_acfh-english-engrish-1.0.0.zip",
@@ -129,6 +130,7 @@ const maglord: RomHackGameEntry = {
     },
     {
       id: "acfh-fa",
+      version: "1.0.0",
       creators: ["Boomchild"],
       name: "Again Changes From Hell (français-anglais)",
       zip: "maglord_acfh-francais-anglais-1.0.0.zip",

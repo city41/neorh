@@ -25,6 +25,7 @@ export type DownloadType = "neosd" | "mame" | "fbneo";
 
 export type RomHack = {
   id: string;
+  version?: string;
   name: string;
   creators: string[];
   incompatibleWith: string[];
