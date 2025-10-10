@@ -4,8 +4,16 @@ export type FileInfo = {
   // this is because neosdconv doesn't know how to deal
   // with pbobblen's rom names
   neosdconvFileName?: string;
+  // this is for maglord_acfh
+  // as it uses both maglord.zip (arcade version)
+  // and maglordh.zip (home version)
+  zipName?: string;
   size: number;
   sha: string;
+};
+
+export type OriginalFileInfo = FileInfo & {
+  fallBackZip?: string;
 };
 
 export type Screenshot = {
@@ -27,6 +35,7 @@ export type RomHack = {
   youtube?: string;
   website?: string;
   downloadAs: DownloadType[];
+  mameDownloadName?: string;
   neosdConvertOptions?: {
     genre: number;
     ngh: string;
@@ -36,7 +45,8 @@ export type RomHack = {
 export type RomHackGameEntry = {
   gameName: string;
   mameName: string;
-  originalFiles: FileInfo[];
+  mergedMameName?: string;
+  originalFiles: OriginalFileInfo[];
   developer: string;
   year: number;
   hacks: RomHack[];

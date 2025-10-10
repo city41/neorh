@@ -55,10 +55,36 @@ function applyPatch(
   for (let pi = 5; pi < patch.data.length - 3; ) {
     const offset = getOffset(patchData, pi);
     const runLength = getRunLength(patchData, pi + 3);
-    const runData = patchData.slice(pi + 5, pi + 5 + runLength);
 
-    patchedFileData.splice(offset, runLength, ...runData);
-    pi += 5 + runLength;
+    let runData;
+    if (runLength === 0) {
+      // this is an RLE entry
+      const rleLength = getRunLength(patchData, pi + 5);
+      const rleValue = patchData[pi + 7];
+      runData = new Array(rleLength).fill(rleValue);
+
+      console.log({ offset, rleLength, rleValue });
+
+      pi += 8;
+    } else {
+      runData = patchData.slice(pi + 5, pi + 5 + runLength);
+      console.log({ offset, runLength, rdl: runData.length });
+
+      if (offset >= patchedFileData.length) {
+        throw new Error(
+          `Failed to patch, offset (${offset}) out of range (${patchedFileData.length})`
+        );
+      }
+
+      if (runLength !== runData.length) {
+        throw new Error(
+          `Failed to patch, runLength (${runLength}) and runData length (${runData.length}) do not match at ${pi}`
+        );
+      }
+      pi += 5 + runLength;
+    }
+
+    patchedFileData.splice(offset, runData.length, ...runData);
   }
 
   if (initialLength !== patchedFileData.length) {

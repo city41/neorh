@@ -130,6 +130,14 @@ function GamePage({ game, focusedHackId }: PublicGamePageProps) {
                           );
                         }
 
+                        if (h.id === "acfh-ee") {
+                          added = added.filter((ah) => ah.id !== "acfh-fa");
+                        }
+
+                        if (h.id === "acfh-fa") {
+                          added = added.filter((ah) => ah.id !== "acfh-ee");
+                        }
+
                         return Array.from(new Set(added));
                       } else {
                         const removed = chs.filter((ch) => ch !== h);

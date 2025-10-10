@@ -1,8 +1,19 @@
 import { calculateHash } from "./calculateHash";
-import { FileInfo, RomFileEntry } from "../../types";
+import { OriginalFileInfo, RomFileEntry } from "../../types";
 
-async function validateFiles(files: RomFileEntry[], expectedFiles: FileInfo[]) {
-  for (const expectedFile of expectedFiles) {
+async function validateFiles(
+  files: RomFileEntry[],
+  expectedFiles: OriginalFileInfo[],
+  options?: { isFallback: boolean }
+): Promise<string | undefined> {
+  let actualExpectedFiles;
+  if (options?.isFallback) {
+    actualExpectedFiles = expectedFiles.filter((ef) => !!ef.fallBackZip);
+  } else {
+    actualExpectedFiles = expectedFiles;
+  }
+
+  for (const expectedFile of actualExpectedFiles) {
     let foundFile = null;
     for (const candidateFile of files) {
       const candidateSha = await calculateHash(candidateFile.data);
@@ -14,9 +25,13 @@ async function validateFiles(files: RomFileEntry[], expectedFiles: FileInfo[]) {
     }
 
     if (!foundFile) {
-      throw new Error(
-        `File not found: ${expectedFile.fileName} (expected sha: ${expectedFile.sha})`
-      );
+      if (expectedFile.fallBackZip) {
+        return expectedFile.fallBackZip;
+      } else {
+        throw new Error(
+          `File not found: ${expectedFile.fileName} (expected sha: ${expectedFile.sha})`
+        );
+      }
     }
 
     if (foundFile.fileName !== expectedFile.fileName) {

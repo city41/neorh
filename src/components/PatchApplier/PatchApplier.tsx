@@ -81,32 +81,68 @@ function DownloadButton({
 
 function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
   const [choseDotNeo, setChoseDotNeo] = useState(false);
-  const [zipData, setZipData] = useState<Uint8Array | null>(null);
+  const [zipData, setZipData] = useState<{
+    data: Uint8Array;
+    zip: string;
+  } | null>(null);
+  const [fallbackZipData, setFallbackZipData] = useState<{
+    data: Uint8Array;
+    zip: string;
+  } | null>(null);
   const [unzippedSourceFiles, setUnzippedSourceFiles] = useState<
-    RomFileEntry[] | null
-  >(null);
+    RomFileEntry[][]
+  >([]);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [neededFallback, setNeededFallback] = useState<string | null>(null);
 
   useEffect(() => {
-    if (zipData !== null) {
-      unzip(zipData)
+    if (zipData) {
+      unzip(zipData.data)
         .then((unzippedFiles) => {
-          return validateFiles(unzippedFiles, game.originalFiles).then(() => {
-            setUnzippedSourceFiles(unzippedFiles);
-            setErrorMsg(null);
-          });
+          return validateFiles(unzippedFiles, game.originalFiles).then(
+            (fallback?: string) => {
+              if (fallback) {
+                setNeededFallback(fallback);
+              }
+              setUnzippedSourceFiles((uzsf) => uzsf.concat([unzippedFiles]));
+            }
+          );
         })
         .catch((e: Error) => {
+          console.error("unzip error", e);
           setErrorMsg(e.message);
-          setUnzippedSourceFiles(null);
+          setUnzippedSourceFiles([]);
         });
     }
   }, [game, zipData, setErrorMsg, setUnzippedSourceFiles]);
 
+  useEffect(() => {
+    if (fallbackZipData) {
+      unzip(fallbackZipData.data)
+        .then((unzippedFiles) => {
+          return validateFiles(unzippedFiles, game.originalFiles, {
+            isFallback: true,
+          }).then((fallback?: string) => {
+            if (fallback) {
+              throw new Error(
+                "Fallback is still missing needed files, cannot proceed"
+              );
+            }
+            setUnzippedSourceFiles((uzsf) => uzsf.concat([unzippedFiles]));
+          });
+        })
+        .catch((e: Error) => {
+          console.error("unzip error", e);
+          setErrorMsg(e.message);
+          setUnzippedSourceFiles([]);
+        });
+    }
+  }, [game, fallbackZipData, setErrorMsg, setUnzippedSourceFiles]);
+
   const handleDownloadZip = useCallback(() => {
-    if (!unzippedSourceFiles) {
+    if (unzippedSourceFiles.length === 0) {
       throw new Error(
-        "handleDownloadZip: unzippedSourceFiles is unexpectedly null"
+        "handleDownloadZip: unzippedSourceFiles is unexpectedly empty"
       );
     }
     setErrorMsg(null);
@@ -120,7 +156,13 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
           });
 
           const patches = chosenHacks.map((ch) => ch.id).join("_");
-          sendBlobToAnchorTag(fileBlob, `${game.mameName}_${patches}.zip`);
+          const hackWithDownloadName = chosenHacks.find(
+            (ch) => !!ch.mameDownloadName
+          );
+          const zipRoot =
+            hackWithDownloadName?.mameDownloadName ??
+            `${game.mameName}_${patches}`;
+          sendBlobToAnchorTag(fileBlob, `${zipRoot}.zip`);
         });
       })
       .catch((e) => {
@@ -171,7 +213,6 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
       .then((patchedRomFiles) => {
         const patches = chosenHacks.map((ch) => ch.id).join("_");
         const gameName = `${game.mameName}_${patches}`;
-        console.log({ gameName, l: gameName.length });
 
         // this is really here so that the slowdown fix patch can make kof94
         // something other than 55. That really only works if only one patch does this.
@@ -219,20 +260,57 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
   }, [game, unzippedSourceFiles, chosenHacks]);
 
   return (
-    <div className={clsx(className, "flex flex-col")}>
+    <div className={clsx(className, "flex flex-col space-y-4")}>
       <DropZone
+        obtained={!!zipData}
+        obtainedClassName="rounded-lg border-4 border-green-500 p-4 flex justify-center items-center"
+        fileName={zipData?.zip}
         className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
-        onData={(data) => setZipData(data)}
+        onData={({ data, fileName }) => setZipData({ data, zip: fileName })}
       >
         {(clickToChoose) => {
           return (
             <div>
-              Drag <b>{game.mameName}.zip</b> from MAME here, {clickToChoose}
+              Drag <b>{game.mameName}.zip</b>{" "}
+              {game.mergedMameName && (
+                <>
+                  (or a merged <b>{game.mergedMameName}.zip</b>)
+                </>
+              )}{" "}
+              from MAME here, {clickToChoose}
             </div>
           );
         }}
       </DropZone>
-      {unzippedSourceFiles && (
+      {neededFallback && (
+        <div>
+          <div className="bg-orange-100 px-8 py-4 text-orange-600">
+            A needed ROM was missing in {game.mameName}.zip. This ROM can also
+            be found in <b>{neededFallback}.zip</b>. If you have that, load it
+            up here. Otherwise, you will need to get different ROM files.
+          </div>
+          <DropZone
+            obtained={!!fallbackZipData}
+            obtainedClassName="rounded-lg border-4 border-green-500 p-4 flex justify-center items-center"
+            fileName={fallbackZipData?.zip}
+            className="rounded-lg border-dashed border-4 border-gray-500 p-4 flex justify-center items-center"
+            onData={({ data, fileName }) =>
+              setFallbackZipData({ data, zip: fileName })
+            }
+          >
+            {(clickToChoose) => {
+              return (
+                <div>
+                  Drag <b>{neededFallback}.zip</b> from MAME here,{" "}
+                  {clickToChoose}
+                </div>
+              );
+            }}
+          </DropZone>
+        </div>
+      )}
+      {((!neededFallback && unzippedSourceFiles.length === 1) ||
+        (!!neededFallback && unzippedSourceFiles.length === 2)) && (
         <div className="mt-8">
           <h3 className="font-bold text-lg mb-2">
             Finally: Grab the patched game
@@ -281,8 +359,15 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
       {errorMsg && (
         <div className="bg-red-300 text-black mt-4 p-2">
           <div>
-            An error occured. Make sure this is <b>{game.mameName}.zip</b> meant
-            for recent versions of MAME.
+            An error occured. Make sure this is{" "}
+            <b>{neededFallback ?? game.mameName}.zip</b>
+            {!neededFallback && game.mergedMameName && (
+              <>
+                {" "}
+                (or a merged <b>{game.mergedMameName}.zip</b>)
+              </>
+            )}{" "}
+            meant for recent versions of MAME.
           </div>
           <div>{errorMsg}</div>
         </div>
