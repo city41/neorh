@@ -202,8 +202,8 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
   }, [game, unzippedSourceFiles, chosenHacks]);
 
   const handleNeoSD = useCallback(() => {
-    if (!unzippedSourceFiles) {
-      throw new Error("handleNeoSD: unzippedSourceFiles is unexpectedly null");
+    if (unzippedSourceFiles.length === 0) {
+      throw new Error("handleNeoSD: unzippedSourceFiles is unexpectedly empty");
     }
 
     setErrorMsg(null);
@@ -227,10 +227,12 @@ function PatchApplier({ className, game, chosenHacks }: PatchApplierProps) {
         const convertOptions: ConvertOptions = {
           genre: neosdConvertOptions.genre,
           manufacturer: game.developer,
-          name: `${game.mameName}_${patches}`,
+          name: `${game.mameName}_${patches}`.substring(0, 33),
           year: game.year,
           ngh: neosdConvertOptions.ngh,
         };
+
+        console.log("convertOptions", JSON.stringify(convertOptions, null, 2));
 
         const filesInMemory: FilesInMemory =
           patchedRomFiles.reduce<FilesInMemory>((accum, f) => {

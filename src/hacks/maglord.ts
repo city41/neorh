@@ -123,7 +123,7 @@ const maglord: RomHackGameEntry = {
           description: "Retranslated text",
         },
       ],
-      downloadAs: ["mame"],
+      downloadAs: ["mame", "neosd"],
       mameDownloadName: "maglordh",
     },
     {
@@ -173,7 +173,7 @@ const maglord: RomHackGameEntry = {
           description: "Retranslated text",
         },
       ],
-      downloadAs: ["mame"],
+      downloadAs: ["mame", "neosd"],
       mameDownloadName: "maglordh",
     },
   ],
